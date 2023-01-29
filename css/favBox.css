@@ -1,0 +1,31 @@
+
+
+.favEleBox{
+    display: flex;
+    justify-content: space-around;
+    width: 1000px;
+    animation: 2s ease-out 0s 1 slideInFromLeft;
+    animation-fill-mode: forwards;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.favElements{
+ 
+    width: 200px;
+    height: 150px;
+    padding: 10px 0 10px 0;
+    background-color: #ffffff;
+    
+    border-radius: 15px;
+    box-shadow: 1px 4px 10px grey;
+    margin: 15px;
+
+}
+.favElements:hover{
+    background-color: rgb(177, 175, 175);
+    cursor: pointer
+
+}
+.favElements>p{
+    display: block !important;
+}

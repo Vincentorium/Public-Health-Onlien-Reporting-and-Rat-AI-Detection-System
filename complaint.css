@@ -1,0 +1,289 @@
+body {background: #F0F0F0;}
+
+
+h2 {margin-left: 55px;}
+
+
+.cmtContainer{
+
+  display:flex
+}
+.commendBox{
+  display: flex;
+  
+}
+.cmtPersonInof{
+ width: 250px;
+ /*border-right: 1px solid black;*/
+}
+
+.cmtDate{
+color: white;
+  display: block;
+  background-color:#4b4b70;
+}
+
+.cmtHistory{
+  border-right: 1px solid black;;
+  margin-right: 30px;
+  width: 250px;
+padding: 0;
+}
+.historyOfCmt{
+/*margin-right:30px;*/
+  
+}
+img{
+display: inline-block;
+position: relative;
+left:52px;
+}
+button{
+  cursor: pointer;
+}
+
+
+.cmtBox {
+  display: block;
+  margin-top: 10px;
+  margin-left: 50px;
+  width: 500px;
+  height: 100px;
+  -moz-border-bottom-colors: none;
+  -moz-border-left-colors: none;
+  -moz-border-right-colors: none;
+  -moz-border-top-colors: none;
+  background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+  border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+  border-image: none;
+  border-radius: 6px 6px 6px 6px;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12) inset;
+  color: #555555;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4em;
+  padding: 5px 8px;
+  transition: background-color 0.2s ease 0s;
+}
+
+
+.cmtBox:focus {
+    background: none repeat scroll 0 0 #FFFFFF;
+    outline-width: 0;
+}
+ 
+
+.commendBox,.submissionFomr
+,.presentation
+{
+  display: none;
+}
+ .active
+{
+  display: block;
+}
+
+ /**/
+.complaint0.active,
+.post1.active,
+.post2.active 
+ 
+{
+  display: flex;
+}
+ .response0{
+  display: none;
+}
+
+.cmtLi.active{
+  display: list-item;
+}
+
+.cmtSumbitBox{
+  margin-left: 300px
+}
+
+/*Hardcode*/
+.cmtLi{
+  display: none;
+}
+/*Complaint history*/
+
+.cmtHistory li{
+  cursor: pointer;
+/*margin: 10px 0 10px 0;*/
+}
+ 
+.listClick:hover {
+   color: rgb(52, 9, 56);
+   font-size: 20px;
+}
+.sendCmtBtn{
+   position:absolute;
+  left:360px
+}
+/*complaint form*/
+.saveForm{
+  position:absolute;
+  left:500px
+}
+
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+input, textarea {
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+textarea {
+width: 300px;
+  height: 80px;
+}
+select {
+      /* -webkit-appearance: none; */
+      -moz-appearance: none;
+      appearance: none;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+ 
+ 
+form{
+    overflow:hidden;
+}
+form header {
+  margin: 0 0 20px 0;
+  text-align:center;
+}
+form header div {
+  font-size: 140%;
+  color: #fff;
+}
+form header h2 {
+   
+  color:#520d0d;
+  font-size: 38px;
+  font-weight:300;
+}
+form > div {
+  clear: both;
+  overflow: hidden;
+  padding: 1px;
+  margin: 0 0 30px 0;
+}
+form > div > fieldset > div > div {
+  margin: 0 0 5px 0;
+}
+form > div > label,
+legend {
+	width: 32%;
+  float: left;
+  padding-right: 35px;
+  padding-top:20px;
+  font-size:14px;
+  font-weight:400;
+  text-transform: uppercase;
+  opacity: 0.5;
+  transition: all 0.5s ease-in-out;
+  letter-spacing:1px
+}
+form > div > div,
+form > div > fieldset > div {
+  width: 48%;
+  float: left;
+}
+form > div > fieldset label {
+	font-size: 140%;
+}
+fieldset {
+	border: 0;
+  padding: 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=password],
+textarea {
+	width: 100%;
+  /* 
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+  */
+  padding:5px 5px;
+  font-size:120%;
+  background-color:#37474F;
+  border:none;
+  border-radius:5px;
+  color:#fff;
+  transition: all 0.5s ease-in-out;
+
+}
+
+select{
+  width: 100%;
+  height: 33px;
+  font-size:100%;
+  padding: 0 5px 0 5px;
+  background-color:#37474F;
+  border:none;
+  color:#fff;
+
+}
+input[type=text],
+input[type=email],
+input[type=url],
+input[type=password] {
+  width: 100%;
+  background-color:fff;
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=url]:focus,
+input[type=password]:focus,
+textarea:focus {
+  outline: 0;
+  
+  border-color: #FDBD39;
+  background: #4d1f1f;
+}
+select:focus{
+  background: #4d1f1f;
+}
+
+@media (max-width: 600px) {
+  form > div {
+    margin: 0 0 15px 0; 
+  }
+  form > div > label,
+  legend {
+	  width: 100%;
+    float: none;
+    margin: 0 0 5px 0;
+  }
+  form > div > div,
+  form > div > fieldset > div {
+    width: 100%;
+    float: none;
+  }
+  input[type=text],
+  input[type=email],
+  input[type=url],
+  input[type=password],
+  textarea,
+  select {
+    width: 100%; 
+  }
+}
+ input[type=text]{
+background:#37474F;
+}

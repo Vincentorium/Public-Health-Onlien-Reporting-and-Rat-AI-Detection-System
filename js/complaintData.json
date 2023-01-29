@@ -1,0 +1,15 @@
+{ 
+	
+ 	"ComplaintDate": ["16 Jan 2023","12 Jan 2023"],
+	"Nature": ["Waste Pollution", "Waste Pollution"],
+    "Specification": ["Dumpling", "Dumpling", "3"],
+	"IncidentDate": ["18 Jan 2023", "10 Jan 2023"],
+	"Description": ["12:50", "12:40", "18:00", "Leung"],
+	"Location":["Tsim Sha Tsui", "Tsim Sha Tsui", "G123", 20],  
+	"Attachment":["Yes", "Yes", "Hong Kong", "male"],
+	"Name":["林立志", "陳克勤", "Seoul", "male"],
+	"PhoneNo":["5432 2345", "5132 2345", "2,130.00", "male"],
+	"Status":["Solved", "Solved", "Regular Meal", "male"]
+}
+ 
+ 
