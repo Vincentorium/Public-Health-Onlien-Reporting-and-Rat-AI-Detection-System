@@ -2,13 +2,28 @@
 
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 
- 
+* {
+  margin: 0;
+  padding: 0;
+
+  outline: none;
+  list-style: none;
+  font-family: 'Montserrat', sans-serif;
+}
+.headerLoginOut{
+ display:flex;
+ gap:10px;
+ margin-bottom: 10px;
+}
 
 body {
   margin: 0px;
   font-family: Georgia;
 }
-
+.homePageCTN{
+      width: auto;
+   
+}
 #header {
   width: 1715;
   background-color: #888888;
@@ -27,7 +42,7 @@ justify-content: space-between;
 }
 #header a {
 
-  margin:15px 5px 0 5px;
+  margin:0px 5px 0 5px;
 
   font-family: Arial;
   font-size: larger;
@@ -80,9 +95,6 @@ justify-content: space-between;
   width: 40%;
 
 
-}
-.headerLoginOut{
-  margin-top: 10px;
 }
 
 #Searchwrapper #searchbox {
@@ -188,8 +200,8 @@ justify-content: space-between;
 #loginScreen{
   background-image: url("./images/homePageBackgroundPic--trump2.png");
  
-  width: 1715px;
-  height: 595px;
+  width: auto;
+  height: 50px;
   background-size:1715px 595px; 
 }
 
