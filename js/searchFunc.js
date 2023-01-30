@@ -614,7 +614,7 @@ function getFlight(){
               +'<div class="allPostCmtBox">'
             +'    <img class="allPostCmtIcon" src="images/iconCmt.png"/>' 
         
-                   +'  <div class="allPostPollutionType">   Pest Control     </div> '
+                   +'  <div class="allPostPollutionType">   Air Pollution     </div> '
 
               +'</div>'//EDF 1.1.1 postBox_contentBox_commentNoDisplay  1.1.1
           

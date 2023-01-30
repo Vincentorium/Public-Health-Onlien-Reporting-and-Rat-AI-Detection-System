@@ -10,6 +10,12 @@
   list-style: none;
   font-family: 'Montserrat', sans-serif;
 }
+.loginLogo{
+color: white;
+    font-size: 17px;
+    margin-bottom: 50px;
+    font-weight: 900;
+}
 .headerLoginOut{
  display:flex;
  gap:10px;
