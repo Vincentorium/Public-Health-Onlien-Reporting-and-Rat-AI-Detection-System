@@ -80,7 +80,7 @@ function getGroupOfComplaint(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -186,7 +186,7 @@ function getGroupOfComplaint(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -295,7 +295,7 @@ function getGroupOfComplaint(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'

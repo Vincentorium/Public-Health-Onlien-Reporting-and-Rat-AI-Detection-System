@@ -19,7 +19,7 @@ function demo_userType(){
     
 		
 	if(userName=="operator"){
-
+ 
 			$('.dept').html('Operator')
 			$('.userName').html('Vincent')
 
@@ -36,8 +36,10 @@ function demo_userType(){
 
  
 		$('.complaintNature_edit').addClass('demonHide');
+    $('.OptionDemo1').removeAttr('selected')
+	 
+    $('.OptionDemo2').attr('selected','selected')
 
- 
  			getFlight_DeptDemo()
 		if(userName==="HA"){
 			$('.dept').html('Housing Authority')
@@ -64,18 +66,20 @@ $('.complaintNature_edit').click(function(){
  
 	if($('.complaintNature_edit').html()!=="(Save)"){
 	
-	   $('.complaintNature').attr('contenteditable','true')
-
+//	   $('.complaintNature').attr('contenteditable','true')
+	   $('.complaintNature').removeAttr('disabled')
 	   $('.complaintNature').addClass('complaintNatureEditable')
 
 	   $('.complaintNature_edit').html("(Save)")
     
+ 
     }else{
 
-	var editedContent=$('.complaintNature').html();
-	$('.complaintNature_edit').html(editedContent)
+	var editedContent=$('.complaintNature').val();
+	 
 	$('.complaintNature').removeClass('complaintNatureEditable')
-	$('.complaintNature').attr('contenteditable','false')
+	//$('.complaintNature').attr('contenteditable','false')
+$('.complaintNature').attr('disabled','disabled');
 
 
 
@@ -85,6 +89,8 @@ $('.complaintNature_edit').click(function(){
 	//allPostPollutionType1_demo load after ajax
 	alert('Saved Successfully');
 	$('.allPostPollutionType1_demo').html(editedContent)
+
+
 
 }
 	
@@ -142,8 +148,13 @@ $('.complaintSubmitButton').click(function(){
 		if(userName==="EPD"){
 			
 			$('.complaintBoxPost1').removeClass('demonHide')
+        $('.postMngtStatus').append( '<span class="allPostStatusDpt">HA</span>')
+$('.complaintPost1').addClass('demonHide')
+        
 			alert('Sumbit Successfully')
 		
+
+
 		}else if(userName==="HA"){
 
 			$('.complaintBoxPost2').removeClass('demonHide')
@@ -219,7 +230,7 @@ function getFlight(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -281,7 +292,7 @@ function getFlight(){
            
                
                 +'<span class="allPostStatusDpt">EPD</span>'
-                +'<span class="allPostStatusDpt">HA</span>'
+               //  +'<span class="allPostStatusDpt">HA</span>'
                 +'  </div>'
               +'  </div>'
 
@@ -323,7 +334,7 @@ function getFlight(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Mong Kok/Fa Yuen Street &nbsp&nbsp'
+                            +'Area: Mong Kok/Fa Yuen Street &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -424,7 +435,7 @@ function getFlight(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -548,7 +559,7 @@ function getFlight_DeptDemo(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -610,7 +621,7 @@ function getFlight_DeptDemo(){
            
                
                 +'<span class="allPostStatusDpt">EPD</span>'
-                +'<span class="allPostStatusDpt">HA</span>'
+                //+'<span class="allPostStatusDpt">HA</span>'
                 +'  </div>'
               +'  </div>'
 
@@ -629,6 +640,13 @@ $('.forInsert').append(content);
 
 }
 
+	if(userName!="operator"){
+ $('.allPostPollutionType1_demo').html("Waste Pollution")
 
+  }
+  if(userName==="HA"){
 
+    $('.postMngtStatus').append( '<span class="allPostStatusDpt">HA</span>')
+    
+}
  })
