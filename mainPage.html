@@ -544,8 +544,19 @@
                               <tr>
                                 <td>
                                   <b>Nature</b>:
+                                  <select class="complaintNature" disabled>
+                                    <option class="OptionDemo1" value="Pest Control
+                                       " selected>Pest Control
+                                    </option>
+                                    <option value="Air Pollution">Air Pollution </option>
+                                    <option value="Noise Pollution">Noise Pollution </option>
+                                    <option value="Water Pollution">Water Pollution </option>
+                                    <option class="OptionDemo2" value="Waste Pollution">Waste Pollution
+                                    </option>
+                                  </select>
+                                  <!-- 
                                   <span class="complaintNature" contenteditable="false">Pest Control
-                                    Dust</span>
+                                    Dust</span>-->
                                   <span class="complaintNature_edit demonHide" contenteditable='true'>(Edit)</span>
                                 </td>
                               </tr>
@@ -626,6 +637,7 @@
                             上址山坡有建築廢料被棄置，由於未能確定廢物來源或截獲在
                             <br>該處非法棄置廢物者，因此未能根據《廢物處置條例》採取執
                             <br>法行動，但已要求屋邨管理處加強巡邏，並會繼續進行突擊巡查。
+                            <br>@HA
                           </span>
                         </div>
                       </div>
@@ -714,7 +726,7 @@
                   <br>
 
                   <div class="postStatusFunc">
-                    <label for="">Status: </label>
+                    <label for="">Progress: </label>
                     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;
                     <select name="Status" id="">
                       <option value="">Unchange</option>
@@ -729,10 +741,10 @@
 
                       <details class="CustDelivery_detail">
 
-                        <summary>Update status with other complaints</summary>
+                        <summary>Update Progress of Relevant Complaints</summary>
 
                         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                        <label for="vehicle1"> Collection</label><br>
+                        <label for="vehicle1"> Complaints within Default Collection</label><br>
                         <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
                         <label for="vehicle2"> 屋企附近有童黨製造噪音</label><br>
 
@@ -771,7 +783,7 @@
                   <div>
                     <!-- SOF title -->
                     <div class="complaint1_title">
-                      <b>搞到成個垃圾崗咁！
+                      <b>******* 搞到成個垃圾崗咁！
                       </b>
                     </div>
                     <div>
@@ -804,8 +816,7 @@
                               <tr>
                                 <td>
                                   <b>Nature</b>:
-                                  <span class="complaintNature" contenteditable="false">Pest Control
-                                    Dust</span>
+                                  <span class="complaintNature" contenteditable="false">Waste Pollution</span>
                                   <span class="complaintNature_edit" contenteditable='true'>(Edit)</span>
                                 </td>
                               </tr>

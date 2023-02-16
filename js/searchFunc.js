@@ -435,7 +435,7 @@ function getFlight(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -539,7 +539,7 @@ function getFlight(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Mong Kok/Fa Yuen Street &nbsp&nbsp'
+                            +'Area: Mong Kok/Fa Yuen Street &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -640,7 +640,7 @@ function getFlight(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
@@ -791,7 +791,7 @@ function getFlight_DeptDemo(){
                            
                             +'<td class="allPostArea">'
                             
-                            +'Area/Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
+                            +'Area: Tsim Sha Tsui/Ashley Road &nbsp&nbsp'
                             +'</td>'
                             // +'</tr><tr>'
                             +'<td class="allPostPostDetail">Posted by</td>'
