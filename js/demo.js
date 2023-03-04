@@ -150,7 +150,7 @@ $('.complaintSubmitButton').click(function(){
 			$('.complaintBoxPost1').removeClass('demonHide')
         $('.postMngtStatus').append( '<span class="allPostStatusDpt">HA</span>')
 $('.complaintPost1').addClass('demonHide')
-        
+    $('.demonList1').removeClass('demonHide')
 			alert('Sumbit Successfully')
 		
 
