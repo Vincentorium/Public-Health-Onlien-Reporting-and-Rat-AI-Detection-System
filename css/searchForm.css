@@ -91,6 +91,7 @@ font-size: 12px;
 }
 .allPostSpecificPost{
     display: flex;
+        margin-bottom: 20px;
 }
 .allPostTitle{
         text-align: left;
@@ -416,9 +417,14 @@ details > summary:first-of-type {
 }
         .Insert_UnGroup{
 
-            display: flex !important;
-            flex-direction:column;
-            gap: 10px;
+        
+
+                display: flex !important;
+    /* flex-direction: column; */
+    /* gap: 10px; */
+    width: 754px;
+    
+    flex-wrap: wrap;
          
         }
         .postMngtStatus{
@@ -437,11 +443,12 @@ details > summary:first-of-type {
             border-radius: 15px;
             color:rgb(255, 252, 252);
             background-color:rgb(118, 53, 53) ;
+            justify-content: flex-start;
         }
         .allPostStatusDptTitle{
-            font-weight: 500;
-              font-size: 15px;
-            padding:10px;
+               font-weight: 900;
+    font-size: 15px;
+    padding: 10px;
         }
         .allPostStatusDpt{
             font-size: 12px;
@@ -449,15 +456,14 @@ details > summary:first-of-type {
         }
         .BookingTabel_bookingBox {
 
-            width: 600px;
-            height: auto;
-           
-            padding: 10px 0 10px 0;
-            background-color: #ffffff;
-
-            display: block;
-            border-radius: 15px;
-            box-shadow: 1px 4px 10px gray;
+        width: 612px;
+    height: auto;
+    display: flex;
+    padding: 10px 0 10px 0;
+    background-color: #ffffff;
+    /* display: block; */
+    border-radius: 15px;
+    box-shadow: 1px 4px 10px grey;
 
         }
         .complaintNature_edit{
@@ -641,6 +647,43 @@ display:flex;
     width:125px;
     height:100px;
 }
+
+
+
+ 
+.float{
+	position:fixed;
+	width:100px;
+	height:   100px;
+    top: 440px;
+    right: 50px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+    cursor: pointer!important;
+}
+.float:hover{
+	background-color:rgb(156, 165, 26) ;
+}
+.my-float{
+	    position: absolute;
+    left: 10px;
+    top: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
  /*
 .tooltipRev[tooltip]::before,.tooltipRev[tooltip]::after {
     opacity: 0;

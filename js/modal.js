@@ -1,6 +1,51 @@
 
+
+var modal
+
+$(document).ready(function () {
+
+modal=function modal(){
+ var openModalButtons = document.querySelectorAll('[data-modal-target]')
+ var closeModalButtons = document.querySelectorAll('[data-close-button]')
+var overlay = document.getElementById('overlay')
+
  
-$('body').on('click','.allPostTitle,.favElement1',function(){
+
+
+openModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+ 
+     const modal = document.querySelector(button.dataset.modalTarget)
+  
+     const defaulModal =  button.getAttribute('data-default');
+     //getReports(dataForInbox,$(this).data('idForMysql'));
+ getReports2(dataForInbox,button.getAttribute('data-idForMysql'));
+
+    closeModalButtons = document.querySelectorAll('[data-close-button]')
+    overlay = document.getElementById('overlay')
+
+
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+ 
+        const modal = button.closest('.modal')
+        closeModal(modal)
+  })
+})
+ 
+
+ 
+     openModal(modal,defaulModal)
+
+   
+  })
+ 
+})//EDO openModalButtons
+
+
+
+
+
 
  
 function openModal(modal,defaulModal){
@@ -46,6 +91,27 @@ function openModal(modal,defaulModal){
   
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
  function closeModal(modal){
  
      $('.active').removeClass('active');
@@ -55,24 +121,9 @@ function openModal(modal,defaulModal){
 
 
  
-const openModalButtons = document.querySelectorAll('[data-modal-target]')
-const closeModalButtons = document.querySelectorAll('[data-close-button]')
-const overlay = document.getElementById('overlay')
+//const openModalButtons = document.querySelectorAll('[data-modal-target]')
 
- 
 
-openModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
-  
-    const modal = document.querySelector(button.dataset.modalTarget)
-  
-     const defaulModal =  button.getAttribute('data-default');
-
-    openModal(modal,defaulModal)
-   
-  })
- 
-})
 
 
 
@@ -106,9 +157,9 @@ closeModalButtons.forEach(button => {
 
     
   })
-$(document).ready(function () {
 
-});
+  }
+  modal()
+})//EDO title click event
 
-})
- 
+

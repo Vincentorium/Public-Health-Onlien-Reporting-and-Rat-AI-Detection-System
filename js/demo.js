@@ -5,14 +5,14 @@ $(document).ready(function () {
 
 var userName= $.cookie('name')
 
-
+console.log("demo")
  
 
 
  
  
  
-demo_userType()
+ demo_userType()
 
 
 function demo_userType(){
@@ -30,7 +30,7 @@ function demo_userType(){
 			$('.containerOrderList').addClass('containerOrderListDemo');
 
 			$('.demonSwitchRight').html('Approved')
-			getFlight();
+//			 getFlight();
 	}else{
 
 
