@@ -1,37 +1,39 @@
 
-
+var getReportsIntoInbox
 var dataForInbox
- 
+ $(document).ready(function () {
 //(function () { 
 
     console.log("gereport")
- getReportsIntoInbox();
- function getReportsIntoInbox(){
+
+
+getReportsIntoInbox= function getReportsIntoInbox(){
 
 
 var content=""
 var type
 var tfvalue="disabled";
- 
+ /*
 $.ajax({
         type:'GET',
         dataType: "json",
          async: false,
         url: './php/getReports.php',
         success: function (result){
- 
-dataForInbox=result
-
-$('.forInsert').html("");
-   
-$('.forInsert').fadeOut(1);
-      
-$.each(result, function(index, data){
+  
+*/
+        $('.forInsert').html("");
+          
+        $('.forInsert').fadeOut(1);
+              
+        $.each(resultOfReports, function(index, data){
         
+                if(data.repStatusType!="unapproved")
+             return;
+     
 
-
-type=data.repType ;
- 
+        type=data.repType ;
+        
 
 
 
@@ -163,7 +165,7 @@ type=data.repType ;
 /* 
 */
     
-       },//EDF AJAX sucess FUNCTION
+     /*  },//EDF AJAX sucess FUNCTION
        
        error: function(xhr, status, error) {
         content="Not new task yet!"
@@ -172,8 +174,10 @@ type=data.repType ;
 
  
       
-  });//EOF AJAX
+  });//EOF AJAX*/
+
   $('.forInsert').html(content)
   $('.forInsert').fadeIn(500)
 }//EOF GETREPORTS FUNCTION
- 
+ getReportsIntoInbox();
+ })

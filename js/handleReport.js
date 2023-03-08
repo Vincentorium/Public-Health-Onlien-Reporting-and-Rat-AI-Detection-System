@@ -1,8 +1,11 @@
+
+
+//for operator to update report status between unapprove and approve fo
 $(document).on('click','.float',function(e){
 
  
     var repStatusID=$(this).data("statusid")
-var data = {repStatusID:repStatusID,repStatusType: "Approved"};
+var data = {repStatusID:repStatusID,repStatusType: "approved"};
 
 
  
@@ -16,7 +19,9 @@ $.ajax({
                
    
                     console.log('Status updated!');
+                    getAllReort()
                     getReportsIntoInbox()
+                    getReortForTable()
                     modal()
                     $('.active').removeClass('active');
                     $('.stateMsg').remove();
@@ -30,4 +35,50 @@ $.ajax({
  
  
 
+ //for operator to update the dept or nature of report 
+$(document).on("click",".complaintNature_edit",(function(){
+    var button=$(this)
+    var select=$(this).prev()
  
+	if(button.html()!=="(Save)"){
+	
+ 
+    	 select.removeAttr('disabled').prev().addClass('complaintNatureEditable')
+
+	    button.html("(Save)")
+    
+ 
+    }else{
+         
+        var data={repID:repID,attribute:$('.complaintOption').data('attribute'),value:$('.complaintOption').val()}
+        $.ajax({
+            type: 'POST',
+            url: 'php/updateReportAttribute.php',
+            data: data,
+            dataType: 'json',
+            success: function(response) {
+               
+
+                var editedContent=$('.complaintNature').val();
+                
+                select.removeClass('complaintNatureEditable')
+            
+                select.attr('disabled','disabled');
+
+
+
+                button.html("(Edit)")
+ 
+	alert('Saved Successfully');
+    
+            },
+    
+        });//EO ajax
+
+ 
+
+
+
+}
+	
+}))

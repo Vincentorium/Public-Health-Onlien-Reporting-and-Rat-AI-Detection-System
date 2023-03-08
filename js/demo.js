@@ -12,89 +12,6 @@ console.log("demo")
  
  
  
- demo_userType()
-
-
-function demo_userType(){
-    
-		
-	if(userName=="operator"){
- 
-			$('.dept').html('Operator')
-			$('.userName').html('Vincent')
-
-			$('.favBox,.complaint2,.cmtHistory,.cmtSumbitBox').addClass('demonHide');
-			
-			$('.managementFunc,.complaintNature_edit').removeClass('demonHide');
-
-			$('.containerOrderList').addClass('containerOrderListDemo');
-
-			$('.demonSwitchRight').html('Approved')
-//			 getFlight();
-	}else{
-
-
- 
-		$('.complaintNature_edit').addClass('demonHide');
-    $('.OptionDemo1').removeAttr('selected')
-	 
-    $('.OptionDemo2').attr('selected','selected')
-
- 			getFlight_DeptDemo()
-		if(userName==="HA"){
-			$('.dept').html('Housing Authority')
-			$('.userName').html('Chan Sai Man')
-			$('.complaintBoxPost1').removeClass('demonHide');
-			$('.complaintPost2,.complaintPost3').addClass('demonHide');
-
-			
-			
-		}else if(userName==="EPD"){
-			$('.dept').html('Environmental Protection Department')
-			$('.userName').html('Chan Tai Man')
-			$('.complaintPost2,.complaintPost3').addClass('demonHide');
-
-		}
-
-	}
-
-}
-
-
-$('.complaintNature_edit').click(function(){
-
- 
-	if($('.complaintNature_edit').html()!=="(Save)"){
-	
-//	   $('.complaintNature').attr('contenteditable','true')
-	   $('.complaintNature').removeAttr('disabled')
-	   $('.complaintNature').addClass('complaintNatureEditable')
-
-	   $('.complaintNature_edit').html("(Save)")
-    
- 
-    }else{
-
-	var editedContent=$('.complaintNature').val();
-	 
-	$('.complaintNature').removeClass('complaintNatureEditable')
-	//$('.complaintNature').attr('contenteditable','false')
-$('.complaintNature').attr('disabled','disabled');
-
-
-
-	$('.complaintNature_edit').html("(Edit)")
-
-
-	//allPostPollutionType1_demo load after ajax
-	alert('Saved Successfully');
-	$('.allPostPollutionType1_demo').html(editedContent)
-
-
-
-}
-	
-})
 
 $('.complaintButton1').click(function(){
  
@@ -640,7 +557,7 @@ $('.forInsert').append(content);
 
 }
 
-	if(userName!="operator"){
+	if(userName!="meow"){
  $('.allPostPollutionType1_demo').html("Waste Pollution")
 
   }

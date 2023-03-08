@@ -16,10 +16,11 @@ openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
  
      const modal = document.querySelector(button.dataset.modalTarget)
+  // const modal = button.getAttribute('data-modal-target');
   
      const defaulModal =  button.getAttribute('data-default');
      //getReports(dataForInbox,$(this).data('idForMysql'));
- getReports2(dataForInbox,button.getAttribute('data-idForMysql'));
+     getReports2(resultOfReports,button.getAttribute('data-idForMysql'));
 
     closeModalButtons = document.querySelectorAll('[data-close-button]')
     overlay = document.getElementById('overlay')
@@ -49,9 +50,10 @@ closeModalButtons.forEach(button => {
 
  
 function openModal(modal,defaulModal){
-  if(modal==null)return
-  modal.classList.add('active')
-  overlay.classList.add('active')
+  //if(modal==null)return
+//   modal.classList.add('active')
+$('#modal').addClass('active')  
+overlay.classList.add('active')
   if(defaulModal=='signIn'){
     $('#container1').addClass('active');
   }else if(defaulModal=='createAccForOperator'){

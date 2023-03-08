@@ -1,5 +1,8 @@
 
-$(document).ready(function () {
+ 
+
+//data of all reports from db
+var resultForTable
 
  
   
@@ -10,56 +13,39 @@ var idOfBox=""  //the id of detailed box of flight
 var content = ""
 var demonTabelJson;
 
-var userName=$.cookie('name');
-//if($('.userName').html() === "Vincent"){
- 
-if(userName === "operator"){
-    demonTabelJson="complaintData_Operator.json";
- }else{
-
-     demonTabelJson="complaintData.json";
-
-} 
-//getComplaint(demonTabelJson);
  
 
+ 
 
-
-function getComplaint(demonTabelJson){
+//for switch
+getReortForTable()
+function getReortForTable(){
       $('.tableComplaint').html("");
    
       $('.tableComplaint').fadeOut(1);
       
- 
 
         $.ajax({
-          url: "./js/"+demonTabelJson,
+          url: "./php/getReportsForTable.php",
           dataType: "json",
           type: 'POST',
           data: {
-         
           },
           success: function (rs) {
-        
+             resultForTable=rs
+       
  content = ""
         
-        $.each(rs, function(index, rc){
-        //  for(i=0; i<; i++){
-         
+     $.each(rs, function(index, rc){
+      
+          
             content +=
-            "<tr><td>" + rc.ComplaintDate[i]
-          // "<tr><td>" + i
-            + "</td><td>" + rc.Nature[i]
-            + "</td><td>" + rc.Specification[i]
-              + "</td><td>" + rc.IncidentDate[i]
-              + "</td><td>" + rc.Description[i]
-                + "</td><td>" + rc.Location[i]
-            + "</td><td>" + rc.Attachment[i]
-                + "</td><td>" + rc.Name[i]
-                    + "</td><td>" + rc.PhoneNo[i]
-                        + "</td><td>" + rc.Status[i]
-            + "</td>"
-            + "</tr>"
+              "<tr class='reportTableRow' data-idForMysql="+rc.repID+" data-modal-target='#repTableRow'  data-default='orderList'><td>" + rc.	repDateSubmit
+            + "</td><td>" + rc.repType
+            + "</td><td>" + rc.repDatePeriodBegin
+            + "</td><td>" + rc.repLocationDetail
+            + "</td><td>" + rc.repStatusType
+            + "</td></tr>"
         })
           
                 
@@ -68,29 +54,20 @@ function getComplaint(demonTabelJson){
         
         $(".tableComplaint").append(
                                     "<tr><th>"
-                                    +"Complaint Date"
+                                    +"Report Date"
                                     +"</th><th>"
                                     +"Nature"
                                     +"</th><th>"
-                                    +"Specification"
-                                    +"</th><th>"
                                     +"Incident Date"
                                     +"</th><th>"
-                                    +"Description"
-                                    +"</th><th>"
                                     +"Location"
-                                    +"</th><th>"
-                                    +"Attachment"
-                                    +"</th><th>"
-                                    +"&nbsp&nbspName&nbsp&nbsp"
-                                    +"</th><th>"
-                                    +"Mobile"
                                     +"</th><th>"
                                     +"Status"
                                     +"</th></tr>"
             
                           +content );
                       
+ modal();
  
         $('.tableComplaint').fadeIn(500);
         addNoIndex(); 
@@ -102,6 +79,8 @@ function getComplaint(demonTabelJson){
  
         
 })
+
+
  }
  
 
@@ -255,6 +234,7 @@ function limitPagging(){
   });
 }
  
+$(document).ready(function () {
 
    });
 

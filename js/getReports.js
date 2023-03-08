@@ -1,4 +1,4 @@
-
+var repID
 function getReports2(result,reportID){
 
   //alert("caller is " + getReports2.caller);
@@ -6,12 +6,14 @@ function getReports2(result,reportID){
  
 var content=""
 var type
-
+repID=reportID
 $.each(result, function(index, data){
   
-  if(data.repID==reportID){
-      type=data.repType ;
 
+//fetch data from the result which loads at begin.
+  if(data.repID==repID){
+      type=data.repType ;
+      
       
       content+=
    
@@ -151,7 +153,7 @@ $.each(result, function(index, data){
 +'                      <tr>'
 +'                        <td>'
 +'                          <b>Nature</b>:'
-+'                          <select class="complaintNature" disabled>'
++'                          <select class="complaintNature complaintOption" disabled data-attribute="repType">'
 +'                            <option class="OptionDemo1" value="Pest Control"'
 +((type==="Pest Control")==false?"":"selected")+ '>Pest Control</option>'
 +'                            <option value="Air Pollution" '
@@ -164,24 +166,22 @@ $.each(result, function(index, data){
 +((type==="Waste Pollution")==false?"":"selected")+'>Waste Pollution'
 +'                            </option>'
 +'                          </select>'
-+'                          <!-- '
-+'                                  <span class="complaintNature" contenteditable="false">Pest Control'
-+'                                    Dust</span>-->'
+ 
 +'                          <span class="complaintNature_edit demonHide" contenteditable="true">(Edit)</span>'
 +'                        </td>'
 +'                      </tr>'
 +'<tr>'
 +'                        <td>'
 +'                          <b>Department</b>:'
-+'                          <select class="complaintDept" disabled >'
++'                          <select class="complaintDept complaintOption" disabled data-attribute="repDept">'
 +'                            <option class="OptionDemo1" value="Housing Authority"'
 +"selected"+ '>Housing Authority</option>'
 +'                            <option value="Environment Protection Department" '
 +((type==="Environment Protection Department")==false?"":"selected")+'>Environment Protection Department </option>'
 +'                            <option value="Noise Pollution"'
-+((type==="Noise Pollution")==false?"":"selected")+'>Noise Pollution </option>'
-+'                            <option value="Water Pollution"'
-+((type==="Water Pollution")==false?"":"selected")+'>Water Pollution </option>'
++((type==="Police Force")==false?"":"selected")+'>Police Force</option>'
++'                            <option value="Food and Environmental Hygiene Department"'
++((type==="Food and Environmental Hygiene Department")==false?"":"selected")+'>Food and Environmental Hygiene Department</option>'
  
 +'                          </select>'
 +'                          <!-- '
@@ -337,16 +337,16 @@ $.each(result, function(index, data){
 +'        </div>'
 +'        <!--EOF comlaint 1 --->'
 +''
-+'        <div class="managementFunc demonHide">'
++'  <!--       <div class="managementFunc demonHide">'
 +'          <span> Management function</span>'
 +'          <div></div>'
 +'          <br>'
 +'          <button class="complaintButton1" data-close-button>Approve</button>'
 +'          <div></div>'
-+'        </div>'
++'        </div> --->'
 +''
 +'        <!--SOF Response Box-->'
-+'        <div class="cmtSumbitBox">'
++'        <div class="cmtSumbitBox demonHide">'
 +'          <h2>Update Status</h2>'
 +''
 +'          <textarea class="cmtBox" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
@@ -571,7 +571,12 @@ return false
       //  $('.modal').html("")//.append(content)
      
      $('#modal').html(content)
-    
+      	if($.cookie('userDept')==="Operator"){
+ 
+  
+   $('.managementFunc,.complaintNature_edit').removeClass('demonHide');
+//$(".sideNavBar").load("./component/sideNavBar.html");
+      }
      //  $('#modal').append(content)
 /* 
 */

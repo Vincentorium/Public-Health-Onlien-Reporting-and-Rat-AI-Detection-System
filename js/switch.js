@@ -15,6 +15,7 @@ function switchRight(){
 	switchBtnRight.classList.add('active-case');
 	switchBtnLeft.classList.remove('active-case');
 	activeSwitch.style.left 						= '50%';
+ 
 }
 
 switchBtnLeft.addEventListener('click', function(){
