@@ -3,12 +3,13 @@
 //for operator to update report status between unapprove and approve fo
 $(document).on('click','.float',function(e){
 
- 
+ var status=$('#float').html()=="Approve"?"approved":"unapproved"
     var repStatusID=$(this).data("statusid")
-var data = {repStatusID:repStatusID,repStatusType: "approved"};
+var data = {repStatusID:repStatusID,repStatusType: status};
 
 
  
+
 
 $.ajax({
             type: 'POST',
@@ -17,7 +18,7 @@ $.ajax({
             dataType: 'json',
             success: function(response) {
                
-   
+                
                     console.log('Status updated!');
                     getAllReort()
                     getReportsIntoInbox()
@@ -25,6 +26,7 @@ $.ajax({
                     modal()
                     $('.active').removeClass('active');
                     $('.stateMsg').remove();
+                    $('#float').html($('#float').html()=="Approve"?"Unapprove":"Approve")
             },
     
         });//EO ajax

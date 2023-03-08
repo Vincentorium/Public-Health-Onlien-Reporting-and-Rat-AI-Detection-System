@@ -117,7 +117,8 @@ $.each(result, function(index, data){
 
 
 +'<a href="#" class="float" data-statusID='+data.repStatusID+'>'
-+' <i class="fa fa-plus my-float" id="float"  >Approve</i>'
++' <i class="fa fa-plus my-float" id="float">'
++ (data.repStatusType=="approved"?"Unapprove":"Approve")+'</i>'
 +'  </a>'
 
 

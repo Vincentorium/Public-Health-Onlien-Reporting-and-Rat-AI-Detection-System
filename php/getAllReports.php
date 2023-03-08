@@ -29,8 +29,8 @@ $record[] = array(
 	'repLocationDetail' => $row['repLocationDetail'],
 	'repLocationY' => $row['repLocationY'],
   
-	'RepDatePeriodBegin' => $row['repDatePeriodBegin'],
-	'RepDatePeriodEnd' => $row['repDatePeriodEnd'],
+	'repDatePeriodBegin' => $row['repDatePeriodBegin'],
+	'repDatePeriodEnd' => $row['repDatePeriodEnd'],
 	'repContent' => $row['repContent'],
 	'repNormalUser' => $row['repNormalUser'],
 	'repDept' => $row['repDept'],

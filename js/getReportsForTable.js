@@ -28,7 +28,21 @@ var content = ""
 
           
         
- 
+        header="<tr><th>"
+                                    +"Report Date"
+                                    +"</th><th>"
+                                    +"Nature"
+                                    +"</th><th>"
+                                    +"Incident Date"
+                                    +"</th><th>"
+                                    +"Title"
+                                    +"</th><th>"
+                                    +"Location"
+                                    +"</th><th>"
+                                    +"Status"
+                                    +"</th></tr>"
+            
+                          
         content = ""
      $.each(resultOfReports, function(index, rc){
        
@@ -40,6 +54,7 @@ var content = ""
               "<tr class='reportTableRow' data-idForMysql="+rc.repID+" data-modal-target='#repTableRow'  data-default='orderList'><td>" + rc.	repDateSubmit
             + "</td><td>" + rc.repType
             + "</td><td>" + rc.repDatePeriodBegin
+            + "</td><td>" + rc.repTitle
             + "</td><td>" + rc.repLocationDetail
             + "</td><td>" + rc.repStatusType
             + "</td></tr>"
@@ -47,22 +62,12 @@ var content = ""
           
                 
      
-        
+      
+            
+                          
         
         $(".tableComplaint").append(
-                                    "<tr><th>"
-                                    +"Report Date"
-                                    +"</th><th>"
-                                    +"Nature"
-                                    +"</th><th>"
-                                    +"Incident Date"
-                                    +"</th><th>"
-                                    +"Location"
-                                    +"</th><th>"
-                                    +"Status"
-                                    +"</th></tr>"
-            
-                          +content );
+        content==""?"No any report":(header+=content) );
                       
  //modal();
  

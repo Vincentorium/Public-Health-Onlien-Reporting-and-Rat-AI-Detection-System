@@ -176,7 +176,7 @@ $.ajax({
       
   });//EOF AJAX*/
 
-  $('.forInsert').html(content)
+  $('.forInsert').html(content==""?"No report for reivew":content)
   $('.forInsert').fadeIn(500)
 }//EOF GETREPORTS FUNCTION
  getReportsIntoInbox();
