@@ -4,8 +4,18 @@
 $(document).on('click','.float',function(e){
 
  var status=$('#float').html()=="Approve"?"approved":"unapproved"
-    var repStatusID=$(this).data("statusid")
-var data = {repStatusID:repStatusID,repStatusType: status};
+    var repID=$(this).data("repid")
+ 
+   
+
+var data = {
+    
+    repStatusID:null, 
+    repStatusType:status,
+     repStatusDateCreated: 0,
+     repID:repID,
+     repUserID:$.cookie('userID')
+    };
 
 
  
@@ -13,12 +23,11 @@ var data = {repStatusID:repStatusID,repStatusType: status};
 
 $.ajax({
             type: 'POST',
-            url: 'php/updateReportStatus.php',
+            url: 'php/updateStatusForOfficer.php',
             data: data,
             dataType: 'json',
             success: function(response) {
-               
-                
+
                     console.log('Status updated!');
                     getAllReort()
                     getReportsIntoInbox()
@@ -26,7 +35,7 @@ $.ajax({
                     modal()
                     $('.active').removeClass('active');
                     $('.stateMsg').remove();
-                    $('#float').html($('#float').html()=="Approve"?"Unapprove":"Approve")
+                 //   $('#float').html($('#float').html()=="Approve"?"Unapprove":"Approve")
             },
     
         });//EO ajax

@@ -1,10 +1,11 @@
 <?php
 include "config.php";
 
+extract($_POST);
 // Perform a query
-$sql = "SELECT * FROM `reports` as rep 
- INNER JOIN repstatus as status
- ";
+
+$sql = "SELECT * FROM `reports` as rep  
+where repCurrentStatus='$status'; ";
  
 $result = mysqli_query($conn, $sql);
 
@@ -30,18 +31,15 @@ $record[] = array(
 	'repLocationDetail' => $row['repLocationDetail'],
 	'repLocationY' => $row['repLocationY'],
   
-	'RepDatePeriodBegin' => $row['repDatePeriodBegin'],
-	'RepDatePeriodEnd' => $row['repDatePeriodEnd'],
+	'repDatePeriodBegin' => $row['repDatePeriodBegin'],
+	'repDatePeriodEnd' => $row['repDatePeriodEnd'],
 	'repContent' => $row['repContent'],
 	'repNormalUser' => $row['repNormalUser'],
 	'repDept' => $row['repDept'],
+	'repCurrentStatus'=> $row['repCurrentStatus'],
+	
 
-
-	'repStatusID' => $row['repStatusID'],
-	'repStatusType' => $row['repStatusType'],
-	'repStatusDateCreated' => $row['repStatusDateCreated'],
-	'repStatusCreatedAuthor' => $row['repStatusCreatedAuthor'],
-	'repStatusFKreports' => $row['repStatusFKreports'],
+ 
 	 
     'repAttach' => $image_data);
  }

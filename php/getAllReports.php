@@ -34,12 +34,14 @@ $record[] = array(
 	'repContent' => $row['repContent'],
 	'repNormalUser' => $row['repNormalUser'],
 	'repDept' => $row['repDept'],
+	'repCurrentStatus'=> $row['repCurrentStatus'],
+	
 
 
 	'repStatusID' => $row['repStatusID'],
 	'repStatusType' => $row['repStatusType'],
 	'repStatusDateCreated' => $row['repStatusDateCreated'],
-	'repStatusCreatedAuthor' => $row['repStatusCreatedAuthor'],
+	
 	'repStatusFKreports' => $row['repStatusFKreports'],
 	 
     'repAttach' => $image_data);

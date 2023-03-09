@@ -13,23 +13,30 @@ getReportsIntoInbox= function getReportsIntoInbox(){
 var content=""
 var type
 var tfvalue="disabled";
- /*
+
+   
+
+ 
+
+ 
 $.ajax({
-        type:'GET',
+        type:'POST',
         dataType: "json",
+        data: {
+    
+        status:"unapproved"
+          },
          async: false,
-        url: './php/getReports.php',
+        url: './php/getAllReportsIntoInbox.php',
         success: function (result){
-  
-*/
+ 
         $('.forInsert').html("");
           
         $('.forInsert').fadeOut(1);
               
-        $.each(resultOfReports, function(index, data){
+        $.each(result, function(index, data){
         
-                if(data.repStatusType!="unapproved")
-             return;
+         
      
 
         type=data.repType ;
@@ -165,7 +172,7 @@ $.ajax({
 /* 
 */
     
-     /*  },//EDF AJAX sucess FUNCTION
+        },//EDF AJAX sucess FUNCTION
        
        error: function(xhr, status, error) {
         content="Not new task yet!"

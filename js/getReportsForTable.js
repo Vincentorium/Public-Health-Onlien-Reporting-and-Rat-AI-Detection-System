@@ -16,15 +16,18 @@ var content = ""
    
       $('.tableComplaint').fadeOut(1);
       
-
-  /*      $.ajax({
-          url: "./php/getReportsForTable.php",
-          dataType: "json",
-          type: 'POST',
-          data: {
+ 
+$.ajax({
+        type:'POST',
+        dataType: "json",
+        data: {
+    
+        status:"approved"
           },
-          success: function (rs) {
-    */   
+         async: false,
+        url: './php/getAllReportsIntoInbox.php',
+          success: function (result) {
+   
 
           
         
@@ -44,11 +47,9 @@ var content = ""
             
                           
         content = ""
-     $.each(resultOfReports, function(index, rc){
+     $.each(result, function(index, rc){
        
-                     if(rc.repStatusType!="approved")
-             return;
-
+         
           
             content +=
               "<tr class='reportTableRow' data-idForMysql="+rc.repID+" data-modal-target='#repTableRow'  data-default='orderList'><td>" + rc.	repDateSubmit
@@ -56,7 +57,7 @@ var content = ""
             + "</td><td>" + rc.repDatePeriodBegin
             + "</td><td>" + rc.repTitle
             + "</td><td>" + rc.repLocationDetail
-            + "</td><td>" + rc.repStatusType
+            + "</td><td>" + rc.repCurrentStatus
             + "</td></tr>"
         })
           
@@ -80,7 +81,7 @@ var content = ""
               }
  
         
-//}) }
+}) }
 
  
 function getPagination(table) {

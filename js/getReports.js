@@ -7,7 +7,7 @@ function getReports2(result,reportID){
 var content=""
 var type
 repID=reportID
-$.each(result, function(index, data){
+$.each(result.reverse(), function(index, data){
   
 
 //fetch data from the result which loads at begin.
@@ -102,7 +102,7 @@ $.each(result, function(index, data){
 +''
 +'          <div class="complaint1_Status">'
 +'            <b>'
-+'              <center class="statusComplaints1">'+data.repStatusType+'</center>'
++'              <center class="statusComplaints1">'+data.repCurrentStatus+'</center>'
 +'            </b>'
 +'          </div>'
 +''
@@ -116,9 +116,9 @@ $.each(result, function(index, data){
 +'            </div>'
 
 
-+'<a href="#" class="float" data-statusID='+data.repStatusID+'>'
++'<a href="#" class="float" data-repID='+data.repID+'>'
 +' <i class="fa fa-plus my-float" id="float">'
-+ (data.repStatusType=="approved"?"Unapprove":"Approve")+'</i>'
++ (data.repCurrentStatus=="approved"?"Unapprove":"Approve")+'</i>'
 +'  </a>'
 
 

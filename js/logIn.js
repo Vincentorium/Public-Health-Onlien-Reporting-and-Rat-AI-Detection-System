@@ -24,8 +24,9 @@ $(document).ready(function(){
             userPassword: userPassword
           },
           success: function (result) {		
-          	$.cookie('name', userName, { expires: 7, path: '/' });
-	         $.cookie('userDept', result.userDept, { expires: 7, path: '/' });
+          	$.cookie('userName', userName, { expires: 7, path: '/' });
+	          $.cookie('userDept', result.userDept, { expires: 7, path: '/' });
+            $.cookie('userID', result.userID, { expires: 7, path: '/' });
              
 			        window.location.href = "mainPage.html";
 
@@ -35,22 +36,31 @@ $(document).ready(function(){
   
           }
         });
-      });
+      });//EO Click Method
 
 
- home_load_navBar()
+ loginCustomizeForUser()
    
-  function home_load_navBar(){
+  function loginCustomizeForUser(){
     
-      $('.userName').html($.cookie('name'));
+      $('.userName').html($.cookie('userName'));
        $('.dept').html($.cookie('userDept'));
-    	if($.cookie('userDept')==="Operator"){
- 
+
+       switch($.cookie('userDept')){
+            case "Operator":
+               $('.managementFunc,.complaintNature_edit').removeClass('demonHide');
+               break;
+            case "Officer":
+               
+                break;
+
+       }
   
-   $('.managementFunc,.complaintNature_edit').removeClass('demonHide');
+  
+  
 //$(".sideNavBar").load("./component/sideNavBar.html");
       }
-} 
+ 
     
 
 
