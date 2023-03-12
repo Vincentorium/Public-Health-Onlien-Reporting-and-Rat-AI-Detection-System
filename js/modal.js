@@ -3,11 +3,13 @@
 var modal
 
 $(document).ready(function () {
-
+ var openModalButtons
+  var closeModalButtons
+  var overlay
 modal=function modal(){
- var openModalButtons = document.querySelectorAll('[data-modal-target]')
- var closeModalButtons = document.querySelectorAll('[data-close-button]')
-var overlay = document.getElementById('overlay')
+  openModalButtons = document.querySelectorAll('[data-modal-target]')
+  closeModalButtons = document.querySelectorAll('[data-close-button]')
+ overlay = document.getElementById('overlay')
 
  
 
@@ -20,7 +22,7 @@ openModalButtons.forEach(button => {
   
      const defaulModal =  button.getAttribute('data-default');
      //getReports(dataForInbox,$(this).data('idForMysql'));
-     getReports2(resultOfReports,button.getAttribute('data-idForMysql'));
+
 
     closeModalButtons = document.querySelectorAll('[data-close-button]')
     overlay = document.getElementById('overlay')
@@ -36,82 +38,52 @@ closeModalButtons.forEach(button => {
  
 
  
-     openModal(modal,defaulModal)
+     openModal(modal,defaulModal,button.getAttribute('data-idForMysql'))
 
    
   })
  
 })//EDO openModalButtons
 
-
-
-
-
-
  
-function openModal(modal,defaulModal){
+function openModal(modal,defaulModal,sqlID){
   //if(modal==null)return
 //   modal.classList.add('active')
 $('#modal').addClass('active')  
 overlay.classList.add('active')
-  if(defaulModal=='signIn'){
-    $('#container1').addClass('active');
-  }else if(defaulModal=='createAccForOperator'){
-      $('#container2').addClass('active');
-      $('.signupHeader').text("Create account for the Operator");
-      
-     
-  }else if (defaulModal=='setPasswordOperator'){
-    alert('Please reset your password for the first login')
-    $('.resetPassword').addClass('active');
-        $("#container1").removeClass("active");
    
- 
-  }else if (defaulModal=='reserveFlight'){
+     
+   if (defaulModal=='tablePostTitle' &&  $.cookie('userDept')=="Operator" ){
     
-  $('.reserveFlightMsgBox').addClass('active');
-      $('.signupHeader').text("Please Confirm Your Order List");
-      
+  
+  getReports2(resultOfReports,sqlID);
 
-  }else if (defaulModal=='orderList'){
+  }else{
+       
+    getReports2(resultOfReports,sqlID);
+         insertRemarkForReport(resultOfReports)
+
+  }
+       
   $('#containerOrderList').addClass('active');
  
   $('#containerOrderList table tbody tr').attr('display','table-row')
- 
-  }else if (defaulModal=='reservationMsg'){
-    
-  $('.confirmmsgBox').addClass('active');
-    $('.reserveFlightMsgBox').removeClass('active');
-     
-
-  }else{
-      $('#container2').addClass('active');
-
-  }
-
 
   
 }
 
 
 
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+ 
+        const modal = button.closest('.modal')
+        closeModal(modal)
+  })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+ 
+})
+ 
 
 
  function closeModal(modal){
@@ -128,17 +100,6 @@ overlay.classList.add('active')
 
 
 
-
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
- 
-        const modal = button.closest('.modal')
-        closeModal(modal)
-  })
-
- 
-})
- 
 
 
  
@@ -161,7 +122,7 @@ closeModalButtons.forEach(button => {
   })
 
   }
-  modal()
+ // modal()
 })//EDO title click event
 
 

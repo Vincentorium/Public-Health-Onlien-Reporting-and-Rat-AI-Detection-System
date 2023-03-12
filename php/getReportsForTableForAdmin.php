@@ -5,7 +5,7 @@ extract($_POST);
 // Perform a query
 
 $sql = "SELECT * FROM `reports` as rep  
-where repCurrentStatus='$status'   ; ";
+where repCurrentStatus!='approved' and repCurrentStatus!='unapproved'   ; ";
  
 $result = mysqli_query($conn, $sql);
 

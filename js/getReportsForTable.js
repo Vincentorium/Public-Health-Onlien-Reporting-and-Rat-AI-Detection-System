@@ -10,13 +10,14 @@ var content = ""
  
 
 
- getReortForTable()
+
  function getReortForTable(){
       $('.tableComplaint').html("");
    
       $('.tableComplaint').fadeOut(1);
       
- 
+      var url= $.cookie('userDept')=="Operator"?"./php/getAllReportsIntoInbox.php":"./php/getReportsForTableForAdmin.php"
+    
 $.ajax({
         type:'POST',
         dataType: "json",
@@ -25,7 +26,7 @@ $.ajax({
         status:"approved"
           },
          async: false,
-        url: './php/getAllReportsIntoInbox.php',
+        url: url,
           success: function (result) {
    
 

@@ -61,7 +61,10 @@ $(document).on("click",".complaintNature_edit",(function(){
  
     }else{
          
-        var data={repID:repID,attribute:$('.complaintOption').data('attribute'),value:$('.complaintOption').val()}
+        var data={
+            repID:repID,
+            attribute:$('.complaintOption').data('attribute'),
+            value:$('.complaintOption').val()}
         $.ajax({
             type: 'POST',
             url: 'php/updateReportAttribute.php',

@@ -15,7 +15,8 @@ var type
 var tfvalue="disabled";
 
    
-
+    var status= $.cookie('userDept')=="Operator"?"unapproved":"approved"
+    
  
 
  
@@ -24,7 +25,7 @@ $.ajax({
         dataType: "json",
         data: {
     
-        status:"unapproved"
+        status:status
           },
          async: false,
         url: './php/getAllReportsIntoInbox.php',
@@ -76,7 +77,7 @@ $.ajax({
                 //SOF 1.1.2.2  postBox_contentBox_contentBox_Content
                  +'   <div class="postBox_contentBox_contentBox_Content">'
                       +'   <div class="postBox_contentBox_contentBox_title cmtInProgress2 registerClass"  >'
-                        +'    <h3 class="allPostTitle"  data-modal-target="#modal" data-default="orderList" data-idForMysql='+data.repID+'>'+data.repTitle+'</h3>'
+                        +'    <h3 class="allPostTitle"  data-modal-target="#modal" data-default="tablePostTitle" data-idForMysql='+data.repID+'>'+data.repTitle+'</h3>'
                        
                             +'</div>'
                       +'   <div class="postBox_contentBox_contentBox_author">'

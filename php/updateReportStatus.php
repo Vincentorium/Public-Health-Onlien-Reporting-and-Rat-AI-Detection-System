@@ -6,7 +6,9 @@ extract($_POST);
  
 
  
-$update_query = "UPDATE repstatus SET repStatusType='$repStatusType' WHERE repStatusID='$repStatusID'";
+$update_query = "UPDATE repstatus 
+SET repStatusType='$repStatusType' 
+WHERE repStatusID='$repStatusID'";
 
 if (mysqli_query($conn, $update_query)) {
    

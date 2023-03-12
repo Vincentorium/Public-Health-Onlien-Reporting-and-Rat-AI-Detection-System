@@ -17,7 +17,7 @@ $.each(result.reverse(), function(index, data){
       
       content+=
    
-+'<div class="reportsBoxForModal">                                                        '
+'<div class="reportsBoxForModal">                                                        '
 +'  <div class="loginCtnTitle">'
 +'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
 +'    <h2 class="boxTitle">Complaint</h2>'
@@ -76,7 +76,7 @@ $.each(result.reverse(), function(index, data){
 +'      </ul>'
 +'      <br>'
 +''
-+'      <div class="formTitle postSideFunction"> Progress</div>'
++'      <div class="formTitle postSideFunction"> Status: </div>'
 +'      <br>'
 +''
 +'      <ul class="historyOfCmt">'
@@ -96,7 +96,7 @@ $.each(result.reverse(), function(index, data){
 +''
 +'    <!--SOF postContainer-->'
 +'    <div class="cmtContainer">'
-+'      <div class="complaintBox1">'
++'      <div class="complaintBox1" data-repID='+data.repID +'>'
 +'        <!--SOF comlaint 1 -->'
 +'        <div class="postBox complaint1 active">'
 +''
@@ -349,21 +349,26 @@ $.each(result.reverse(), function(index, data){
 +'        <!--SOF Response Box-->'
 +'        <div class="cmtSumbitBox demonHide">'
 +'          <h2>Update Status</h2>'
-+''
++'<div class="submitOptions">'
 +'          <textarea class="cmtBox" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'            aria-haspopup="true"></textarea>'
 +'          <br>'
-+''
++' <div class="uploadForAttach">'
++'  <input type="file" name="image_file" id="image_file">'
+ +'   <input type="button" class="" value="Upload">'
++'      </div>'
 +'          <div class="postStatusFunc">'
-+'            <label for="">Progress: </label>'
++'            <label for="">Status: </label>'
 +'            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;'
-+'            <select name="Status" id="">'
-+'              <option value="">Unchange</option>'
-+'              <option value="">Fack Checking</option>'
-+'              <option value="">Wait in line</option>'
-+'              <option value="">Take action</option>'
-+'              <option value="">Solved</option>'
++'            <select name="Status" class="repSubmitStatus" >'
++'              <option value="Unchange">Unchange</option>'
++'              <option value="Fack Checking">Fack Checking</option>'
++'              <option value="Wait in line">Wait in line</option>'
+ 
++'              <option value="Solved">Solved</option>'
++'              <option value="unapproved">reclassfiy</option>'
++'              <option value="approved" class="temp_test">for Test</option>'
 +'            </select>'
 +'            <div class="psotUpdateChkbox">'
 +''
@@ -383,7 +388,14 @@ $.each(result.reverse(), function(index, data){
 +'            </div>'
 +'          </div>'
 +'          <div class="postSubmitBtn">'
++'<div>'
 +'            <button class="sendCmtBtn sendCmtBtnGP2 complaintSubmitButton">Submit</button>'
++'</div>'
+
++'<div class="submitNotifyUserBox">'
++'<input type="checkbox" class="submitNotifyUser" name="options[]" value="option3">Notify Users'
++'</div>'
++'      </div>'
 +'          </div>'
 +''
 +'        </div>'
@@ -556,9 +568,6 @@ $.each(result.reverse(), function(index, data){
 +'  <!-- Table of order ______________________________________________________ -->'
 +''
 +''
-+'</div>'
-
-
 
 
 
@@ -570,17 +579,23 @@ return false
  });//end of $.each
 
       //  $('.modal').html("")//.append(content)
-     
+      console.log(content)
      $('#modal').html(content)
-      	if($.cookie('userDept')==="Operator"){
- 
-  
-   $('.managementFunc,.complaintNature_edit').removeClass('demonHide');
-//$(".sideNavBar").load("./component/sideNavBar.html");
-      }
+      modal()
+      customizeReport()
      //  $('#modal').append(content)
 /* 
 */
     
   
 }//EOF GETREPORTS FUNCTION
+
+
+
+function customizeReport(){
+      
+      if(    $.cookie('userDept')!="Operator"){
+                  $('.cmtSumbitBox').removeClass("demonHide")
+$('.float').addClass("demonHide");
+      }
+}

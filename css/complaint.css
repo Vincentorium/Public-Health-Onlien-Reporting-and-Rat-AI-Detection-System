@@ -26,8 +26,11 @@ body {
   left:30px;
 }
 .postSubmitBtn{
-  width: 300px;
-  height: 300px;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    position: absolute;
+    left: 33px;
 }
 .commendBox{
   display: flex;
@@ -131,7 +134,7 @@ button{
 .cmtBox {
   display: block;
   margin-top: 10px;
-  margin-left: 50px;
+ 
   width: 500px;
   height: 100px;
   -moz-border-bottom-colors: none;
@@ -211,17 +214,22 @@ margin: 10px 0 10px 0;
    font-size: 20px;
 }
 .sendCmtBtn{
-  position:absolute;
-  left:50px;
-  width:150px;
-  background-color:white ;
-  margin: 10px;
-  padding: 10px;
-  border-radius:5px;
-  cursor: pointer ;
+  
+    width: 150px;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 .sendCmtBtn:hover{
   background-color: grey;
+}
+.submitNotifyUserBox{
+  margin-top: 30px;
+}
+.submitOptions{
+  padding-left:30px;
 }
 /*complaint form*/
 .saveForm{
@@ -431,8 +439,7 @@ left:100px
 }
 .postStatusFunc{
 
-  position: relative;
-    left: 50px;
+ margin-top: 15px;
 
 }
 .psotUpdateChkbox{
