@@ -4,16 +4,27 @@ extract($_POST);
 
 $datetime=date('Y-m-d H:i:s');
   // Create the SQL statement with placeholders for the values
- 
- 
 
-
+   $image_data =null;
+    $image_name =null;
+if (isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
   $image_info = exif_imagetype($_FILES['image']['tmp_name']);
   
  $image_data = file_get_contents($_FILES['image']['tmp_name']);
   $image_name = uniqid() . '.' . image_type_to_extension($image_info);
   $image_path = './uploads/' . $image_name;
   file_put_contents($image_path, $image_data);
+ 
+   
+} 
+
+
+
+
+
+
+
+
 
 
 
