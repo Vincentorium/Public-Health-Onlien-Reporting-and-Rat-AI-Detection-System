@@ -53,7 +53,14 @@
     display:flex;
 }
 
- 
+ .mailClose{
+        position: absolute;
+    right: 18px;
+    top: 14px;
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+ }
 
 .allPostPollutionType{
 
@@ -649,8 +656,23 @@ display:flex;
 }
 
 
-
- 
+.mailIconInsideRep{
+    position: fixed;
+    width: 100px;
+    height: 100px;
+    top: 546px;
+    right: 50px;
+    background-color: rgb(0, 251, 255);
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    box-shadow: 2px 2px 3px #999;
+    cursor: pointer!important;
+}
+ .mailIconInsideRep:hover{
+	background-color:rgb(238, 254, 8) ;
+    color: #09833c;
+}
 .float{
 	position:fixed;
 	width:100px;
@@ -665,7 +687,8 @@ display:flex;
     cursor: pointer!important;
 }
 .float:hover{
-	background-color:rgb(156, 165, 26) ;
+	background-color:rgb(238, 255, 0) ;
+       color: #09833c;
 }
 .my-float{
 	    position: absolute;

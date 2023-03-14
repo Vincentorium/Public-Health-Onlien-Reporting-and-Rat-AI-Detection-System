@@ -16,8 +16,23 @@ $.each(result.reverse(), function(index, data){
       
       
       content+=
-   
-'<div class="reportsBoxForModal">                                                        '
+ 
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ '<div class="reportsBoxForModal">                                                        '
 +'  <div class="loginCtnTitle">'
 +'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
 +'    <h2 class="boxTitle">Complaint</h2>'
@@ -116,10 +131,135 @@ $.each(result.reverse(), function(index, data){
 +'            </div>'
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//demonHide cmtSumbitBox
+ 
+
++ '<div class="mailBoxInsideRep">'
+ +'  <div class="loginCtnTitle">'
++'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
++'    <h2 class="boxTitle">Mail</h2>'
++'    <img class="closeIcon close mailClose" src="./images/exit.png" data-close-button alt="">'
++''
++''
+ 
++'  </div>'
+ +'<div class="mailBoxRecipients">'
+ +'<span>Recipient:</span>'
+ +'<input type="text" class="recipientInput mailInput">'
+  +'<span>Relevant Groups:</span>'
+ 
+ 
+ 
++'            <select name="Status" class="repSubmitStatus" >'
++'              <option value="Unchange">None</option>'
++'              <option value="Fack Checking">Default Group</option>'
++'              <option value="Wait in line">Wait in line</option>'
+ 
++'              <option value="Solved">Solved</option>'
++'              <option value="unapproved">reclassfiy</option>'
++'              <option value="approved" class="temp_test">for Test</option>'
++'            </select>'
+ 
+ 
+ 
+  +'</div>'
+ +'<hr style="width:100%;text-align:left;margin-left:0">'
+  +'<div class="mailBoxTitle">'
+ +'<span>Title:</span>'
+  +'<input type="text" class="titleInput mailInput">'
+
+
+ +'</div>'
+ +'<hr style="width:100%;text-align:left;margin-left:0">'
+ 
++'<div class="submitOptions">'
++'          <textarea class="cmtBox" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
++'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
++'            aria-haspopup="true" style="resize:none;"></textarea>'
++'          <br>'
++'<span class="file-input-Ctn demonHide">'
+
++'<input type="file" name="file-input"  class="file-input" id="file-input">'
++'<span class="file-input-cancel">X</span>'
++'</span>'
++'<div class="mailBoxFunctionInsideRep">'
++'            <button class="sendCmtBtn sendCmtBtnGP2 complaintSubmitButton">Send</button>'
+
+
++' <div class="uploadForAttach">'
+
+
+
+ 
+  +'  <label for="file-input">'
+    +'    <img src="./images/attachIcon.png"/>'
+   +' </label>'
+
+ +'</div>'
++'</div>' //EO mailBoxFunctionInsideRep
++'</div>'
++'</div>'
+//EO Mail Box
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 +'<a href="#" class="float" data-repID='+data.repID+'>'
 +' <i class="fa fa-plus my-float" id="float">'
 + (data.repCurrentStatus=="approved"?"Unapprove":"Approve")+'</i>'
 +'  </a>'
+
++'<a href="#" class="mailIconInsideRep" data-repID='+data.repID+'>'
++' <i class="fa fa-plus my-float" id="float">Mail </i>'
++'  </a>'
+
+
+
++'          </div>'
++''
++'        </div>'
+
+
+
+
+
+
+
 
 
 
@@ -526,7 +666,7 @@ $.each(result.reverse(), function(index, data){
 +''
 +'          <textarea class="cmtBox" placeholder="This is an awesome comment box" rows="20" name="comment[text]"'
 +'            id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox"'
-+'            aria-autocomplete="list" aria-haspopup="true"></textarea>'
++'            aria-autocomplete="list" aria-haspopup="true"  ></textarea>'
 +'          <br>'
 +''
 +'          <div class="postStatusFunc">'
