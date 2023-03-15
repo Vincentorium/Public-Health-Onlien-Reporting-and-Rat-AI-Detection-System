@@ -6,18 +6,52 @@ $(document).ready(function () {
  var openModalButtons
   var closeModalButtons
   var overlay
+    var i=0;
 modal=function modal(){
   openModalButtons = document.querySelectorAll('[data-modal-target]')
   closeModalButtons = document.querySelectorAll('[data-close-button]')
  overlay = document.getElementById('overlay')
 
+
+  
+  $.each($(openModalButtons), function(index, value) {
+
+     $(this).off('click')
+      $(this).on("click", function(e) {
+ 
+    e.stopPropagation(); 
+   
+   
+  const modal = $(this).data('modal-target') ;//document.querySelector(button.dataset.modalTarget)
+  // const modal = button.getAttribute('data-modal-target');
+  
+     const defaulModal = $(this).data('default') //; button.getAttribute('data-default');
+     //getReports(dataForInbox,$(this).data('idForMysql'));
+
+
+    closeModalButtons = document.querySelectorAll('[data-close-button]')
+    overlay = document.getElementById('overlay')
+
+   openModal(modal,defaulModal, $(this).data("idformysql"))
+
+  
+  })
+    });
  
 
 
+
+
+
+
+/*
 openModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
- 
-     const modal = document.querySelector(button.dataset.modalTarget)
+  button.addEventListener('click', (e) => {
+    // e.stopPropagation(); 
+  //  button.removeEventListener("click", openModal);
+    
+   
+  const modal = document.querySelector(button.dataset.modalTarget)
   // const modal = button.getAttribute('data-modal-target');
   
      const defaulModal =  button.getAttribute('data-default');
@@ -27,69 +61,69 @@ openModalButtons.forEach(button => {
     closeModalButtons = document.querySelectorAll('[data-close-button]')
     overlay = document.getElementById('overlay')
 
+   openModal(modal,defaulModal,button.getAttribute('data-idForMysql'))
 
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
- 
-        const modal = button.closest('.modal')
-        closeModal(modal)
-  })
-})
- 
-
- 
-     openModal(modal,defaulModal,button.getAttribute('data-idForMysql'))
-
-   
+  
+  alert("count: "+ ++i)
   })
  
 })//EDO openModalButtons
+*/
+closeModalButtons.forEach(button => {
+  button.addEventListener('click', () => {
+   
+        const modal = button.closest('.modalGeneral')
+        closeModal(modal)
+  })
 
  
+})
+ 
+}//eED Modal
+ 
 function openModal(modal,defaulModal,sqlID){
-  //if(modal==null)return
-//   modal.classList.add('active')
-$('#modal').addClass('active')  
+ 
 overlay.classList.add('active')
    
-     
-   if (defaulModal=='tablePostTitle' &&  $.cookie('userDept')=="Operator" ){
-    
-  
-  getReports2(resultOfReports,sqlID);
+  if(defaulModal=='mailIcon'){
+        $(modal).addClass('active');
+        var el = document.getElementById('modalOfMail');
+          var scrollPosition = window.pageYOffset;
+        // $('#modalOfMail').css("top", 250+scrollPosition+"px");
+
+        el.style.top = (160+ scrollPosition) + 'px';
+        console.log(el)
+  } else if (defaulModal=='tablePostTitle' &&  $.cookie('userDept')=="Operator" ){
+          $(modal).addClass('active');
+            
+            getReports2(resultOfReports,sqlID);
+            $('#containerOrderList').addClass('active');
+          
+            $('#containerOrderList table tbody tr').attr('display','table-row')
 
   }else{
-       
+     $(modal).addClass('active');
     getReports2(resultOfReports,sqlID);
          insertRemarkForReport(resultOfReports)
-
-  }
-       
   $('#containerOrderList').addClass('active');
  
   $('#containerOrderList table tbody tr').attr('display','table-row')
+
+  }
+       
 
   
 }
 
 
 
-closeModalButtons.forEach(button => {
-  button.addEventListener('click', () => {
- 
-        const modal = button.closest('.modal')
-        closeModal(modal)
-  })
 
- 
-})
- 
 
 
  function closeModal(modal){
- 
-     $('.active').removeClass('active');
-     $('.stateMsg').remove();
+    
+     modal.classList.remove('active');
+  
  
 }
 
@@ -120,8 +154,7 @@ closeModalButtons.forEach(button => {
 
     
   })
-
-  }
+ 
  // modal()
 })//EDO title click event
 
