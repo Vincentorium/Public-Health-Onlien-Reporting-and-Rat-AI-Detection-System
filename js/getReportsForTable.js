@@ -53,7 +53,7 @@ $.ajax({
          
           
             content +=
-              "<tr class='reportTableRow' data-idForMysql="+rc.repID+" data-modal-target='#repTableRow'  data-default='orderList'><td>" + rc.	repDateSubmit
+              "<tr class='reportTableRow' data-idForMysql="+rc.repID+" data-modal-target='#modal'  data-default='orderList'><td>" + rc.	repDateSubmit
             + "</td><td>" + rc.repType
             + "</td><td>" + rc.repDatePeriodBegin
             + "</td><td>" + rc.repTitle

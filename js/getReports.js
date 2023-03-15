@@ -19,16 +19,6 @@ $.each(result.reverse(), function(index, data){
  
       
 
-
-
-//demonHide cmtSumbitBox
- 
-
-//EO Mail Box
-
-
-
-
 //demonHide cmtSumbitBox
  
 
@@ -42,13 +32,13 @@ $.each(result.reverse(), function(index, data){
  
 +'  </div>'
  +'<div class="mailBoxRecipients">'
- +'<span>Recipient:</span>'
- +'<input type="text" class="mailInput recipientInput">'
+ +'<span >Recipient: </span>'
+ +'<input type="text" class="mailInput recipientInput" value='+data.userName+'>'
   +'<span>Relevant Groups:</span>'
  
  
  
-+'            <select name="Status" class="repSubmitStatus" >'
++'            <select name="Status" class="mailRelevantGroup" >'
 +'              <option value="Unchange">None</option>'
 +'              <option value="Fack Checking">Default Group</option>'
 +'              <option value="Wait in line">Wait in line</option>'
@@ -75,38 +65,57 @@ $.each(result.reverse(), function(index, data){
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'            aria-haspopup="true" style="resize:none;"></textarea>'
 +'          <br>'
+
++'<!--SO mailBoxFunctionInsideRep-->'
++'<div class="maiBoxFunInsideRep"> '
++'<!--  image file and close button-->'
 +'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
 
 +'<input type="file" name="file-input"  class="file-input file-input-mail" id="file-input">'
 +'<span class="file-input-cancel">X</span>'
 +'</span>'
++'<!--  button and label and image-->'
 +'<div class="mailBoxFunctionInsideRep">'
 +'            <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton">Send</button>'
-
-
 +' <div class="uploadForAttach">'
 
-
-
- 
   +'  <label for="file-input">'
     +'    <img src="./images/attachIcon.png"/>'
    +' </label>'
 
  +'</div>'
-+'</div>' //EO mailBoxFunctionInsideRep
+ +'</div>'
++'</div> '
++'<!--EO mailBoxFunctionInsideRep-->'
+
 +'</div>'
 +'</div>'
 //EO Mail Box
 
 
+//SO floatingIcon 
 
 
 
 
++'<a href="#" class="float" data-repID='+data.repID+'>'
++' <i class="fa fa-plus my-float" id="float">'
++ (data.repCurrentStatus=="approved"?"Unapprove":"Approve")+'</i>'
++'  </a>'
+
++'<a class="mailIconInsideRep" data-modal-target=".modalOfMail" data-default="mailIcon" data-repID='+data.repID+'>'
++' <i class="fa fa-plus my-float" id="float">Mail </i>'
++'  </a>'
 
 
 
++'          </div>'
++''
++'        </div>'
+
+
+
+//EO floatingIcon
 
 
 +'<div class="reportsBoxForModal">                                                        '
@@ -208,62 +217,10 @@ $.each(result.reverse(), function(index, data){
 +'            </div>'
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 +'<a href="#" class="float" data-repID='+data.repID+'>'
 +' <i class="fa fa-plus my-float" id="float">'
 + (data.repCurrentStatus=="approved"?"Unapprove":"Approve")+'</i>'
 +'  </a>'
-
-+'<a class="mailIconInsideRep" data-modal-target=".modalOfMail" data-default="mailIcon" data-repID='+data.repID+'>'
-+' <i class="fa fa-plus my-float" id="float">Mail </i>'
-+'  </a>'
-
-
-
-+'          </div>'
-+''
-+'        </div>'
-
-
-
-
-
-
-
 
 
 
@@ -277,11 +234,11 @@ $.each(result.reverse(), function(index, data){
 +'                    <br>'
 +'                    <table>'
 +''
-+'                      <tr>'
++'                      <tr class="dataTableForCitizen" data-citizenid='+data.repNormalUser+'>'
 +'                        <td style="width:100px">'
 +'                          <img src="images/pp2.png" width="80" height="80" />'
 +'                        </td>'
-+'                        <td style="font-size:30px">林立志</td>'
++'                        <td style="font-size:30px">'+data.userName+'</td>'
 +''
 +'                        <td style="width:300px;">'
 +'                          <span> · </span>'
@@ -494,14 +451,11 @@ $.each(result.reverse(), function(index, data){
 +'        <div class="cmtSumbitBox demonHide">'
 +'          <h2>Update Status</h2>'
 +'<div class="submitOptions">'
-+'          <textarea class="cmtBox" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
++'          <textarea class="cmtBox reportTextArea" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'            aria-haspopup="true"></textarea>'
 +'          <br>'
-+' <div class="uploadForAttach">'
-+'  <input type="file" name="image_file" id="image_file">'
- +'   <input type="button" class="" value="Upload">'
-+'      </div>'
+
 +'          <div class="postStatusFunc">'
 +'            <label for="">Status: </label>'
 +'            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;'
@@ -533,8 +487,83 @@ $.each(result.reverse(), function(index, data){
 +'          </div>'
 +'          <div class="postSubmitBtn">'
 +'<div>'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 reportSubmitButton">Submit</button>'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
++'<!--SO reportlBoxFunction-->'
++'<div class="reportlBoxFunction"> '
++'<!--  image file and close button-->'
++'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
+
++'<input type="file"   class="file-input file-input-report" id="file-input-report">'
++'<span class="file-input-cancel-submit">X</span>'
++'</span>'
++'<!--  button and label and image-->'
++'<div class="mailBoxFunctionInsideRep">'
++'            <button class="sendCmtBtn sendCmtBtnGP2 reportSubmitButton">Send</button>'
++' <div class="uploadForAttach">'
+
+  +'  <label for="file-input-report">'
+    +'    <img src="./images/attachIcon.png"/>'
+   +' </label>'
+
+ +'</div>'
+ +'</div>'
++'</div> '
++'<!--EO mailBoxFunctionInsideRep-->'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 +'</div>'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 +'<div class="submitNotifyUserBox">'
 +'<input type="checkbox" class="submitNotifyUser" name="options[]" value="option3">Notify Users'
@@ -668,9 +697,9 @@ $.each(result.reverse(), function(index, data){
 +'        <div class="cmtSumbitBox">'
 +'          <h2>Response</h2>'
 +''
-+'          <textarea class="cmtBox reportTextArea" placeholder="This is an awesome comment box" rows="20" name="comment[text]"'
++'          <textarea class="cmtBox mailTextArea" placeholder="This is an awesome comment box" rows="20" name="comment[text]"'
 +'            id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox"'
-+'            aria-autocomplete="list" aria-haspopup="true"  ></textarea>'
++'            aria-autocomplete="list" aria-haspopup="true"></textarea>'
 +'          <br>'
 +''
 +'          <div class="postStatusFunc">'

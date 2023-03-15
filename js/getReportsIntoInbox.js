@@ -11,11 +11,10 @@ getReportsIntoInbox= function getReportsIntoInbox(){
 
 
 var content=""
-var type
-var tfvalue="disabled";
-
+ 
    
-    var status= $.cookie('userDept')=="Operator"?"unapproved":"approved"
+var status= $.cookie('userDept')=="Operator"?"unapproved":"approved"
+
     
  
 
@@ -25,7 +24,8 @@ $.ajax({
         dataType: "json",
         data: {
     
-        status:status
+        status:status 
+      
           },
          async: false,
         url: './php/getAllReportsIntoInbox.php',

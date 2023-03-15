@@ -1,12 +1,12 @@
 
 
 //for operator to update report status between unapprove and approve fo
-$(document).on('click','.complaintSubmitButton',function(e){
-        var repStatusRemark=$('.cmtBox').val()
+$(document).on('click','.reportSubmitButton',function(e){
+        var repStatusRemark=$('.reportTextArea').val()
     var status=$('.repSubmitStatus').val()=="unchange"?null:$('.repSubmitStatus').val()
 
     var imageData = new FormData();
-    imageData.append('image', $('#image_file')[0].files[0]);
+    imageData.append('image', $('#file-input-report')[0].files[0]);
  
  imageData.append('repStatusID',null);
  imageData.append('repStatusType',status);
@@ -46,7 +46,7 @@ $.ajax({
                     getReortForTable()
                     modal()
 
-
+                    alert("Successfully Update the status!")
                     $('.active').removeClass('active');
                     //$('.stateMsg').remove();
                  //   $('#float').html($('#float').html()=="Approve"?"Unapprove":"Approve")

@@ -2,8 +2,12 @@
 include "config.php";
 
 // Perform a query
-$sql = "SELECT * FROM `reports` as rep INNER JOIN repstatus as status 
-on rep.repID = status.repStatusFKreports;";
+$sql = "SELECT * FROM `reports` as rep LEFT JOIN repstatus as status 
+on rep.repID = status.repStatusFKreports
+  left join users
+on rep.repNormalUser=users.userID  
+
+;";
  
 $result = mysqli_query($conn, $sql);
 
@@ -41,9 +45,15 @@ $record[] = array(
 	'repStatusID' => $row['repStatusID'],
 	'repStatusType' => $row['repStatusType'],
 	'repStatusDateCreated' => $row['repStatusDateCreated'],
-	
 	'repStatusFKreports' => $row['repStatusFKreports'],
 	 
+
+	'userID' => $row['userID'],
+	'userName' => $row['userName'],
+	'userDept' => $row['userDept'],
+	'userPassword' => $row['userPassword'], 
+
+
     'repAttach' => $image_data);
  }
 			echo  json_encode($record);

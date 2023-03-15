@@ -152,16 +152,24 @@ button{
     font-size: 1em;
     line-height: 1.4em;
     padding: 5px 8px;
-    transition: background-color 0.2s ease 0s;
+    transition:  0.2s ease 0s; 
     
 }
 
 
-.cmtBox:focus {
-    background: none repeat scroll 0 0 #FFFFFF;
+.cmtBox:hover {
+    background: none repeat scroll 0 0 #a19a9a;
     outline-width: 0;
+    color: rgb(0, 0, 0);
 }
- 
+.file-input-cancel-submit{
+  cursor: pointer;
+    
+  position: absolute;
+    right: -2px;
+    top: 2px;
+   
+}
  /*.commendBox,.submissionFomr
 ,.presentation
 {
@@ -548,7 +556,7 @@ input[type=file]::-webkit-file-upload-button {
   cursor: pointer;
     position: absolute;
     left: 312px;
-    bottom: 67px;
+    bottom: 89px;
 }
 
 
@@ -573,7 +581,10 @@ position: fixed;
 }
 
 
+.recipientSpan{
 
+width:50px;
+}
 
 
 

@@ -4,9 +4,11 @@ include "config.php";
 extract($_POST);
 // Perform a query
 
-$sql = "SELECT * FROM `reports` as rep  
-where repCurrentStatus='$status'   ; ";
+$sql = "SELECT * FROM `reports` as rep    left join users
+on rep.repNormalUser=users.userID  where repCurrentStatus = '$status'   ; ";
  
+
+
 $result = mysqli_query($conn, $sql);
 
 $record = array();
@@ -38,6 +40,13 @@ $record[] = array(
 	'repDept' => $row['repDept'],
 	'repCurrentStatus'=> $row['repCurrentStatus'],
 	
+
+
+	'userID' => $row['userID'],
+	'userName' => $row['userName'],
+	'userDept' => $row['userDept'],
+	'userPassword' => $row['userPassword'], 
+
 
  
 	 
