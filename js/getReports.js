@@ -43,7 +43,7 @@ $.each(result.reverse(), function(index, data){
 +'  </div>'
  +'<div class="mailBoxRecipients">'
  +'<span>Recipient:</span>'
- +'<input type="text" class="recipientInput mailInput">'
+ +'<input type="text" class="mailInput recipientInput">'
   +'<span>Relevant Groups:</span>'
  
  
@@ -64,24 +64,24 @@ $.each(result.reverse(), function(index, data){
  +'<hr style="width:100%;text-align:left;margin-left:0">'
   +'<div class="mailBoxTitle">'
  +'<span>Title:</span>'
-  +'<input type="text" class="titleInput mailInput">'
+  +'<input type="text" class="mailInput mailTitleInput ">'
 
 
  +'</div>'
  +'<hr style="width:100%;text-align:left;margin-left:0">'
  
 +'<div class="submitOptions">'
-+'          <textarea class="cmtBox" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
++'          <textarea class="cmtBox mailTextArea" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'            aria-haspopup="true" style="resize:none;"></textarea>'
 +'          <br>'
-+'<span class="file-input-Ctn demonHide">'
++'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
 
-+'<input type="file" name="file-input"  class="file-input" id="file-input">'
++'<input type="file" name="file-input"  class="file-input file-input-mail" id="file-input">'
 +'<span class="file-input-cancel">X</span>'
 +'</span>'
 +'<div class="mailBoxFunctionInsideRep">'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 complaintSubmitButton">Send</button>'
++'            <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton">Send</button>'
 
 
 +' <div class="uploadForAttach">'
@@ -533,7 +533,7 @@ $.each(result.reverse(), function(index, data){
 +'          </div>'
 +'          <div class="postSubmitBtn">'
 +'<div>'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 complaintSubmitButton">Submit</button>'
++'            <button class="sendCmtBtn sendCmtBtnGP2 reportSubmitButton">Submit</button>'
 +'</div>'
 
 +'<div class="submitNotifyUserBox">'
@@ -668,7 +668,7 @@ $.each(result.reverse(), function(index, data){
 +'        <div class="cmtSumbitBox">'
 +'          <h2>Response</h2>'
 +''
-+'          <textarea class="cmtBox" placeholder="This is an awesome comment box" rows="20" name="comment[text]"'
++'          <textarea class="cmtBox reportTextArea" placeholder="This is an awesome comment box" rows="20" name="comment[text]"'
 +'            id="comment_text" cols="40" class="ui-autocomplete-input" autocomplete="off" role="textbox"'
 +'            aria-autocomplete="list" aria-haspopup="true"  ></textarea>'
 +'          <br>'

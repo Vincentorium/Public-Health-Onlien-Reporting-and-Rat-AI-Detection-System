@@ -51,6 +51,7 @@ $stmt_updateCurrentStatus->bind_param("si", $repStatusType, $repID);
 
 
 // Execute the statement
+
 if ($stmt_insertRepStatus->execute()) {
  
          if ($stmt_updateCurrentStatus->execute()) {
