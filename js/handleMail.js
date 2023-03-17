@@ -77,8 +77,10 @@ $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
  
  $(document).on('click','.mail-button-inbox',function(e){
       isInboxList=true
+      
       getMailRecords(0)
       getMailContent(mailLastestOne)
+      
 })
 
  $(document).on('click','.mail-button-sent',function(e){
