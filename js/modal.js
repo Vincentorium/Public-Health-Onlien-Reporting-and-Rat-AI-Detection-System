@@ -103,7 +103,8 @@ overlay.classList.add('active')
 
   }  else if (defaulModal=='mailRecord'){
 
-
+    $('.mail-button-inbox').addClass('mailbuttonHover')
+    $('.mail-button-sent').removeClass('mailbuttonHover')
  $('.mailModal').addClass('active');
   $('.mail-record-box').addClass('active');
   getMailRecords(0)
