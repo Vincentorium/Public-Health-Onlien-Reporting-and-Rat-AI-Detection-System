@@ -386,7 +386,7 @@ textarea:focus {
   outline: 0;
   
   border-color: #FDBD39;
-  background: #4d1f1f;
+   
 }
 .select:focus{
   background: #4d1f1f;
@@ -552,13 +552,13 @@ input[type=file]::-webkit-file-upload-button {
     display: none;
 }
 
-.file-input-cancel{
-  cursor: pointer;
+.file-input-cancel {
+    cursor: pointer;
     position: absolute;
-    left: 312px;
-    bottom: 89px;
+    left: 294px;
+    bottom: 67px;
 }
-
+ 
 
 .modalOfMail{
 position: fixed;

@@ -1,6 +1,8 @@
 
 
 //for operator to update report status between unapprove and approve fo
+
+
 $(document).on('click','.float',function(e){
 
  var status=$('#float').html()=="Approve"?"approved":"unapproved"

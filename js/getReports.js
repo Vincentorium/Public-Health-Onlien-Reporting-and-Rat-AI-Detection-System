@@ -1,4 +1,4 @@
-var repID
+
 function getReports2(result,reportID){
 
   //alert("caller is " + getReports2.caller);
@@ -54,7 +54,7 @@ $.each(result.reverse(), function(index, data){
  +'<hr style="width:100%;text-align:left;margin-left:0">'
   +'<div class="mailBoxTitle">'
  +'<span>Title:</span>'
-  +'<input type="text" class="mailInput mailTitleInput ">'
+  +'<input type="text" class="mailInput mailTitleInput mailTitleJS">'
 
 
  +'</div>'
@@ -71,12 +71,12 @@ $.each(result.reverse(), function(index, data){
 +'<!--  image file and close button-->'
 +'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
 
-+'<input type="file" name="file-input"  class="file-input file-input-mail" id="file-input">'
++'<input type="file" name="file-input"  class="file-input file-input-mail file-input-mail-JS" id="file-input">'
 +'<span class="file-input-cancel">X</span>'
 +'</span>'
 +'<!--  button and label and image-->'
 +'<div class="mailBoxFunctionInsideRep">'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton">Send</button>'
++'            <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton" data-submitctn=".modalOfMail">Send</button>'
 +' <div class="uploadForAttach">'
 
   +'  <label for="file-input">'
@@ -312,6 +312,10 @@ $.each(result.reverse(), function(index, data){
             +            data.repContent
 
       +    '  <br>  <img class="repContentPic" width="600px" src="data:image/png;base64,'+ data.repAttach+'">'
+
+   
+  
+
      
   
 +'                      </span>'

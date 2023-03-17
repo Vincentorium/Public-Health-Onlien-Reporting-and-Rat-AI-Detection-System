@@ -101,18 +101,30 @@ overlay.classList.add('active')
           
             $('#containerOrderList table tbody tr').attr('display','table-row')
 
+  }  else if (defaulModal=='mailRecord'){
+
+
+ $('.mailModal').addClass('active');
+  $('.mail-record-box').addClass('active');
+  getMailRecords(0)
+getMailContent(mailLastestOne)
+  //   $('#containerOrderList table tbody tr').attr(  'display', 'table-row!important')
+ //$('#containerOrderList table tbody tr').attr(  'display', 'table-row!important')
+$('.mail-record-box table tbody tr').attr('display','table-row')
+ 
+ 
   }else{
      $(modal).addClass('active');
     getReports2(resultOfReports,sqlID);
          insertRemarkForReport(resultOfReports)
-  $('#containerOrderList').addClass('active');
  
+
+   $('#containerOrderList').addClass('active');
   $('#containerOrderList table tbody tr').attr('display','table-row')
+ 
 
   }
-       
 
-  
 }
 
 

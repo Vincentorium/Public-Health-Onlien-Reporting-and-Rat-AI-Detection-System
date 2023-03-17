@@ -54,15 +54,15 @@
   <script defer src="js\getRemarkForReport.js"></script>
   <script defer src="js\handleMail.js"></script>
   <script defer src="js\insertMail.js"></script>
-
-
+  <script defer src="js\getMailRecords.js"></script>
+  <script defer src="js\getMailContent.js"></script>
 
   <link href="css\index.css" rel="stylesheet">
   <link href="css\tableSheet.css" rel="stylesheet">
   <link href="css\complaintTable.css" rel="stylesheet">
   <link href="css\favBox.css" rel="stylesheet">
   <link href="css\demo.css" rel="stylesheet">
-
+  <link href="css\mail.css" rel="stylesheet">
 
 </head>
 
@@ -102,6 +102,7 @@
             class="header__createAccount adminFunLin">Create Account</a>
         </div>
         <div class="headerLoginOut">
+          <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__signIn  ">Mail</a>
 
           <a data-modal-target="#modal" data-default="signIn" class="hearder__a header__signIn dept"></a>
 
@@ -350,7 +351,7 @@
               <!-- partial:index.partial.html -->
               <div class="switch-button "><span class="activeSwitch"></span>
 
-                <button class="switch-button-case left active-case">Inbox</button>
+                <button class="switch-button-case left active-case"> Inbox</button>
                 <button class="switch-button-case right demonSwitchRight">Case</button>
               </div>
 
@@ -460,21 +461,153 @@
 
         </div> <!-- EOF modal-->
 
+        <!-- SOF modal Mail Box-->
+        <div class="mailModal modalGeneral">
+          <div class="mailModal-title">
+            <img class="closeIcon close mail-List-Close" src="./images/exit.png" data-close-button alt="">
+
+
+          </div>
+          <div class="mailbox-mainLayer">
+            <div class="mailbox-mainLayer-top">
+              <div class="mailBoxFilterTitle"> Mail </div>
+              <div class="mail-list-filter-Box">
+
+                <div>
+                  User: <input type="text">
+                  Keyword: <input type="text">
+                </div>
+                <button class="mailbox-filterButton">Search</button>
+              </div>
+            </div>
+
+            <div class="mail-record-box" id="mail-record-box">
+              <div class="mailModal-sideBar ">
+
+
+                <div class="mail-button mail-button-inbox mailbuttonHover">
+                  Inbox
+                </div>
+                <div class="mail-button mail-button-sent">
+                  Sent
+                </div>
+              </div>
+              <div class="maibox-list">
+                <div class=" ">
+
+                  </h3>
+                </div>
+                <div id="mail-record-box-table" class="mail-record-box-table">
+
+
+                </div>
 
 
 
 
-        <!-- EOF Main page -->
-        <div id="overlay" style="display:none"></div>
 
-        <div id="copyright">
-          <h4>
-            Public Health Online Reporting System
-          </h4>
+                <div class=" complaintTableBottomFunc mail-reocrd-table-pagination">
+                  <div class="form-group">
+                    <!--    Show Numbers Of Rows    -->
+                    <select class="form-control" name="state" class="mail-table-maxRows demonhide"
+                      id="mail-table-maxRows">
+
+                      <option value="5" selected>5</option>
+                      <option value="10">10</option>
+
+
+                    </select>
+
+                  </div>
+                  <div class='pagination-container'>
+                    <nav>
+                      <ul class="pagination mail-table-pagination ">
+
+                        <li data-page="prev">
+                          <span>
+                            < <span class="sr-only">(current)
+                          </span></span>
+                        </li>
+                        <!--  Here the JS Function Will Add the Rows -->
+                        <li data-page="next" id="prev">
+                          <span> > <span class="sr-only">(current)</span></span>
+                        </li>
+                      </ul>
+                    </nav>
+                  </div>
+
+                </div>
+                <!-- <div class="mail-record-table-container">
+              <nav>
+                <ul class="mail-record-table-pagination"> </ul>
+
+              </nav> -->
+
+
+              </div>
+              <div class="mail-content-ctn">
+                <div class="mail-content"></div>
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+          </div>
         </div>
       </div>
+      <!-- EOF modal Mail Box-->
+
+
+
       <!-- EOF Main page -->
+      <div id="overlay" style="display:none"></div>
+
+      <div id="copyright">
+        <h4>
+          Public Health Online Reporting System
+        </h4>
+      </div>
     </div>
+    <!-- EOF Main page -->
+  </div>
 
 
 

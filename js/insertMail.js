@@ -1,18 +1,14 @@
 
+function insertMail(content,title,attachMail){
 
-//for operator to update report status between unapprove and approve fo
-$(document).on('click','.mailSubmitButton',function(e){
+
     
-    
-    var content=$('.mailTextArea')
-    var imageData = new FormData();
-    var title=$('.mailTitleInput');
-    var attachMail=$('.file-input-mail');
-    imageData.append('image', attachMail[0].files[0]);
+     var imageData = new FormData();
+    imageData.append('image', attachMail);
  
     imageData.append('id',null);
-    imageData.append('title',title.val());
-    imageData.append('content',content.val());
+    imageData.append('title',title);
+    imageData.append('content',content);
     imageData.append('FKrepId',repID);
     imageData.append('FKOfficerId',$.cookie('userID'));
  
@@ -44,8 +40,30 @@ $.ajax({
     
         });//EO ajax
 
+}
 
 
-    });//EO click Func
- 
- 
+
+
+
+function updateMaiStatus(mailIDSet){
+
+
+$.ajax({
+     url: 'php/updateMailReadStatus.php',
+     type: 'POST',
+     data: {
+          mailIDSet:mailIDSet,
+      },
+      
+            success: function(response) {
+
+                 
+                    alert("mail read!");
+             
+           
+            },
+    
+        });//EO ajax
+
+}

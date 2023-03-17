@@ -3,7 +3,7 @@ include "config.php";
 extract($_POST);
 
 $datetime=date('Y-m-d H:i:s');
-  
+$isSent=1;
    $image_data =null;
     $image_name =null;
 if (isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
@@ -20,12 +20,12 @@ if (isset($_FILES['image']) && is_uploaded_file($_FILES['image']['tmp_name'])) {
 // Prepare the statement
 $stmt_insertMail = $conn->prepare(
    "INSERT INTO `mail`
-   (`id`, `dateCreated`, `title`, `content`, `attachName`, `attachment`, `FKrepID`, `FKOfficerId`) 
-VALUES (?,?,?,?,?,?,?,? )");
+   (`id`, `dateCreated`, `title`, `content`, `attachName`, `attachment`, `FKrepID`, `FKOfficerId`,`isSent`) 
+VALUES (?,?,?,?,?,?,?,?,?)");
 
 // Bind the parameters to the placeholders
-$stmt_insertMail->bind_param("isssssii", $id, $datetime, $title, $content,
-$image_data,$image_name, $FKrepId,$FKOfficerId);
+$stmt_insertMail->bind_param("isssssiii", $id, $datetime, $title, $content,
+$image_name,$image_data, $FKrepId,$FKOfficerId,$isSent);
  
  
 
