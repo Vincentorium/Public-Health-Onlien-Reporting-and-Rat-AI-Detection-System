@@ -82,7 +82,7 @@ $.each(mailResult, function(index, data){
  +'<hr style="width:100%;text-align:left;margin-left:0">'
  +'<div class="mailBoxRecipients">'
  +'<span >'+identity+': </span>'
- +'<input type="text" class="mailInput recipientInput" '+status+' value='+data.userName+'>'
+ +'<input type="text" class="mailInput recipientInput" '+status+' value="'+data.userName+'(Display relevant mail)" >'
   +'<span>Relevant Groups:</span>'
  
  
