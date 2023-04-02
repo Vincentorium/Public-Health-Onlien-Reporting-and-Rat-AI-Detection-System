@@ -263,3 +263,81 @@ position: absolute;
 .mailBoxTitle{
     display:flex;
 }
+
+
+.mail-reocrd-box-specific{
+
+
+    display: block;
+    width: 850px;
+}
+.maibox-list-specific{
+
+    width: 830px;
+}
+
+.mail-record-box-table-specific{
+
+font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+}
+.mail-specific-short{
+     margin-left: 30px;
+}
+.mail-list-summary-specific{
+    display:block;
+       padding: 10px 5px 5px 8px;
+         overflow: hidden;
+         height:80px;
+}
+
+
+.mail-specific-mail-head
+{
+display: flex;
+
+}
+.mail-specific-head-figureImage{
+
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background-color: cadetblue;
+    color: #ffffff;
+       margin: 0 15px 0 0;
+           padding: 20px;
+}
+
+.mail-specific-head-sendReceive{
+
+  width: 100%;
+}
+
+.mail-specific-head-sender{
+  
+height: 30px;
+    display: flex;
+    width: 100%;
+  
+    justify-content: space-between;
+
+}
+.mail-specific-head-sender-name{
+  font-weight: 900;
+ 
+}
+.mail-specific-head-receiver{
+    
+    height:30px;
+}
+.mail-specific-head-betwennNameDate{
+width: 60%;
+    height: 0.5px;
+    margin-top: 9px;
+}
+.mail-specifi-head-dateCreated{
+
+    width: 207px;
+}

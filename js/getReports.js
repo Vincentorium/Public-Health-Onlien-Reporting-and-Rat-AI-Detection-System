@@ -20,10 +20,9 @@ $.each(result.reverse(), function(index, data){
       
 
 //demonHide cmtSumbitBox
- 
-
-  '<div class="mailBoxInsideRep modalOfMail modalGeneral"  id="modalOfMail">'
- +'  <div class="loginCtnTitle">'
+ '<!--SO mailBoxFunctionInsideRep-->'
++'<div class="mailBoxInsideRep modalOfMail modalGeneral"  id="modalOfMail">'
++'  <div class="loginCtnTitle">'
 +'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
 +'    <h2 class="boxTitle">Mail</h2>'
 +'    <img class="closeIcon close mailClose" src="./images/exit.png" data-close-button alt="">'
@@ -86,10 +85,11 @@ $.each(result.reverse(), function(index, data){
  +'</div>'
  +'</div>'
 +'</div> '
-+'<!--EO mailBoxFunctionInsideRep-->'
 
 +'</div>'
 +'</div>'
++'<!--EO mailBoxFunctionInsideRep-->'
+
 //EO Mail Box
 
 

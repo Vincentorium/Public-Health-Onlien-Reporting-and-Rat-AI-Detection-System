@@ -114,7 +114,10 @@ getMailContent(mailLastestOne)
 $('.mail-record-box table tbody tr').attr('display','table-row')
  
  
-  }else{
+  }
+  
+  
+  else{
      $(modal).addClass('active');
     getReports2(resultOfReports,sqlID);
          insertRemarkForReport(resultOfReports)
