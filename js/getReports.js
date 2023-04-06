@@ -20,8 +20,9 @@ $.each(result.reverse(), function(index, data){
       
 
 //demonHide cmtSumbitBox
+/*
  '<!--SO mailBoxFunctionInsideRep-->'
-+'<div class="mailBoxInsideRep modalOfMail modalGeneral"  id="modalOfMail">'
++'<div class="mailBoxInsideRep modalOfMail modalGeneral test"  id="modalOfMail">'
 +'  <div class="loginCtnTitle">'
 +'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
 +'    <h2 class="boxTitle">Mail</h2>'
@@ -73,8 +74,10 @@ $.each(result.reverse(), function(index, data){
 +'<input type="file" name="file-input"  class="file-input file-input-mail file-input-mail-JS" id="file-input">'
 +'<span class="file-input-cancel">X</span>'
 +'</span>'
-+'<!--  button and label and image-->'
-+'<div class="mailBoxFunctionInsideRep">'
+
+
++'<!--SO  button and label and image-->'
++'<div class="mailBoxFunctionInsideRep mail_specific_submitButton">'
 +'            <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton" data-submitctn=".modalOfMail">Send</button>'
 +' <div class="uploadForAttach">'
 
@@ -84,12 +87,15 @@ $.each(result.reverse(), function(index, data){
 
  +'</div>'
  +'</div>'
+
++'<!--EO  button and label and image-->'
+
 +'</div> '
 
 +'</div>'
 +'</div>'
 +'<!--EO mailBoxFunctionInsideRep-->'
-
+*/
 //EO Mail Box
 
 
@@ -98,13 +104,13 @@ $.each(result.reverse(), function(index, data){
 
 
 
-+'<a href="#" class="float" data-repID='+data.repID+'>'
+'<a href="#" class="float" data-repID='+data.repID+'>'
 +' <i class="fa fa-plus my-float" id="float">'
 + (data.repCurrentStatus=="approved"?"Unapprove":"Approve")+'</i>'
 +'  </a>'
 
-+'<a class="mailIconInsideRep" data-modal-target=".modalOfMail" data-default="mailIcon" data-repID='+data.repID+'>'
-+' <i class="fa fa-plus my-float" id="float">Mail </i>'
++'<a class="mailIconInsideRep mailIconInsideRep--mail" data-modal-target=".modalOfMail" data-default="mailIcon" data-repID='+data.repID+'>'
++' <i class="fa fa-plus my-float report-mail-floatIcon" id="float">Correspondence</i>'
 +'  </a>'
 
 
@@ -509,7 +515,7 @@ $.each(result.reverse(), function(index, data){
 
 
 +'<!--SO reportlBoxFunction-->'
-+'<div class="reportlBoxFunction"> '
++'<div class="reportlBoxFunction "> '
 +'<!--  image file and close button-->'
 +'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
 
@@ -756,11 +762,16 @@ return false
  });//end of $.each
 
       //  $('.modal').html("")//.append(content)
-      console.log(content)
-     $('#modal').html(content)
+       
+      $('#modal').html(content) 
+
+
       modal()
       customizeReport()
      //  $('#modal').append(content)
+   
+        insertMailBoxIntoPost();
+        getMailRecordsspecific(reportID)
 /* 
 */
     

@@ -31,9 +31,9 @@ $.ajax({
 
                     alert("mail sent!");
                $('.modalOfMail').removeClass('active');
-               content.val("")
-               title.val("")
-               attachMail.val("")
+           //    content.val("")
+              // title.val("")
+             //  attachMail.val("")
                  $('.file-input-Ctn-mail').addClass('demonHide');
            
             },

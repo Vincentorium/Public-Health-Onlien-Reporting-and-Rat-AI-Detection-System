@@ -150,8 +150,8 @@ $.each(mailResult, function(index, data){
 +'                      aria-haspopup="true" style="resize:none;"></textarea>'
 +'                    <br>'
 +''
-+'                    <!--SO mailBoxFunctionInsideRep-->'
-+'                    <div class="maiBoxFunInsideRep">'
++'                    <!--SO mail_specific_submitButton-->'
++'                    <div class="maiBoxFunInsideRep ">'
 +''
 +'                      <!--  image file and close button-->'
 +'                      <span class="file-input-Ctn file-input-Ctn-mail demonHide">'
@@ -161,8 +161,9 @@ $.each(mailResult, function(index, data){
 +'                      </span>'
 +'                      <hr style="width:100%;text-align:left;margin-left:0">'
 +'                      <!--  button and label and image-->'
+
 +'                      <div class="mailBoxFunctionInsideRep">'
-+'                        <input type="text"  class="mailTitleJS demonHide" value="Reply: '+data.title+'" >'
++'                        <input type="text"  class="mailTitleJS demonHide" data-mailTile value="Reply: '+data.title+'" >'
 
 
 +'                        <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton"'

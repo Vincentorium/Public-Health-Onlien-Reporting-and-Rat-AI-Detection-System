@@ -87,10 +87,24 @@ overlay.classList.add('active')
    
   if(defaulModal=='mailIcon'){
         $(modal).addClass('active');
-        var el = document.getElementById('modalOfMail');
-          var scrollPosition = window.pageYOffset;
-        // $('#modalOfMail').css("top", 250+scrollPosition+"px");
+        let el = document.getElementById('modalOfMail');
+        let indicator=$('.report-mail-floatIcon') 
+        var scrollPosition = window.pageYOffset;
+       
 
+      if(indicator.text()=="Correspondence"){
+      $('.mailbox-mainLayer-specific').css({display: 'block'});
+      $('.cmtContainer').css({display: 'none'});
+      indicator.text("Report")
+    }else{
+      $('.mailbox-mainLayer-specific').css({display: 'none'});
+      $('.cmtContainer').css({display: 'block'});
+         indicator.text("Correspondence")
+    }
+
+
+
+        // $('#modalOfMail').css("top", 250+scrollPosition+"px");
         el.style.top = (160+ scrollPosition) + 'px';
         console.log(el)
   } else if (defaulModal=='tablePostTitle' &&  $.cookie('userDept')=="Operator" ){
@@ -114,6 +128,8 @@ getMailContent(mailLastestOne)
 $('.mail-record-box table tbody tr').attr('display','table-row')
  
  
+  }else if (defaulModal=='mailSpecific'){
+         $(modal).addClass('active');
   }
   
   

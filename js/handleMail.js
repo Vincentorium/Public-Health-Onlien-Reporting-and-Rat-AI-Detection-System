@@ -1,4 +1,38 @@
+
+
+
+$(document).on('click','.close-transform-box',function(e){
+
+closeTransformBox($(this).closest('.mailSubmitBox--JS'))
+e.stopPropagation()
+
+})  
+// $(document).on('click','.mail-specific-submitButton',function(e){
+
+
+//   insertMail()
  
+//  e.stopPropagation()
+// })
+
+//close mail submission box
+function closeTransformBox(submitBox){
+
+  
+//$(".mail_specific_mail_box").removeClass("mail_specific_mail_box--active")
+$(submitBox).removeClass("mail_specific_mail_box--active")
+
+}
+
+
+
+$(document).on('click','.mail-specific-replayButton',function(e){
+
+
+
+$(".mail_specific_mail_box").addClass("mail_specific_mail_box--active")
+ e.stopPropagation()
+})
 
 $(document).on('click','.mailReplayButton',function(e){
 $(".mailSubmitBox").addClass("active")
@@ -60,20 +94,38 @@ $(document).on("click",".mail-button ",function(){
   
 
 //for operator to update report status between unapprove and approve fo
-$(document).on('click','.mailSubmitButton',function(e){
+$(document).on('click','.mail-specific-submitButton,.mailSubmitButton',function(e){
     
-    //alert($(this).data('submitctn') )
-    var box=$($(this).data('submitctn')) 
+handleMailInsert($(this))
+e.stopPropagation()
+    });//EO click Func
+
+function handleMailInsert(submitButton){
+
+
+ 
+    var box=$(submitButton.data('submitctn')) 
     var content= box.find('.mailTextArea').val()  
-    var title=box.find('.mailTitleJS').val();
-  
+ 
+   var title= box.data('mailtitle');
+   var repID= box.data('repid');
+
     var attachMail=box.find('.file-input-mail-JS')[0].files[0];
 
     insertMail(content,title,attachMail)
 
 $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
+closeTransformBox(box)
 
-    });//EO click Func
+
+    
+    getMailRecordsspecific(repID)
+
+
+
+}
+
+
  
  $(document).on('click','.mail-button-inbox',function(e){
       isInboxList=true
@@ -92,3 +144,34 @@ $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
           updateMaiStatus([...isReadSet])
           isReadSet.clear()
 })
+
+
+
+$(document).on('click','.mail-specific-mail-head',function(){
+
+  let mailBox=$(this).closest('.mail-list-summary-specific')
+ 
+
+
+
+
+  let textArea=$(mailBox).find( '.mailTextAreaSpecific');
+  let tempText=$(mailBox).find( '.mail-specific-head-receiver').html()
+  $(mailBox).find('.mail-specific-head-receiver').html(textArea.html())
+  
+  textArea.html(tempText)
+
+  
+  
+   // $(mailBox).css({height:'80px',overflow:'hidden'}).slideUp()
+  if($(mailBox).height()>80){
+     textArea.css("opacity",0)
+     $(mailBox).animate({height:'80px'},500)}
+  else
+  {
+         textArea.css("opacity",1)
+     $(mailBox).animate({ height: $(mailBox)[0].scrollHeight }, 500)
+  }
+
+
+  })

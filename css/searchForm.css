@@ -657,11 +657,11 @@ display:flex;
 
 
 .mailIconInsideRep{
-    position: fixed;
-    width: 100px;
+      position: fixed;
+    width: 137px;
     height: 100px;
     top: 546px;
-    right: 50px;
+    right: -61px;
     background-color: rgb(77 140 141);;
     color: #FFF;
     border-radius: 50px;
@@ -676,16 +676,18 @@ display:flex;
 }
 .float{
 	position:fixed;
-	width:100px;
-	height:   100px;
+   width: 137px;
+    height: 100px;
     top: 440px;
-    right: 50px;
+    right:-61px;
 	background-color:#0C9;
 	color:#FFF;
 	border-radius:50px;
 	text-align:center;
 	box-shadow: 2px 2px 3px #999;
     cursor: pointer!important;
+
+    
 }
 .float:hover{
 	background-color:rgb(238, 255, 0) ;
@@ -724,3 +726,4 @@ display:flex;
   opacity: 1;
 }
 */
+

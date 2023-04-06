@@ -244,7 +244,7 @@ position: absolute;
 .mail-list-submit-box-cancel{
 
   cursor: pointer;
-    position: absolute;
+    
     right: 15px;
     top: 8px;
 }
@@ -274,13 +274,15 @@ position: absolute;
 .maibox-list-specific{
 
     width: 830px;
+    height: 100%;
 }
 
 .mail-record-box-table-specific{
 
-font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%;
+    height: 100%;
 
 }
 .mail-specific-short{
@@ -326,7 +328,7 @@ height: 30px;
 }
 .mail-specific-head-sender-name{
   font-weight: 900;
- 
+  white-space: nowrap;
 }
 .mail-specific-head-receiver{
     
@@ -338,6 +340,53 @@ width: 60%;
     margin-top: 9px;
 }
 .mail-specifi-head-dateCreated{
-
+    white-space: nowrap;
     width: 207px;
+}
+.mailbox-mainLayer-specific{
+    display: none;
+        height: 720px;
+    border-radius: 5px;
+    
+    flex-direction: column;
+    background-color: #ffffff;
+
+}
+
+.mail-reocrd-box-specific{
+height: 100%;
+
+}
+
+
+.mail-list-filter-Box-specific{
+display: flex;
+    width: auto;
+    height: 33px;
+    padding-top: 3px;
+    border-radius: 5px;
+    margin: 7px 0 8px 69px;
+    background-color: #dfdddd;
+    padding-left: 10px;
+}
+.mailBoxFunctionInsideRep-specific{
+    margin-left: 62px;
+    width: 500px
+}
+.mail_specific_mail_box{
+    z-index: 10;
+    width: 653px;
+    height: auto;
+    border-radius: 20px;
+    background-color: #f8f8f8;
+    margin-left: 27px;
+    box-shadow: 0px 3px 5px -1px rgb(0 0 0 / 20%), 0px 6px 10px 0px rgb(0 0 0 / 14%), 0px 1px 18px 0px rgb(0 0 0 / 12%);
+ 
+    transform: translate(-50%,-50%) scale(0);
+    transition: 200ms ease-in-out;
+}
+.mail_specific_mail_box--active{
+    
+     transform: none;
+    transition: 200ms ease-in-out;
 }
