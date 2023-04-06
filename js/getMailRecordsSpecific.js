@@ -275,13 +275,15 @@ mailResultSpecific =result
  
         $('.mail-record-box-table-specific').fadeIn(500);
 
+//style for 
+
  let mailBox=$(".mail-record-box-table-specific > div").eq(noOfMail-1).addClass('mailListHover').css('height', 'auto');
      
   let textArea=$(mailBox).find( '.mailTextAreaSpecific');
   let tempText=$(mailBox).find( '.mail-specific-head-receiver').html()
   $(mailBox).find('.mail-specific-head-receiver').html(textArea.html())
   
-  textArea.html(tempText)
+  textArea.html(tempText) 
 
       
           //  addNoIndex(); 
