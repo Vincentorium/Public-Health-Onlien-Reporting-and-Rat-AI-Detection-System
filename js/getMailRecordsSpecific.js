@@ -14,7 +14,7 @@ var mailLastestOne
    
       $('.mail-record-box-table-specific').fadeOut(1);
   let replyButton='<div class="mailBoxFunctionInsideRep-specific">'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 mail-specific-replayButton">Replay</button>'
++'            <button class="sendCmtBtn sendCmtBtnGP2 mail-specific-replayButton">Reply</button>'
 +' </div>'
 
 
@@ -178,7 +178,7 @@ mailResultSpecific =result
 +'                  <div class="mailBoxRecipients">'
 +'                    <span class="mail-replay-title">'
 +'<img src="./images/replyIcon.png" class="replayIcon" >'
-+data.userName+'</span>'
++data.posterName+'</span>'
 +'                    <select name="Status" class="mail-content-replay">'
 +'                      <option value="Unchange">None</option>'
 +'                      <option value="Fack Checking">Default Group</option>'

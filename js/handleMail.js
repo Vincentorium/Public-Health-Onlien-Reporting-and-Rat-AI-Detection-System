@@ -34,6 +34,7 @@ $(".mail_specific_mail_box").addClass("mail_specific_mail_box--active")
  e.stopPropagation()
 })
 
+
 $(document).on('click','.mailReplayButton',function(e){
 $(".mailSubmitBox").addClass("active")
 $(".mail-list-content-mailBoxFunctionBox").addClass("demonHide")
@@ -61,8 +62,9 @@ $(document).on("click",".file-input-cancel",function(){
 });
 
 
+
+// the check if the mail is read
 var isReadSet=new Set();
- 
 var isInboxList=true //help to identify which mail list click trigger to hand mail read 
 $(document).on("click",".mail-list-summary-one",function(){
   $(".mailListHover").removeClass('mailListHover')
@@ -93,7 +95,7 @@ $(document).on("click",".mail-button ",function(){
 
   
 
-//for operator to update report status between unapprove and approve fo
+// reply
 $(document).on('click','.mail-specific-submitButton,.mailSubmitButton',function(e){
     
 handleMailInsert($(this))
@@ -106,10 +108,8 @@ function handleMailInsert(submitButton){
  
     var box=$(submitButton.data('submitctn')) 
     var content= box.find('.mailTextArea').val()  
- 
-   var title= box.data('mailtitle');
-   var repID= box.data('repid');
-
+    var title= box.data('mailtitle');
+    var repID= box.data('repid');
     var attachMail=box.find('.file-input-mail-JS')[0].files[0];
 
     insertMail(content,title,attachMail)
@@ -150,11 +150,6 @@ closeTransformBox(box)
 $(document).on('click','.mail-specific-mail-head',function(){
 
   let mailBox=$(this).closest('.mail-list-summary-specific')
- 
-
-
-
-
   let textArea=$(mailBox).find( '.mailTextAreaSpecific');
   let tempText=$(mailBox).find( '.mail-specific-head-receiver').html()
   $(mailBox).find('.mail-specific-head-receiver').html(textArea.html())

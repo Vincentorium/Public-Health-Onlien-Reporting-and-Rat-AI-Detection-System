@@ -49,7 +49,7 @@ $.each(mailResult, function(index, data){
 '<div class="maiBoxFunInsideRep"> '
  
 +'<div class="mail-list-content-mailBoxFunctionBox">'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 mailReplayButton" >Replay</button>'
++'            <button class="sendCmtBtn sendCmtBtnGP2 mailReplayButton" >Reply</button>'
  
  +'</div>'
 +'</div> '
@@ -103,7 +103,7 @@ $.each(mailResult, function(index, data){
  +'<hr style="width:100%;text-align:left;margin-left:0">'
  
 +'<div class="submitOptions">'
-+'          <textarea class="mailTextAreaForContent mailTextArea" placeholder="replay..." rows="20" name="comment[text]" id="comment_text" cols="40"'
++'          <textarea class="mailTextAreaForContent mailTextArea" placeholder="reply..." rows="20" name="comment[text]" id="comment_text" cols="40"'
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'            aria-haspopup="true" style="resize:none;" '+status+'>'+data.content+'</textarea>'
 +'          <br>'
@@ -123,7 +123,7 @@ $.each(mailResult, function(index, data){
 
 
 +  '    <!-- SO Mail -->'
-+'                <div class="mailSubmitBox modalGeneral" id="mailSubmitBox">'
++'                <div class="mailSubmitBox modalGeneral" id="mailSubmitBox" data-mailtitle="'+data.title+'">'
 +''
 +'                  <div class="mailBoxRecipients">'
 +'                    <span class="mail-replay-title">'

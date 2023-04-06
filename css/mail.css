@@ -46,7 +46,7 @@
  
 
 .mailModal.active {
-      transform: translate(-50%,-90%) scale(1);
+      transform: translate(-50%,-50%) scale(1);
 }
 
 .mail-record-box-table th {
@@ -263,7 +263,10 @@ position: absolute;
 .mailBoxTitle{
     display:flex;
 }
+.mailBoxTitle>h3{
 
+     white-space: nowrap;
+}
 
 .mail-reocrd-box-specific{
 
