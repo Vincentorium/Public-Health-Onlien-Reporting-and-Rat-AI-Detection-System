@@ -43,11 +43,9 @@ $.ajax({
         type:'POST',
         dataType: "json",
         data: {
-        repID,repID,
-       
-        userID: $.cookie('userID')
+        repID,repID 
           },
-         async: false,
+
    
           url: "./php/getMailRecordsSpecific.php",
           success: function (result) {
