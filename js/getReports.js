@@ -524,7 +524,7 @@ $.each(result.reverse(), function(index, data){
 +'</span>'
 +'<!--  button and label and image-->'
 +'<div class="mailBoxFunctionInsideRep">'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 reportSubmitButton">Send</button>'
++'            <button class="sendCmtBtn sendCmtBtnGP2 reportSubmitButton">Submit</button>'
 +' <div class="uploadForAttach">'
 
   +'  <label for="file-input-report">'
