@@ -36,13 +36,13 @@ $.ajax({
         url: "./php/getReporsWithSameStreetType.php",
           success: function (result) {
 
-          //   if(result.length==1){
-          //     alert("No relevant reports is found!")
-          //     resultOfRS= false;
-          //   }else{
-              
-          // resultOfRS= true;
-          //   }
+             if(result.length==1){
+               alert("No relevant reports is found!")
+               resultOfRS= false;
+             }else{
+            
+               resultOfRS= true;
+             }
 
 
         header="<thead><tr ><th>"
@@ -95,7 +95,7 @@ $.ajax({
               }
 
 }) 
-//return resultOfRS;
+ return resultOfRS;
 }
 
 

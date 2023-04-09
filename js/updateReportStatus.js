@@ -12,20 +12,15 @@ $(document).on('click','.submitButton',function(e){
             if(submitBox.find(".submitNotifyUser").is(':checked')){
                   updateReportStatus()
             }else{
-                //display relevant reports box
-                        $('.relevantReportsBox').addClass("activeRelevantReps")
-
-                        getRevelantReportsForUpdate($(this).data("rep_street")) 
-                        //  e.stopPropagation()
-                        // return  
-                //  if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
-                //        $('.relevantReportsBox').addClass("activeRelevantReps")
-                //            e.preventDefault();}
-                // else{ 
-                //     e.preventDefault();
-                //     return
+       
+                    if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
+                         $('.relevantReportsBox').addClass("activeRelevantReps")
+                             e.preventDefault();}
+                    else{ 
+                      e.preventDefault();
+                      return
             
-                //     }       
+                    }       
             }
 
             break;
