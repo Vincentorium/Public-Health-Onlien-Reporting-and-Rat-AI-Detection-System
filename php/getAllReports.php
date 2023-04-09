@@ -32,7 +32,8 @@ $record[] = array(
 	'repLocationDetail' => $row['repLocationDetail'],
 	'repLocationDetail' => $row['repLocationDetail'],
 	'repLocationY' => $row['repLocationY'],
-  
+	'repStreet' => $row['repStreet'],
+
 	'repDatePeriodBegin' => $row['repDatePeriodBegin'],
 	'repDatePeriodEnd' => $row['repDatePeriodEnd'],
 	'repContent' => $row['repContent'],

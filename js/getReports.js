@@ -19,8 +19,7 @@ $.each(result.reverse(), function(index, data){
  
       
 
-//demonHide cmtSumbitBox
-/*
+ 
  '<!--SO mailBoxFunctionInsideRep-->'
 +'<div class="mailBoxInsideRep modalOfMail modalGeneral test"  id="modalOfMail">'
 +'  <div class="loginCtnTitle">'
@@ -95,7 +94,7 @@ $.each(result.reverse(), function(index, data){
 +'</div>'
 +'</div>'
 +'<!--EO mailBoxFunctionInsideRep-->'
-*/
+ 
 //EO Mail Box
 
 
@@ -104,7 +103,7 @@ $.each(result.reverse(), function(index, data){
 
 
 
-'<a href="#" class="float" data-repID='+data.repID+'>'
++'<a href="#" class="float" data-repID='+data.repID+'>'
 +' <i class="fa fa-plus my-float" id="float">'
 + (data.repCurrentStatus=="approved"?"Unapprove":"Approve")+'</i>'
 +'  </a>'
@@ -524,7 +523,7 @@ $.each(result.reverse(), function(index, data){
 +'</span>'
 +'<!--  button and label and image-->'
 +'<div class="mailBoxFunctionInsideRep">'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 reportSubmitButton">Submit</button>'
++'            <button class="submitButton sendCmtBtn sendCmtBtnGP2 reportSubmitButton" data-submit_button="reportSubmit" data-submit_box=".reportStautsUpdatetBox"  data-rep_street="'+data.repStreet+'">Submit</button>'
 +' <div class="uploadForAttach">'
 
   +'  <label for="file-input-report">'
@@ -704,7 +703,7 @@ $.each(result.reverse(), function(index, data){
 +'        </div>'
 +''
 +'        <!--SOF Response Box-->'
-+'        <div class="cmtSumbitBox">'
++'        <div class="cmtSumbitBox reportStautsUpdatetBox"  >'
 +'          <h2>Response</h2>'
 +''
 +'          <textarea class="cmtBox mailTextArea" placeholder="This is an awesome comment box" rows="20" name="comment[text]"'

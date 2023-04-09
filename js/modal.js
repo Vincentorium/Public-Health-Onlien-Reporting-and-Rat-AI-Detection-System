@@ -148,14 +148,17 @@ $('.mail-record-box table tbody tr').attr('display','table-row')
 }
 
 
-
-
-
-
  function closeModal(modal){
-    
-     modal.classList.remove('active');
-  
+    let modaType=$(modal).data("modal_type")
+
+ 
+    if(modaType===undefined){
+
+    modal.classList.remove('active');
+    }else if(modaType==="relevantReportsBox"){
+       modal.classList.remove('activeRelevantReps');
+     
+    }
  
 }
 
