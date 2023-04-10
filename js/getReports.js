@@ -18,92 +18,7 @@ $.each(result.reverse(), function(index, data){
       content+=
  
       
-
- 
- '<!--SO mailBoxFunctionInsideRep-->'
-+'<div class="mailBoxInsideRep modalOfMail modalGeneral test"  id="modalOfMail">'
-+'  <div class="loginCtnTitle">'
-+'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
-+'    <h2 class="boxTitle">Mail</h2>'
-+'    <img class="closeIcon close mailClose" src="./images/exit.png" data-close-button alt="">'
-+''
-+''
- 
-+'  </div>'
- +'<div class="mailBoxRecipients">'
- +'<span >Recipient: </span>'
- +'<input type="text" class="mailInput recipientInput" value='+data.userName+'>'
-  +'<span>Relevant Groups:</span>'
- 
- 
- 
-+'            <select name="Status" class="mailRelevantGroup" >'
-+'              <option value="Unchange">None</option>'
-+'              <option value="Fack Checking">Default Group</option>'
-+'              <option value="Wait in line">Wait in line</option>'
- 
-+'              <option value="Solved">Solved</option>'
-+'              <option value="unapproved">reclassfiy</option>'
-+'              <option value="approved" class="temp_test">for Test</option>'
-+'            </select>'
- 
- 
- 
-  +'</div>'
- +'<hr style="width:100%;text-align:left;margin-left:0">'
-  +'<div class="mailBoxTitle">'
- +'<span>Title:</span>'
-  +'<input type="text" class="mailInput mailTitleInput mailTitleJS">'
-
-
- +'</div>'
- +'<hr style="width:100%;text-align:left;margin-left:0">'
- 
-+'<div class="submitOptions">'
-+'          <textarea class="cmtBox mailTextArea" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
-+'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
-+'            aria-haspopup="true" style="resize:none;"></textarea>'
-+'          <br>'
-
-+'<!--SO mailBoxFunctionInsideRep-->'
-+'<div class="maiBoxFunInsideRep"> '
-+'<!--  image file and close button-->'
-+'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
-
-+'<input type="file" name="file-input"  class="file-input file-input-mail file-input-mail-JS" id="file-input">'
-+'<span class="file-input-cancel">X</span>'
-+'</span>'
-
-
-+'<!--SO  button and label and image-->'
-+'<div class="mailBoxFunctionInsideRep mail_specific_submitButton">'
-+'            <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton" data-submitctn=".modalOfMail">Send</button>'
-+' <div class="uploadForAttach">'
-
-  +'  <label for="file-input">'
-    +'    <img src="./images/attachIcon.png"/>'
-   +' </label>'
-
- +'</div>'
- +'</div>'
-
-+'<!--EO  button and label and image-->'
-
-+'</div> '
-
-+'</div>'
-+'</div>'
-+'<!--EO mailBoxFunctionInsideRep-->'
- 
-//EO Mail Box
-
-
-//SO floatingIcon 
-
-
-
-
-+'<a href="#" class="float" data-repID='+data.repID+'>'
+'<a href="#" class="float" data-repID='+data.repID+'>'
 +' <i class="fa fa-plus my-float" id="float">'
 + (data.repCurrentStatus=="approved"?"Unapprove":"Approve")+'</i>'
 +'  </a>'
@@ -457,7 +372,7 @@ $.each(result.reverse(), function(index, data){
 +'        </div> --->'
 +''
 +'        <!--SOF Response Box-->'
-+'        <div class="cmtSumbitBox demonHide">'
++'        <div class="cmtSumbitBox reportStautsUpdatetBox demonHide">'
 +'          <h2>Update Status</h2>'
 +'<div class="submitOptions">'
 +'          <textarea class="cmtBox reportTextArea" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
@@ -703,7 +618,7 @@ $.each(result.reverse(), function(index, data){
 +'        </div>'
 +''
 +'        <!--SOF Response Box-->'
-+'        <div class="cmtSumbitBox reportStautsUpdatetBox"  >'
++'        <div class="cmtSumbitBox"  >'
 +'          <h2>Response</h2>'
 +''
 +'          <textarea class="cmtBox mailTextArea" placeholder="This is an awesome comment box" rows="20" name="comment[text]"'

@@ -369,7 +369,7 @@ function getGroupOfComplaint(){
  
 
  +'</ul>' //EOF Grouplist
-console.log(content)
+ 
 $('.Insert_Group').append(content);
   $('.Insert_Group').fadeIn(500);
 

@@ -57,6 +57,8 @@ $.ajax({
                                     +"Title"
                                     +"</th><th>"
                                     +"Status"
+                                    +"</th><th class='NameColumnForUpdateMulti'>"
+                                    +"Name"
                                     +"</th></tr>  </thead>"
 
 
@@ -75,6 +77,7 @@ $.ajax({
             + "</td><td>" + rc.repDatePeriodBegin
             + "</td><td>" + rc.repTitle
             + "</td><td>" + rc.repCurrentStatus
+            + "</td><td class='userNameTD'>" + rc.userName
             + "</td></tr>"
         })
 

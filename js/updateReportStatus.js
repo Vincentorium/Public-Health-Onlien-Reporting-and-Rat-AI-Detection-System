@@ -1,41 +1,6 @@
 
 
 
-//for operator to update report status between unapprove and approve fo
-$(document).on('click','.submitButton',function(e){
-
-    let submitButtonType=$(this).data("submit_button");
-    let submitBox=$($(this).data("submit_box"))
-
-    switch(submitButtonType) {
-    case "reportSubmit":
-            if(submitBox.find(".submitNotifyUser").is(':checked')){
-                  updateReportStatus()
-            }else{
-       
-                    if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
-                         $('.relevantReportsBox').addClass("activeRelevantReps")
-                             e.preventDefault();}
-                    else{ 
-                      e.preventDefault();
-                      return
-            
-                    }       
-            }
-
-            break;
-    case "relevantReportsSubmit":
-
-            updateMultiReportsStatus()
-            break;
-
-    default:
-        console.log("No a valid type ")
-    }
-//    e.stopPropagation()
-//    return  
-});//EO click Func
-
 
 
 function updateReportStatus(){
@@ -94,6 +59,8 @@ $.ajax({
 
 
 }
+var repIDArray
+var dataJSForMail;
 function updateMultiReportsStatus(){
 
          if(checkIsSelected()!=true){
@@ -107,20 +74,34 @@ function updateMultiReportsStatus(){
         let formDatas = new FormData();
         let index=0;
 
+         repIDArray=[];
+         repNameArray=[];
+         repTitle=[]
         $("#mytable>tbody>tr").each(function() {
 
             if ($(this).find(">td>input").is(':checked')) {
+                
 
                 formDatas.append('arr_'+index+'_repID',$(this).data("repid"))
                 formDatas.append('arr_'+index+'_image', $('#file-input-report')[0].files[0]);
-                formDatas.append('arr_'+index+'_repStatusID',null);
+              
                 formDatas.append('arr_'+index+'_repStatusType',status);
                 formDatas.append('arr_'+index+'_repStatusRemark',repStatusRemark);
                 formDatas.append('arr_'+index+'_repUserID',$.cookie('userID'));
 
+                repIDArray.push($(this).data("repid"))
+                repNameArray.push($(this).find(".userNameTD").html())
                 index++;
             }
         });
+
+        dataJSForMail={
+                "repID":repIDArray,
+                "usersName":repNameArray,
+                "attachMail":$('#file-input-report')[0].files[0],
+                "title":null,
+                "content":null
+        }
 
 
 
@@ -140,7 +121,7 @@ $.ajax({
                     $('.relevantReportsBox').removeClass("activeRelevantReps")
                     $('.mytable').html()
                     alert("Successfully Update the status!")
-                    $('.active').removeClass('active');
+                    $('.relevantReportsBox').removeClass('active');
 
             },
 

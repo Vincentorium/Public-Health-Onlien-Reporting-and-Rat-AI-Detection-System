@@ -1,5 +1,136 @@
 
 
+$(document).on('click','.sendCmtBtnGeneral,.mail-specific-submitButton,.mailSubmitButton',function(e){
+    
+        handleMailInsert($(this))
+        e.stopPropagation()
+    });//EO click Func
+
+//submit button decide the submit box, and get relevant data
+function handleMailInsert(submitButton){
+
+
+ 
+    let box=$(submitButton.data('submitctn')) 
+    let boxType=box.data("submitbox")
+    let dataJS={
+
+     "content": box.find('.mailTextArea').val(),
+     "title": box.find(".mailTitleInput ").val(),//box.data('mailtitle'),
+     "repID": box.data('repid'),
+     "attachMail":box.find('.file-input-mail-JS')[0].files[0]
+    }
+    
+
+    
+     switch(boxType){
+      
+        case "mailBox":
+
+            insertMail(dataJS)
+            $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
+            closeTransformBox(box)
+            getMailRecordsspecific(repID)
+            break;
+
+        case "multiSubmitBox":
+            dataJSForMail.title=box.find(".mailTitleInput ").val();
+            dataJSForMail.content=box.find(".mailTextArea ").val()
+           insertMultiMail(dataJSForMail)
+           break;
+
+
+        }
+
+}
+
+
+
+
+
+
+function displayMailBox(dataJS){
+
+//let file=dataJS.attachMail;
+ 
+let users= (dataJS.usersName).map(function(item) {
+  return item.toString()+";";
+}).join("");
+let content= 
+ '<!--SO mailBoxFunctionInsideRep-->'
++'<div class="mailBoxG mailBoxInsideRep modalOfMail modalGeneral multiSubmitBox active"  id="modalOfMail'
++ 'data-mailtitle="Temp: solved title" data-submitBox="multiSubmitBox" >'
++'  <div class="loginCtnTitle">'
++'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
++'    <h2 class="boxTitle">Mail</h2>'
++'    <img class="closeIcon close mailClose" src="./images/exit.png" data-close-button alt="">'
++''
++''
+ 
++'  </div>'
+ +'<div class="mailBoxRecipients">'
+ +'<span >Recipient: </span>'
+ +'<input type="text" class="mailInput recipientInput" value="'+users+'">'
+ 
+ 
+  +'</div>'
+ +'<hr style="width:100%;text-align:left;margin-left:0">'
+  +'<div class="mailBoxTitle">'
+ +'<span>Title:</span>'
+  +'<input type="text" class="mailInput mailTitleInput mailTitleJS" >'
+
+
+ +'</div>'
+ +'<hr style="width:100%;text-align:left;margin-left:0">'
+ 
++'<div class="submitOptions">'
++'          <textarea class="cmtBox mailTextArea" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
++'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
++'            aria-haspopup="true" style="resize:none;"></textarea>'
++'          <br>'
+
++'<!--SO mailBoxFunctionInsideRep-->'
++'<div class="maiBoxFunInsideRep"> '
++'<!--  image file and close button-->'
++'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
+
++'<input type="file" name="file-input"  class="file-input file-input-mail file-input-mail-JS" id="file-input">'
++'<span class="file-input-cancel">X</span>'
++'</span>'
+
+
++'<!--SO  button and label and image-->'
++'<div class="mailBoxFunctionInsideRep mail_specific_submitButton">'
++'            <button class="sendCmtBtnGeneral sendCmtBtn sendCmtBtnGP2 mailSubmitButton" data-submitctn=".multiSubmitBox">Send</button>'
++' <div class="uploadForAttach">'
+
+  +'  <label for="file-input" >'
+    +'    <img src="./images/attachIcon.png"/>'
+   +' </label>'
+
+ +'</div>'
+ +'</div>'
+
++'<!--EO  button and label and image-->'
+
++'</div> '
++' <div class="thumbnail thumbnail--mutlMail">  </div> '
++'</div>'
++'</div>'
+
+
++'<!--EO mailBoxFunctionInsideRep-->'
+ 
+//EO Mail Box
+
+ 
+   $('.postContentBox').append(content) 
+
+   $('.thumbnail--mutlMail').append(thumbnail) 
+
+}
+
+
 
 $(document).on('click','.close-transform-box',function(e){
 
@@ -53,15 +184,6 @@ $(".mail-list-content-mailBoxFunctionBox").addClass("demonHide")
  })
 
 
-$(document).on("change",".file-input",function(){
-  $(this).parent().removeClass('demonHide');
-});
-$(document).on("click",".file-input-cancel",function(){
-  $(this).parent().addClass('demonHide');
-   $(this).prev().val('');
-});
-
-
 
 // the check if the mail is read
 var isReadSet=new Set();
@@ -94,37 +216,6 @@ $(document).on("click",".mail-button ",function(){
 
 
   
-
-// reply
-$(document).on('click','.mail-specific-submitButton,.mailSubmitButton',function(e){
-    
-handleMailInsert($(this))
-e.stopPropagation()
-    });//EO click Func
-
-function handleMailInsert(submitButton){
-
-
- 
-    var box=$(submitButton.data('submitctn')) 
-    var content= box.find('.mailTextArea').val()  
-    var title= box.data('mailtitle');
-    var repID= box.data('repid');
-    var attachMail=box.find('.file-input-mail-JS')[0].files[0];
-
-    insertMail(content,title,attachMail)
-
-$(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
-closeTransformBox(box)
-
-
-    
-    getMailRecordsspecific(repID)
-
-
-
-}
-
 
  
  $(document).on('click','.mail-button-inbox',function(e){
