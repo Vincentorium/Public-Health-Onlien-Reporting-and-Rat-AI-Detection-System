@@ -5,15 +5,13 @@ var mailLastestOne
 
 
  function getMailRecords(isSent){
-  var content
+    
+      var content
       $('.mail-record-box-table').html("");
-   
       $('.mail-record-box-table').fadeOut(1);
-      
-     
-      
-     
-$.ajax({
+
+
+      $.ajax({
         type:'POST',
         dataType: "json",
         data: {

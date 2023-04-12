@@ -1,25 +1,26 @@
 
-function insertMail(content,title,attachMail){
+function insertMail(dataJS){
 
 
-    
+
      var imageData = new FormData();
-    imageData.append('image', attachMail);
- 
+   
+
     imageData.append('id',null);
-    imageData.append('title',title);
-    imageData.append('content',content);
-    imageData.append('FKrepId',repID);
+    imageData.append('title',dataJS.title);
+    imageData.append('content',dataJS.content);
+    imageData.append('FKrepId',dataJS.repID);
+    imageData.append('image', dataJS.attachMail);
     imageData.append('FKOfficerId',$.cookie('userID'));
- 
- 
+   
 
 
- 
+
+
 
 
 $.ajax({
-        
+
             url: 'php/inserMail.php',
             type: 'POST',
       data: imageData,
@@ -35,9 +36,9 @@ $.ajax({
               // title.val("")
              //  attachMail.val("")
                  $('.file-input-Ctn-mail').addClass('demonHide');
-           
+
             },
-    
+
         });//EO ajax
 
 }
@@ -55,15 +56,15 @@ $.ajax({
      data: {
           mailIDSet:mailIDSet,
       },
-      
+
             success: function(response) {
 
-                 
+
                     alert("mail read!");
-             
-           
+
+
             },
-    
+
         });//EO ajax
 
 }
