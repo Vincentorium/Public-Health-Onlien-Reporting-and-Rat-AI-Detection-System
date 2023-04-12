@@ -1,9 +1,9 @@
 <?php
 include "config.php";
- print_r($_POST);
+  
  var_dump($_POST);
  extract($_POST);
- echo count($_POST);
+ 
  
  //global variable 
 // Prepare the statement

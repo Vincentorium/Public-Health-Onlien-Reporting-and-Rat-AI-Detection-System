@@ -16,7 +16,7 @@ function handleMailInsert(submitButton){
     let dataJS={
 
      "content": box.find('.mailTextArea').val(),
-     "title": box.find(".mailTitleInput ").val(),//box.data('mailtitle'),
+     "title": "Reply - "+box.find(".mailTitleInput ").val(),//box.data('mailtitle'),
      "repID": box.data('repid'),
      "attachMail":box.find('.file-input-mail-JS')[0].files[0]
     }
@@ -25,6 +25,14 @@ function handleMailInsert(submitButton){
     
      switch(boxType){
       
+
+        case "mainMailBoxSubmitBox":
+            dataJS.title="Reply - "+box.data("mailtitle")
+            insertMail(dataJS)
+            $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
+            closeTransformBox(box)
+            getMailRecordsspecific(repID)
+        break;
         case "mailBox":
 
             insertMail(dataJS)
@@ -34,9 +42,10 @@ function handleMailInsert(submitButton){
             break;
 
         case "multiSubmitBox":
-            dataJSForMail.title=box.find(".mailTitleInput ").val();
-            dataJSForMail.content=box.find(".mailTextArea ").val()
+           dataJSForMail.title=box.find(".mailTitleInput ").val();
+           dataJSForMail.content=box.find(".mailTextArea ").val()
            insertMultiMail(dataJSForMail)
+           $(".multiSubmitBox").removeClass("activeMultiMailBo")
            break;
 
 
@@ -58,12 +67,12 @@ let users= (dataJS.usersName).map(function(item) {
 }).join("");
 let content= 
  '<!--SO mailBoxFunctionInsideRep-->'
-+'<div class="mailBoxG mailBoxInsideRep modalOfMail modalGeneral multiSubmitBox active"  id="modalOfMail'
++'<div class="mailBoxG mailBoxInsideRep  modalGeneral multiSubmitBox activeMultiMailBo"  id="modalOfMail'
 + 'data-mailtitle="Temp: solved title" data-submitBox="multiSubmitBox" >'
 +'  <div class="loginCtnTitle">'
 +'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
 +'    <h2 class="boxTitle">Mail</h2>'
-+'    <img class="closeIcon close mailClose" src="./images/exit.png" data-close-button alt="">'
++'    <img class="closeIcon close mailClose closeButton" src="./images/exit.png" data-close_button="multiSubmitBox" alt="">'
 +''
 +''
  
@@ -124,7 +133,8 @@ let content=
 //EO Mail Box
 
  
-   $('.postContentBox').append(content) 
+//   $('.postContentBox').append(content) 
+   $('.windowModal--mailbox').html(content) 
 
    $('.thumbnail--mutlMail').append(thumbnail) 
 

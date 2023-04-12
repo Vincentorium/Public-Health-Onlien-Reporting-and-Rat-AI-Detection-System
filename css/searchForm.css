@@ -724,10 +724,12 @@ display:flex;
         }
  
 
- 
+        .relevantReportTable{
+            border-bottom: 6px solid black;
+        }
 
 
-
+        
 
 
 

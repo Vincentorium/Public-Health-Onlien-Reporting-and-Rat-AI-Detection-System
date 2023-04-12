@@ -395,18 +395,11 @@ $.each(result.reverse(), function(index, data){
 +'            <div class="psotUpdateChkbox">'
 +''
 +''
-+''
-+'              <details class="CustDelivery_detail">'
-+''
-+'                <summary>Update Progress of Relevant Complaints</summary>'
-+''
-+'                <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">'
-+'                <label for="vehicle1"> Complaints within Default Collection</label><br>'
-+'                <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">'
-+'                <label for="vehicle2"> 屋企附近有童黨製造噪音</label><br>'
-+''
-+''
-+'              </details>'
+ 
+
++'<div class="submitNotifyUserBox">'
++'<input type="checkbox" class="submitNotifyUser" name="options[]" value="option3">Update relevant reports '
++'</div>'
 +'            </div>'
 +'          </div>'
 +'          <div class="postSubmitBtn">'
@@ -488,10 +481,6 @@ $.each(result.reverse(), function(index, data){
 
 
 
-
-+'<div class="submitNotifyUserBox">'
-+'<input type="checkbox" class="submitNotifyUser" name="options[]" value="option3">Notify Users'
-+'</div>'
 +'      </div>'
 +'          </div>'
 +''

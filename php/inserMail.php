@@ -1,7 +1,8 @@
 <?php
 include "config.php";
 extract($_POST);
-
+ var_dump($_POST);
+ echo $content;
 $datetime=date('Y-m-d H:i:s');
 $isSent=1;
    $image_data =null;

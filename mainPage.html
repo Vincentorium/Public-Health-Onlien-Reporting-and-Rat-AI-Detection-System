@@ -74,6 +74,12 @@
 
   <div class="homePageCTN">
 
+    <div class="windowModal">
+      <div class="windowModal--mailbox">
+
+
+      </div>
+    </div>
     <div id="loginScreen">
 
 
@@ -593,45 +599,20 @@
         <div class="tableContainer">
 
           <div>
-            <div class="form-group">
-              <select name="state" id="maxRows" class="form-control" style="width:150px;">
-                <option value="5000">Show All</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="75">75</option>
-                <option value="100">100</option>
-              </select>
 
-            </div>
 
             <table id="mytable" class="mytable table table-bordered table-striped">
 
 
             </table>
-            <div class=' pagination-container'>
-              <nav>
-                <ul class="pagination">
 
-                  <li data-page="prev">
-                    <span>
-                      < <span class="sr-only">(current)
-                    </span>
-                    </span>
-                  </li>
-                  <!--  Here the JS Function Will Add the Rows -->
-                  <li data-page="next" id="prev">
-                    <span> > <span class="sr-only">(current)</span></span>
-                  </li>
-                </ul>
-              </nav>
-            </div>
 
-            <div class="mailBoxFunctionInsideRep">
+
+            <div class="mailBoxFunctionInsideRep mailBoxFunctionInsideRep--releveantReportTable">
               <button class="submitButton sendCmtBtn sendCmtBtnGP2 reportSubmitButton relevantReportsSubmit"
                 data-submit_button="relevantReportsSubmit">Submit</button>
+              <button class="submitButton sendCmtBtn sendCmtBtnGP2  relevantReportsSubmitWithMail"
+                data-submit_button="relevantReportsSubmitWithMail">Submit and mail citizen </button>
             </div>
           </div>
 

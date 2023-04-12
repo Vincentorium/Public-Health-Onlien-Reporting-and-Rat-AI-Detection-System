@@ -123,7 +123,7 @@ $.each(mailResult, function(index, data){
 
 
 +  '    <!-- SO Mail -->'
-+'                <div class="mailSubmitBox modalGeneral" id="mailSubmitBox" data-mailtitle="'+data.title+'">'
++'                <div class="mailSubmitBox modalGeneral" id="mailSubmitBox" data-repID='+repID+' data-mailtitle="'+data.title+'" data-submitbox="mainMailBoxSubmitBox" >'
 +''
 +'                  <div class="mailBoxRecipients">'
 +'                    <span class="mail-replay-title">'

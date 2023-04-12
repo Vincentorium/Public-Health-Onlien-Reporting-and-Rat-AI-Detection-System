@@ -51,19 +51,70 @@ $(document).on('click','.submitButton',function(e){
             break;
     case "relevantReportsSubmit":
 
-            updateMultiReportsStatus()
-            //if (needToSentMail)
-            displayMailBox(dataJSForMail)
-            //$('.multiSubmitBox').addClass("active")
+            if(updateMultiReportsStatus()) {
+               alert("Successfully update the status!")
+
+            }
+
             break;
 
+    case "relevantReportsSubmitWithMail":
+             if(updateMultiReportsStatus()){
+              
+              alert("Successfully update the status!")
+              displayMailBox(dataJSForMail)
+              
+            }
+            break;
+        
+            
     default:
         console.log("No a valid type ")
     }
 //    e.stopPropagation()
 //    return  
+
+e.stopPropagation()
 });//EO click Func
 
+ 
+//for operator to update report status between unapprove and approve fo
+$(document).on('click','.closeButton',function(e){
 
+    let closeButtonType=$(this).data("close_button");
+    let submitBox=$("."+$(this).data("close_button"))
 
+    switch(closeButtonType) {
+    case "multiSubmitBox":
+           
+            alert("close test")
+            submitBox.removeClass("activeMultiMailBo")
+            break;
+    case "relevantReportsSubmit":
+ 
 
+            break;
+
+    case "relevantReportsSubmitWithMail":
+        
+            break;
+        
+            
+    default:
+        console.log("No a valid type ")
+    }
+//    e.stopPropagation()
+//    return  
+
+e.stopPropagation()
+});//EO click Func
+
+ 
+
+      function refreshAfterUpdate(){
+                    getAllReort()
+                    getReportsIntoInbox()
+                    getReortForTable()
+                    modal()
+                  
+                  }

@@ -221,9 +221,7 @@ margin: 10px 0 10px 0;
    color: rgb(46, 227, 227);
    font-size: 20px;
 }
-.mailBoxFunctionInsideRep{
-  display: flex;
-}
+ 
 .tempFormailbox{
    
       position: absolute;
@@ -462,6 +460,12 @@ left:100px
 }
 .mailBoxFunctionInsideRep{
   width: 500px;
+    display: flex;
+    
+}
+.mailBoxFunctionInsideRep--releveantReportTable{
+
+  margin: 50px 0 0 450px;
 }
 .mailBoxInsideRep{
     position: absolute;

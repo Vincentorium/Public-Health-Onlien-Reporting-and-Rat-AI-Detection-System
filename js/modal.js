@@ -22,11 +22,9 @@ modal=function modal(){
     e.stopPropagation(); 
    
    
-  const modal = $(this).data('modal-target') ;//document.querySelector(button.dataset.modalTarget)
-  // const modal = button.getAttribute('data-modal-target');
+  const modal = $(this).data('modal-target') ; 
   
-     const defaulModal = $(this).data('default') //; button.getAttribute('data-default');
-     //getReports(dataForInbox,$(this).data('idForMysql'));
+     const defaulModal = $(this).data('default')  
 
 
     closeModalButtons = document.querySelectorAll('[data-close-button]')
@@ -37,38 +35,7 @@ modal=function modal(){
   
   })
     });
- 
-
-
-
-
-
-
-/*
-openModalButtons.forEach(button => {
-  button.addEventListener('click', (e) => {
-    // e.stopPropagation(); 
-  //  button.removeEventListener("click", openModal);
-    
-   
-  const modal = document.querySelector(button.dataset.modalTarget)
-  // const modal = button.getAttribute('data-modal-target');
   
-     const defaulModal =  button.getAttribute('data-default');
-     //getReports(dataForInbox,$(this).data('idForMysql'));
-
-
-    closeModalButtons = document.querySelectorAll('[data-close-button]')
-    overlay = document.getElementById('overlay')
-
-   openModal(modal,defaulModal,button.getAttribute('data-idForMysql'))
-
-  
-  alert("count: "+ ++i)
-  })
- 
-})//EDO openModalButtons
-*/
 closeModalButtons.forEach(button => {
   button.addEventListener('click', () => {
    
@@ -123,8 +90,7 @@ overlay.classList.add('active')
   $('.mail-record-box').addClass('active');
   getMailRecords(0)
 getMailContent(mailLastestOne)
-  //   $('#containerOrderList table tbody tr').attr(  'display', 'table-row!important')
- //$('#containerOrderList table tbody tr').attr(  'display', 'table-row!important')
+ 
 $('.mail-record-box table tbody tr').attr('display','table-row')
  
  

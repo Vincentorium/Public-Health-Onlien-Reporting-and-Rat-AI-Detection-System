@@ -63,6 +63,7 @@ var repIDArray
 var dataJSForMail;
 function updateMultiReportsStatus(){
 
+
          if(checkIsSelected()!=true){
 
              alert("Please select at leat a relevant report to update")
@@ -73,7 +74,7 @@ function updateMultiReportsStatus(){
         var status=$('.repSubmitStatus').val()=="unchange"?null:$('.repSubmitStatus').val()
         let formDatas = new FormData();
         let index=0;
-
+        let isUpdate=false;
          repIDArray=[];
          repNameArray=[];
          repTitle=[]
@@ -112,22 +113,26 @@ $.ajax({
       data: formDatas,
       processData: false,
       contentType: false,
+      async:false,
             success: function(response) {
-                    console.log('Status updated!');
+                    isUpdate=true;
                     getAllReort()
                     getReportsIntoInbox()
                     getReortForTable()
-                    modal()
+                 
                     $('.relevantReportsBox').removeClass("activeRelevantReps")
                     $('.mytable').html()
-                    alert("Successfully Update the status!")
-                    $('.relevantReportsBox').removeClass('active');
+                  
+                  $('#modal, .relevantReportsBox').removeClass('active');
+                   
 
+                    refreshAfterUpdate() 
+                    //alert("Successfully Update the status!")
             },
 
         });//EO ajax
 
-
+return isUpdate;
 }
 
 function checkIsSelected(){

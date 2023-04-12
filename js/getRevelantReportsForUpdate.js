@@ -3,13 +3,13 @@ var mailResult
 var mailLastestOne
 
 
- function getMailRecords(){
-  var content
+//  function getMailRecords(){
+//   var content
 
-      getRevelantReportsForUpdate(mytable)
+//       getRevelantReportsForUpdate(mytable)
 
 
-  }
+//   }
 
 
 
@@ -56,7 +56,7 @@ $.ajax({
                                     +"</th><th>"
                                     +"Title"
                                     +"</th><th>"
-                                    +"Status"
+                                    +"Current Status"
                                     +"</th><th class='NameColumnForUpdateMulti'>"
                                     +"Name"
                                     +"</th></tr>  </thead>"
@@ -70,7 +70,7 @@ $.ajax({
             content +=
 
               "<tr class='reportTableRow' data-repID="+rc.repID+" >'"
-            + "<td> <input type='checkbox' data-repid="+rc.repID +">"
+            + "<td> <input class='relevantRepCheckbox' type='checkbox' data-repid="+rc.repID +">"
             + "</td><td>" + rc.repLocationDetail
             + "</td><td>" + rc.repDateSubmit
             + "</td><td>" + rc.repType
@@ -83,14 +83,21 @@ $.ajax({
 
         $(".mytable").append(
         content==""?"No any report":(header+=content) );
+ //$(".mytable").find("tr:first").addClass();
+//$(".mytable").find("tr:first td:eq(1) input").prop("checked", true);
+$('.relevantRepCheckbox').first().prop("checked", true).prop('disabled', true);
+//$('.reportTableRow').first().css('border-bottom', '6px solid black');
+  $('.reportTableRow').first().addClass("relevantReportTable")
+
+$('.mytable').fadeIn(500);
 
 
 
-        $('.mytable').fadeIn(500);
 
-        addNoIndex('.mytable');
-          var table =document.getElementById('mytable')
-        getPagination(table);
+
+    //    addNoIndex('.mytable');
+      //    var table =document.getElementById('mytable')
+       // getPagination(table);
 
             modal();
 
