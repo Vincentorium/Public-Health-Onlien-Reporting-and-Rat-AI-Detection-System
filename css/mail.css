@@ -256,12 +256,15 @@ position: absolute;
 }
 .mail-list-content-title-relevantReport{
  font-weight: 500;
- margin-left:350px;
+ 
  cursor: pointer;
  text-decoration: underline;
 }
 .mailBoxTitle{
+    width: 657px;
     display:flex;
+    
+    justify-content: space-between;
 }
 .mailBoxTitle>h3{
 

@@ -56,62 +56,23 @@ $.each(result.reverse(), function(index, data){
 +'    <div class="cmtHistory">'
 +''
 +'      <br>'
-+'      <div class="formTitle postSideFunction"> Collection: </div>'
-+''
-+'      <div>'
-+'        <ul class="urgentListBox">'
-+''
-+''
-+'          <li>'
-+'            <div class="favTag">'
-+'              <div class="urgentBox">'
-+''
-+'                Ashley Road'
-+'              </div>'
-+''
-+'              <div class="urgentBox">'
-+''
-+'                last 10 days'
-+'              </div>'
-+''
-+'              <div class="urgentBox">'
-+''
-+'                Waste Pollution'
-+'              </div>'
-+''
-+'            </div>'
-+'            <ul>'
-+'      </div>'
-+'      <ul class="historyOfCmt">'
-+''
-+'        <ul class="historyOfCmt">'
-+'          <li class="listClick liCom2 cmtLi active complaintList1">- 裝修完就將啲廢料丟喺山坡，搞到成個垃圾崗咁！'
-+'          </li>'
-+''
-+'          <li class="listClick liCom0 complaintList2">- ****** 搞到條街都係垃圾！</li>'
-+'        </ul>'
-+''
-+''
-+''
-+''
-+'      </ul>'
-+'      <br>'
-+''
+
+
 +'      <div class="formTitle postSideFunction"> Status: </div>'
-+'      <br>'
-+''
 +'      <ul class="historyOfCmt">'
 +''
-+'        <ul class="historyOfCmt">'
-+'          <li class="listClick liCom2 demonList1 demonHide">29-Jan-2023: Solved'
-+'          </li>'
-+''
-+'        </ul>'
+ 
 +''
 +''
 +''
 +''
 +'      </ul>'
++'      <br>'
++''
+
++'      <br>'
++''
+ 
 +'    </div>'
 +'    <!--EOD sideFunction-->'
 +''
@@ -171,7 +132,7 @@ $.each(result.reverse(), function(index, data){
 +'                  <!-- SOF Content -->'
 +'                  <div class="postContent">'
 +'                    <br>'
-+'                    <table>'
++'                    <table class="reporterInfoTable">'
 +'                      <tr>'
 +'                        <td>'
 +'                          <b>Nature</b>:'
@@ -675,6 +636,8 @@ return false
    
         insertMailBoxIntoPost();
         getMailRecordsspecific(reportID)
+       
+         getReportStatus(reportID)
 /* 
 */
     
@@ -689,4 +652,71 @@ function customizeReport(){
                   $('.cmtSumbitBox').removeClass("demonHide")
 $('.float').addClass("demonHide");
       }
+}
+
+function addStatusToReports(){
+
+      $.ajax({
+        type:'POST',
+        dataType: "json",
+        data: {
+       
+        isSent:isSent,
+        userID: $.cookie('userID')
+          },
+         async: false,
+   
+          url: "./php/getReportStatus.php",
+          success: function (result) {
+mailResult =result
+ 
+                
+     $.each(result, function(index, data){
+           
+            content +=
+'   <div class="mail-list-summary-one  '+ ((data.isSent==0&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
++' data-mailid='+data.mailId 
++' data-issent='+data.isSent
++' data-isread='+data.isRead+'>'
++'              <div class="mail-list-titleAndcontent">'
++'                <div class="mail-list-title">'+ data.title+'</div>'
++'                <div class="mail-list-content">'+data.content+'</div>'
++'              </div>'
++'              <div class="mail-list-date">'+ data.dateCreated
+            + '</div>'
++'            </div>'
+
+ 
+
+            
+        })
+           $.each(result, function(index, data){
+           
+            mailLastestOne=data.mailId
+
+            return false;
+        })
+        
+                
+
+      
+            
+                     
+        
+        $(".mail-record-box-table").append(
+        content==""?"No any mail":( content) );
+                      
+ 
+ 
+        $('.mail-record-box-table').fadeIn(500);
+      //  addNoIndex(); 
+        //  var table =document.getElementById('mail-record-box-table')
+       // getPagination(table);
+
+
+              }
+ 
+        
+})
+
 }

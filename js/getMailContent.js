@@ -191,8 +191,9 @@ return false
  });//end of $.each
  
    
-     $('.mail-content').html(content)
-  
+     $('.mainMailBox-content').html(content)
+
+ 
     modal()
   
 }//EOF GETREPORTS FUNCTION

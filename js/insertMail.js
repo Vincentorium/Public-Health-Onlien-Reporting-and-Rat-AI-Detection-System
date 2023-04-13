@@ -3,8 +3,8 @@ function insertMail(dataJS){
 
 
 
-     var imageData = new FormData();
-   
+    let imageData = new FormData();
+    let isSuccess=false;
 
     imageData.append('id',null);
     imageData.append('title',dataJS.title);
@@ -26,21 +26,21 @@ $.ajax({
       data: imageData,
       processData: false,
       contentType: false,
+      async:false,
             success: function(response) {
 
-                    console.log('Mail inserted!');
-
+                   
+                    isSuccess=true;
                     alert("mail sent!");
                $('.modalOfMail').removeClass('active');
-           //    content.val("")
-              // title.val("")
-             //  attachMail.val("")
+ 
                  $('.file-input-Ctn-mail').addClass('demonHide');
 
             },
 
         });//EO ajax
 
+        return isSuccess;
 }
 
 

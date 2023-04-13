@@ -28,11 +28,25 @@ function handleMailInsert(submitButton){
 
         case "mainMailBoxSubmitBox":
             dataJS.title="Reply - "+box.data("mailtitle")
-            insertMail(dataJS)
-            $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
+            if(insertMail(dataJS)){
+           // $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
             closeTransformBox(box)
             getMailRecordsspecific(repID)
+          box.find('.mailTextArea').val("")
+          }
         break;
+
+         case "mailBox--specific":
+            dataJS.title="Reply - "+box.data("mailtitle")
+            if(insertMail(dataJS)){
+            $(".mail_specific_mail_box").removeClass("mail_specific_mail_box--active")
+            
+            
+          box.find('.mailTextArea').val("")
+          getMailRecordsspecific(dataJS.repID)
+          }
+        break;
+       
         case "mailBox":
 
             insertMail(dataJS)
@@ -50,7 +64,7 @@ function handleMailInsert(submitButton){
 
 
         }
-
+e.stopPropagation();
 }
 
 
@@ -171,14 +185,14 @@ $(document).on('click','.mail-specific-replayButton',function(e){
 
 
 
-$(".mail_specific_mail_box").addClass("mail_specific_mail_box--active")
- e.stopPropagation()
+  $(".mail_specific_mail_box").addClass("mail_specific_mail_box--active")
+  e.stopPropagation()
 })
 
 
 $(document).on('click','.mailReplayButton',function(e){
 $(".mailSubmitBox").addClass("active")
-$(".mail-list-content-mailBoxFunctionBox").addClass("demonHide")
+//$(".mail-list-content-mailBoxFunctionBox").addClass("demonHide")
 })
 
 

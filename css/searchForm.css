@@ -753,3 +753,10 @@ display:flex;
 }
 */
 
+.reporterInfoTable{
+
+    text-align:left;
+}
+.collectionContent{
+    height: 120px;
+}

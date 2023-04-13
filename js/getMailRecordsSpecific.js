@@ -171,7 +171,7 @@ mailResultSpecific =result
  replayBox=
 
    '    <!-- SO mail_specific_mail_box  -->'
-+'                <div class="mailSubmitBox--JS mail_specific_mail_box" id="mailSubmitBox" data-repID='+repID+' data-mailTitle='+title+'>'
++'                <div class="mailSubmitBox--JS mail_specific_mail_box" id="mailSubmitBox" data-repID='+repID+' data-mailTitle='+title+' data-submitbox="mailBox--specific">'
 +''
 +'                  <div class="mailBoxRecipients">'
 +'                    <span class="mail-replay-title">'
@@ -283,7 +283,7 @@ mailResultSpecific =result
   
   textArea.html(tempText) 
 
-      
+   
           //  addNoIndex(); 
         //  var table =document.getElementById('mail-record-box-table-specific')
        // getPagination(table);
@@ -292,7 +292,9 @@ mailResultSpecific =result
               }
  
         
-}) }
+})
+
+}
 
 
 function insertMailBoxIntoPost(){
@@ -317,9 +319,7 @@ function insertMailBoxIntoPost(){
 +'              </div>'
 
 +'              <div class="mail-record-box mail-reocrd-box-specific" id="mail-record-box">'
-+'                <div class="mailModal-sideBar ">'
-
-+'                </div>'
+ 
 +'                <div class="maibox-list maibox-list-specific">'
 +'                  <div class=" ">'
 

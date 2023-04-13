@@ -67,6 +67,8 @@
   <script defer src="js\updateReportStatus.js"></script>
   <script defer src="js\insertMail--ForRevelantReportsUsers.js"></script>
   <script defer src="js\handleGeneral.js"></script>
+  <script defer src="js\getReportStatus.js"></script>
+
 
 </head>
 
@@ -76,6 +78,83 @@
 
     <div class="windowModal">
       <div class="windowModal--mailbox">
+
+
+      </div>
+
+      <div class="windowModal--mainMailBox">
+
+
+
+        <div class="mailModal modalGeneral ">
+          <div class="mailModal-title">
+            <img class="closeIcon close mail-List-Close" src="./images/exit.png" data-close-button alt="">
+
+
+          </div>
+          <div class="mailbox-mainLayer">
+            <div class="mailbox-mainLayer-top">
+              <div class="mailBoxFilterTitle"> Mail </div>
+              <div class="mail-list-filter-Box">
+
+                <div>
+                  User: <input type="text">
+                  Keyword: <input type="text">
+                </div>
+                <button class="mailbox-filterButton">Search</button>
+
+              </div>
+            </div>
+
+            <div class="mail-record-box" id="mail-record-box">
+              <div class="mailModal-sideBar ">
+
+
+                <div class="mail-button mail-button-inbox mailbuttonHover">
+                  Inbox
+                </div>
+                <div class="mail-button mail-button-sent">
+                  Sent
+                </div>
+              </div>
+              <div class="maibox-list">
+                <div class=" ">
+
+                  </h3>
+                </div>
+                <div id="mail-record-box-table" class="mail-record-box-table">
+
+
+                </div>
+
+
+
+
+
+                <div class=" complaintTableBottomFunc mail-reocrd-table-pagination">
+
+
+                </div>
+                <!-- <div class="mail-record-table-container">
+              <nav>
+                <ul class="mail-record-table-pagination"> </ul>
+
+              </nav> -->
+
+
+              </div>
+              <div class="mainMailBox-content-ctn">
+                <div class="mainMailBox-content"></div>
+
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+        </div>
 
 
       </div>
@@ -480,111 +559,9 @@
         <!-- eof mail inside post -->
       </div> <!-- EOF postContentBox-->
 
-      <!-- SOF modal Mail Box-->
-      <div class="mailModal modalGeneral ">
-        <div class="mailModal-title">
-          <img class="closeIcon close mail-List-Close" src="./images/exit.png" data-close-button alt="">
+      <!-- SOF Mail modal  Box-->
 
 
-        </div>
-        <div class="mailbox-mainLayer">
-          <div class="mailbox-mainLayer-top">
-            <div class="mailBoxFilterTitle"> Mail </div>
-            <div class="mail-list-filter-Box">
-
-              <div>
-                User: <input type="text">
-                Keyword: <input type="text">
-              </div>
-              <button class="mailbox-filterButton">Search</button>
-
-            </div>
-          </div>
-
-          <div class="mail-record-box" id="mail-record-box">
-            <div class="mailModal-sideBar ">
-
-
-              <div class="mail-button mail-button-inbox mailbuttonHover">
-                Inbox
-              </div>
-              <div class="mail-button mail-button-sent">
-                Sent
-              </div>
-            </div>
-            <div class="maibox-list">
-              <div class=" ">
-
-                </h3>
-              </div>
-              <div id="mail-record-box-table" class="mail-record-box-table">
-
-
-              </div>
-
-
-
-
-
-              <div class=" complaintTableBottomFunc mail-reocrd-table-pagination">
-
-
-              </div>
-              <!-- <div class="mail-record-table-container">
-              <nav>
-                <ul class="mail-record-table-pagination"> </ul>
-
-              </nav> -->
-
-
-            </div>
-            <div class="mail-content-ctn">
-              <div class="mail-content"></div>
-
-            </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          </div>
-        </div>
-      </div>
 
 
 
