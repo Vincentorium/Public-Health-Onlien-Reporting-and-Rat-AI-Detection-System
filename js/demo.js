@@ -557,13 +557,5 @@ $('.forInsert').append(content);
 
 }
 
-	if(userName!="meow"){
- $('.allPostPollutionType1_demo').html("Waste Pollution")
-
-  }
-  if(userName==="HA"){
-
-    $('.postMngtStatus').append( '<span class="allPostStatusDpt">HA</span>')
-    
-}
+	 
  })

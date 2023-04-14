@@ -760,3 +760,15 @@ display:flex;
 .collectionContent{
     height: 120px;
 }
+
+ .thumbnails{
+            width: 50px;
+            height: 50px;
+        }
+
+        .thumbnails2:hover {
+             
+            height: 400px;
+            width: auto;
+        }
+     

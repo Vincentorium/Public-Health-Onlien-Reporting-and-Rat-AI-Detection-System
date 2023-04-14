@@ -3,10 +3,12 @@ include "config.php";
 extract($_POST);
 // Perform a query
  
-$sql="SELECT * FROM mail AS m
+$sql="SELECT *,m.id as mID,img.id as imgID FROM mail AS m
+
+LEFT JOIN mailimage AS img ON m.id=img.mailId
 LEFT JOIN reports AS r ON m.FKrepId=r.repID
 LEFT JOIN users AS u ON r.repNormalUser=u.userID
-WHERE m.isSent=? AND m.FKOfficerId=?
+WHERE m.id=?
 ORDER BY m.dateCreated DESC";
 
  
@@ -19,7 +21,7 @@ if (!$stmt) {
 }
 
 
- $stmt->bind_param("ii",$isSent, $userID);
+ $stmt->bind_param("i",$mailID);
 
 if (!$stmt->execute()) {
     die("Error in statement execution: " . $stmt->error);
@@ -35,14 +37,14 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 		
         $output[] =     array(
-	'mailId' => $row['id'],
- 
+	'mailId' => $row['mID'],
+		'imgId' => $row['imgID'],
     'dateCreated' => $row['dateCreated'],
 	'title' => $row['title'],
 	'content' => $row['content'],
 	'FKrepId' => $row['FKrepId'],
 	'FKOfficerId' => $row['FKOfficerId'],
- 
+ 	'name' => $row['name'],
 	'isSent' => $row['isSent'],
 	'isRead' => $row['isRead'],
   

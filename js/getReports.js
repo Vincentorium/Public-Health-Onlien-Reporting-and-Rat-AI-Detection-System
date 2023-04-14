@@ -192,7 +192,7 @@ $.each(result.reverse(), function(index, data){
 +'                      <span class="repContent">'
             +            data.repContent
 
-      +    '  <br>  <img class="repContentPic" width="600px" src="data:image/png;base64,'+ data.repAttach+'">'
+      +    '  <br>  <img class="repContentPic" width="600px" src="./php/uploads/'+ data.imgPath+'">'
 
    
   

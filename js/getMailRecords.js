@@ -6,7 +6,7 @@ var mailLastestOne
 
  function getMailRecords(isSent){
     
-      var content
+      let content=""
       $('.mail-record-box-table').html("");
       $('.mail-record-box-table').fadeOut(1);
 

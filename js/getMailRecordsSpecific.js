@@ -52,9 +52,24 @@ $.ajax({
 mailResultSpecific =result
  title=result[0].repTitle
  noOfMail=result.length
+
+
+
+                 
+
+
+
+
+
+
+
                 
      $.each(result, function(index, data){
            
+
+
+          let mailAttachment=""
+
             content +=
             '<div class="mail-list-summary-one mail-list-summary-specific  '+ ((data.isSent==0&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
 +' data-mailid='+data.mailId 
@@ -142,8 +157,8 @@ mailResultSpecific =result
 +'</textarea>'
 +'          <br>'
 
-+ '  <a href="data:image/png;base64,'+ data.attachment+'" download>'+(data.attachName==null?"":data.attachName)+'</a>' 
 
+ 
  +'<!--SO mailBoxFunctionInsideRep-->'
  
  
@@ -199,6 +214,16 @@ mailResultSpecific =result
 +'                    <br>'
 +''
 
+
+
+
+
+
+
+
+
+
+
 +'<!--SO mail_specific_submit-box-->'
 
 +'<div class="maiBoxFunInsideRep mail_specific_submitButton"> '
@@ -210,17 +235,44 @@ mailResultSpecific =result
 +'</span>'
 
 
+
+//S input file
+ +' <div class="mailAttachBox mailAttachBox--specificBox">'
+ +'       <input type="file" id="file-input--specificBox" class="fileInput fileInput--specificBox inputDisplay--specificBox file-input-mail-JS 0" />'
+ +'       <div class="preview preview--specificBox"></div>'
+ 
+ +'   </div>'
+
+
++' <hr style="width:100%;text-align:left;margin-left:0">'
+//E input file
+
+
+
+
 +'<!--SO  button and label and image-->'
 +'<div class="mailBoxFunctionInsideRep ">'
 +'            <button class="sendCmtBtn sendCmtBtnGP2 mail-specific-submitButton"  data-submitctn=".mail_specific_mail_box">Send</button>'
 +' <div class="uploadForAttach">'
 
-  +'  <label for="file-input-mail-specific">'
+  +'  <label for="file-input--specificBox">'
     +'    <img src="./images/attachIcon.png"/>'
    +' </label>'
 
  +'</div>'
  +'</div>'
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

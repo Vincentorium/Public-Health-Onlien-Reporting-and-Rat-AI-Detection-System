@@ -242,11 +242,9 @@ position: absolute;
     border-left: solid 5px blue;
 }
 .mail-list-submit-box-cancel{
-
+margin-left: 410px;
   cursor: pointer;
-    
-    right: 15px;
-    top: 8px;
+     
 }
 
 .mail-list-title-style{
@@ -266,6 +264,10 @@ position: absolute;
     
     justify-content: space-between;
 }
+
+   .mailBoxTitle--specific{
+            justify-content: flex-start;
+        }
 .mailBoxTitle>h3{
 
      white-space: nowrap;
@@ -413,3 +415,17 @@ display: flex;
   left: 50%;
   transform: translate(-50%, -50%);
 }
+      .preview--mainMailBox {
+
+            display: flex;
+            margin-left: 13px;
+        }
+
+        .close-button--mainMailBox {
+            margin-right: 16px;
+        }
+
+        .fileInput{
+
+             display: none;
+        }

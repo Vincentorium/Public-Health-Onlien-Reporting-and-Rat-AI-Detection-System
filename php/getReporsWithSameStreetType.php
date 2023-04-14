@@ -20,7 +20,7 @@ if (mysqli_num_rows($result) > 0) {
 
 
 
-			$image_data = base64_encode($row['repAttach']);
+		 
 
 			// Create an associative array with both binary image data and other data
 			$record[] = array(
@@ -46,7 +46,7 @@ if (mysqli_num_rows($result) > 0) {
 				'userDept' => $row['userDept'],
 				'userPassword' => $row['userPassword'], 
 				
-				'repAttach' => $image_data);
+			 );
 			}
 			echo  json_encode($record);
 } else {

@@ -1,32 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 function getMailContent(mailId){
 
   //alert("caller is " + getReports2.caller);
@@ -34,11 +5,34 @@ function getMailContent(mailId){
 var status="readonly";
 
 var content=""
- 
-$.each(mailResult, function(index, data){
-  
 
-//fetch data from the result which loads at begin.
+
+      $.ajax({
+        type:'POST',
+        dataType: "json",
+        data: {
+       
+        mailID:mailId
+          },
+         async: false,
+   
+          url: "./php/getMailContent.php",
+          success: function (result) {
+mailResult =result
+ let data=result[0]
+                let havaAttach=(data.name!==null);
+                let numOfAttach=(result.length)
+                let mailAttachment=""
+        if(havaAttach){         
+                 
+              for(let i=0;i<numOfAttach;i++){
+              mailAttachment+= '  <a href="./php/uploads/'+ result[i].name+'" download>'
+              +'<img class="thumbnails" src="./php/uploads/'+ result[i].name+'" alt="No"   style="display: '+(havaAttach===true?"inline":"none")+'"></a>' 
+
+              }
+        }
+  
+ //fetch data from the result which loads at begin.
   if(data.mailId==mailId){
    
        var identity=data.isSent==0?"Sender":"Recipient"
@@ -83,19 +77,11 @@ $.each(mailResult, function(index, data){
  +'<div class="mailBoxRecipients">'
  +'<span >'+identity+': </span>'
  +'<input type="text" class="mailInput recipientInput" '+status+' value="'+data.userName+'(Display relevant mail)" >'
-  +'<span>Relevant Groups:</span>'
+  
  
  
  
-+'            <select name="Status" class="mailRelevantGroup" >'
-+'              <option value="Unchange">None</option>'
-+'              <option value="Fack Checking">Default Group</option>'
-+'              <option value="Wait in line">Wait in line</option>'
  
-+'              <option value="Solved">Solved</option>'
-+'              <option value="unapproved">reclassfiy</option>'
-+'              <option value="approved" class="temp_test">for Test</option>'
-+'            </select>'
  
  
  
@@ -107,8 +93,8 @@ $.each(mailResult, function(index, data){
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'            aria-haspopup="true" style="resize:none;" '+status+'>'+data.content+'</textarea>'
 +'          <br>'
-
-+ '  <a href="data:image/png;base64,'+ data.attachment+'" download>'+(data.attachName==null?"":data.attachName)+'</a>' 
++''+(havaAttach===true?"<div>Attachment:</div>":"")
++ mailAttachment
 
  +'<!--SO mailBoxFunctionInsideRep-->'
 +button
@@ -129,14 +115,7 @@ $.each(mailResult, function(index, data){
 +'                    <span class="mail-replay-title">'
 +'<img src="./images/replyIcon.png" class="replayIcon" >'
 +data.userName+'</span>'
-+'                    <select name="Status" class="mail-content-replay">'
-+'                      <option value="Unchange">None</option>'
-+'                      <option value="Fack Checking">Default Group</option>'
-+'                      <option value="Wait in line">Wait in line</option>'
-+'                      <option value="Solved">Solved</option>'
-+'                      <option value="unapproved">reclassfiy</option>'
-+'                      <option value="approved" class="temp_test">for Test</option>'
-+'                    </select>'
+ 
 +'  <span class="mail-list-submit-box-cancel" data-close-button>X</span>'
 +'                  </div>'
 +''
@@ -148,17 +127,26 @@ $.each(mailResult, function(index, data){
 +'                      name="comment[text]" id="comment_text'
 +'      cols=" 40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'                      aria-haspopup="true" style="resize:none;"></textarea>'
-+'                    <br>'
-+''
+ 
 +'                    <!--SO mail_specific_submitButton-->'
 +'                    <div class="maiBoxFunInsideRep ">'
 +''
 +'                      <!--  image file and close button-->'
 +'                      <span class="file-input-Ctn file-input-Ctn-mail demonHide">'
-+'                        <input type="file" name="file-input" class="file-input file-input-mail file-input-mail-JS"'
-+'                          id="file-input">'
-+'                        <span class="file-input-cancel">X</span>'
++'                        <!--  <input type="file" name="file-input" class="file-input file-input-mail file-input-mail-JS "'
++'                          id="file-input">-->'
++'                        <span class="file-input-cancel demonHide">X</span>'
 +'                      </span>'
+
+
+//input file
+ +' <div class="mailAttachBox mailAttachBox--mainMailBox">'
+ +'       <input type="file" id="file-input--mainMailBox" class="fileInput fileInput--mainMailBox inputDisplay--mainMailBox file-input-mail-JS 0" />'
+ +'       <div class="preview preview--mainMailBox"></div>'
+ 
+ +'   </div>'
+
+
 +'                      <hr style="width:100%;text-align:left;margin-left:0">'
 +'                      <!--  button and label and image-->'
 
@@ -168,11 +156,17 @@ $.each(mailResult, function(index, data){
 
 +'                        <button class="sendCmtBtn sendCmtBtnGP2 mailSubmitButton"'
 +'                          data-submitctn=".mailSubmitBox" data-close-button>Send</button>'
+
+
+
 +'                        <div class="uploadForAttach">'
-+'                          <label for="file-input">'
++'                          <label for="file-input--mainMailBox">'
 +'                            <img src="./images/attachIcon.png" />'
 +'                          </label>'
 +'                        </div>'
+
+
+
 +'                      </div>'
 +'                    </div>'
 +''
@@ -183,20 +177,21 @@ $.each(mailResult, function(index, data){
 +                '<!--EO Mail -->'
  
 
-return false
+//return false
 
 
-}
-
- });//end of $.each
+} 
  
    
      $('.mainMailBox-content').html(content)
 
  
     modal()
-  
-}//EOF GETREPORTS FUNCTION
+              }
 
 
+
+            })
+          
+          }
  

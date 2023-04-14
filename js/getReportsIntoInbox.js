@@ -69,9 +69,9 @@ $.ajax({
 
                  //SOF 1.1.2.1  postBox_contentBox_contentBox_picBox
                 +'   <div class="allPostPicBox">'
-               +'    <img class="allPostPostImg" src="data:image/png;base64,'+ data.repAttach+'">'
+               +'    <img class="allPostPostImg" src="./php/uploads/'+ data.imgPath+'">'
 
-               //   '<img class="allPostCmtIcon" src="data:image/png;base64,'+ data.repAttach+'">'
+               //    
               +'   </div>'
  
                 //SOF 1.1.2.2  postBox_contentBox_contentBox_Content

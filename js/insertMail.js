@@ -10,12 +10,16 @@ function insertMail(dataJS){
     imageData.append('title',dataJS.title);
     imageData.append('content',dataJS.content);
     imageData.append('FKrepId',dataJS.repID);
-    imageData.append('image', dataJS.attachMail);
+
     imageData.append('FKOfficerId',$.cookie('userID'));
    
+    $(dataJS.attachMail).each(function(index,value){
 
+ imageData.append('images_'+index,value );
 
+    })
 
+   
 
 
 
