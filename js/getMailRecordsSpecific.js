@@ -49,26 +49,36 @@ $.ajax({
    
           url: "./php/getMailRecordsSpecific.php",
           success: function (result) {
-mailResultSpecific =result
- title=result[0].repTitle
- noOfMail=result.length
+ 
+ 
+            mailResultSpecific =result
+            title=result[0].repTitle
+            noOfMail=result.length
 
-
-
-                 
-
-
-
-
-
-
-
-                
      $.each(result, function(index, data){
            
+                let havaAttach=(data.images!=0);
+              
+                let mailAttachment=""
+                if(havaAttach){         
+                        $(data.images).each(function(index,data){
+                                  mailAttachment+= '<a href="./php/uploads/'+data+'" download>'
+                      +'<img class="thumbnails" src="./php/uploads/'+data+'" alt="No"   style="display: '+(havaAttach===true?"inline":"none")+'"></a>' 
 
 
-          let mailAttachment=""
+                        })
+                     
+                }
+
+/*
+
+
+           
+*/
+
+
+
+
 
             content +=
             '<div class="mail-list-summary-one mail-list-summary-specific  '+ ((data.isSent==0&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
@@ -155,6 +165,13 @@ mailResultSpecific =result
 
 
 +'</textarea>'
+
+
++(havaAttach===true?"<div>Attachment:</div>":"")
++ mailAttachment
+
+
+
 +'          <br>'
 
 
@@ -192,14 +209,7 @@ mailResultSpecific =result
 +'                    <span class="mail-replay-title">'
 +'<img src="./images/replyIcon.png" class="replayIcon" >'
 +data.posterName+'</span>'
-+'                    <select name="Status" class="mail-content-replay">'
-+'                      <option value="Unchange">None</option>'
-+'                      <option value="Fack Checking">Default Group</option>'
-+'                      <option value="Wait in line">Wait in line</option>'
-+'                      <option value="Solved">Solved</option>'
-+'                      <option value="unapproved">reclassfiy</option>'
-+'                      <option value="approved" class="temp_test">for Test</option>'
-+'                    </select>'
+ 
 +'  <span class="mail-list-submit-box-cancel close-transform-box" >X</span>'
 +'                  </div>'
 +''
@@ -211,8 +221,9 @@ mailResultSpecific =result
 +'                      name="comment[text]" id="comment_text'
 +'      cols=" 40" class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'                      aria-haspopup="true" style="resize:none;"></textarea>'
-+'                    <br>'
+ 
 +''
+
 
 
 
@@ -277,6 +288,14 @@ mailResultSpecific =result
 
 
 +'</div> '
+
+
+
+
+
+
+
+
 +'<!--EO mail_specific_submit-box button and label and image-->'
 
 

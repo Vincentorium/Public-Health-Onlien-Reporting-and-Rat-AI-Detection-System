@@ -2,60 +2,174 @@
 include "config.php";
 extract($_POST);
 // Perform a query
-$sql = "SELECT *,u1.userName as mailSender  ,u2.userName as posterName FROM `mail` 
-LEFT JOIN reports  
-on mail.FKrepId = reports.repID
-LEFT JOIN users as u1
-on mail.FKOfficerId = u1.userID
-Left JOIN users as u2
-on reports.repNormalUser=u2.userID
-Where 
-FKrepId='$repID'
-
-";
  
- 
-$result = mysqli_query($conn, $sql);
 
-$record = array();
-// Fetch data
 
-if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
+$sqlImage="SELECT * FROM `mailimage`";
+ 
+
+$stmtImage = $conn->prepare($sqlImage);
+
+
+if (!$stmtImage) {
+    die("Error in statement preparation: " . $conn->error);
+}
+ 
+
+if (!$stmtImage->execute()) {
+    die("Error in statement execution: " . $stmtImage->error);
+}
+
+
+$result = $stmtImage->get_result();
+$outputImage = array();
+// Check if any records were returned
+if ($result->num_rows > 0) {
+    // Output data of each row
+ 
+    while ($row = $result->fetch_assoc()) {
+		
+					$outputImage[] =     array(
+
+				'id' => $row['id'],
+			
+				'mailId' => $row['mailId'],
+				'name' => $row['name'],
+				
+
+				);
+    }
+    
+} else {
+    echo "No records found.";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$sql_Temp="SELECT *,m.id as mID,img.id as imgID 
+FROM mail AS m
+LEFT JOIN mailimage AS img ON m.id=img.mailId
+LEFT JOIN reports AS r ON m.FKrepId=r.repID
+LEFT JOIN users AS u ON r.repNormalUser=u.userID
+WHERE r.repID =?
+ORDER BY m.dateCreated DESC
+GROUP by mID;";
+
+$sql="SELECT *,  m.id as mID,  
+(select count(*) from mailimage where mailimage.mailId=mID) as images
+FROM mail AS m
+LEFT JOIN reports AS r ON m.FKrepId=r.repID
+LEFT JOIN users AS u ON r.repNormalUser=u.userID
+WHERE r.repID =? ORDER BY m.dateCreated DESC;";
 
  
- 
-$record[] = array(
-	'mailId' => $row['id'],
+
+$stmt = $conn->prepare($sql);
+
+
+if (!$stmt) {
+    die("Error in statement preparation: " . $conn->error);
+}
+
+
+ $stmt->bind_param("i",$repID);
+
+if (!$stmt->execute()) {
+    die("Error in statement execution: " . $stmt->error);
+}
+
+
+$result = $stmt->get_result();
+$output = array();
+// Check if any records were returned
+if ($result->num_rows > 0) {
+    // Output data of each row
+ $index=0;
+    while ($row = $result->fetch_assoc()) {
+		
+        $output[] =     array(
+	'mailId' => $row['mID'],
+		 
     'dateCreated' => $row['dateCreated'],
 	'title' => $row['title'],
 	'content' => $row['content'],
 	'FKrepId' => $row['FKrepId'],
 	'FKOfficerId' => $row['FKOfficerId'],
-	'attachName' => $row['attachName'],
+ 
+
+	'images' => $row['images'],
+	
+	
+	
 	'isSent' => $row['isSent'],
 	'isRead' => $row['isRead'],
-    'imgPath' => $row['imgPath'],
-
-	'userName' => $row['mailSender'],
-	'posterName' => $row['posterName'],
+  
+    
+	'userName' => $row['userName'],
 	'repNormalUser' => $row['repNormalUser'],
 
 	'repTitle' => $row['repTitle']
 
 	);
+	if( $output[$index]["images"]!=0){
+			//use mail id to get images
+			$output[$index]["images"]=array();
 
+			for ($i = 0; $i < count($outputImage); $i++) {
+				if($outputImage[$i]["mailId"]== $output[$index]["mailId"]){
+						($output[$index]["images"])[]=$outputImage[$i]["name"];
+				}
+			}
+			
+	}
+		$index++;
+    }
+		
 
-
-
- }
-			echo  json_encode($record);
+    echo json_encode($output);
 } else {
-    echo "No results found.";
+    echo "No records found.";
 }
 
-// Close connection
-mysqli_close($conn);
 
+
+
+$stmt->close();
+
+
+
+
+ 
 
 ?>

@@ -80,15 +80,17 @@ e.stopPropagation()
  
 //for operator to update report status between unapprove and approve fo
 $(document).on('click','.closeButton',function(e){
-
-    let closeButtonType=$(this).data("close_button");
-    let submitBox=$("."+$(this).data("close_button"))
+   
+    let closeButtonType=$(this).data("submitctn");
+    let submitBox=$("."+$(this).data("submitctn"))
 
     switch(closeButtonType) {
     case "multiSubmitBox":
            
-            alert("close test")
+           
             submitBox.removeClass("activeMultiMailBo")
+             inputID__multiMails=0 
+             clearMailBox_multiMails(submitBox)
             break;
     case "relevantReportsSubmit":
  

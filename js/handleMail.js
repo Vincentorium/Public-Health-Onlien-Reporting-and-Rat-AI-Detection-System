@@ -18,62 +18,88 @@ function handleMailInsert(submitButton){
      "content": box.find('.mailTextArea').val(),
      "title": "Reply - "+box.find(".mailTitleInput ").val(),//box.data('mailtitle'),
      "repID": box.data('repid'),
-     "attachMail":box.find('.file-input-mail-JS')[0].files[0]
+     
     }
     
 
-    
+    //"attachMail":box.find('.file-input-mail-JS')[0].files[0]
      switch(boxType){
       
 
           case "mainMailBoxSubmitBox":
 
-           let tempArr=[]
+              let tempArr=[]
 
-          $(".fileInputed--mainMailBox").each(function(index,value){
-              tempArr.push(value.files[0] );
-          })
-          dataJS.attachMail= tempArr
+              $(".fileInputed--mainMailBox").each(function(index,value){
+                  tempArr.push(value.files[0] );
+              })
+              dataJS.attachMail= tempArr
 
-            dataJS.title="Reply - "+box.data("mailtitle")
-            if(insertMail(dataJS)){
-           // $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
-            closeTransformBox(box)
-            getMailRecordsspecific(repID)
-         
-         
+              dataJS.title="Reply - "+box.data("mailtitle")
+              if(insertMail(dataJS)){
+
+                closeTransformBox(box)
+                getMailRecordsspecific(repID)
                 clearMailBox(box)
-
-        
-
-          }
+              
+              }
         break;
+     
+          case "mailBox--specific":
 
-         case "mailBox--specific":
-            dataJS.title="Reply - "+box.data("mailtitle")
-            if(insertMail(dataJS)){
-            $(".mail_specific_mail_box").removeClass("mail_specific_mail_box--active")
+
+              let tempArrSpecific=[]
+
+              $(".fileInputed--specificBox").each(function(index,value){
+                  tempArrSpecific.push(value.files[0] );
+              })
+              dataJS.attachMail= tempArrSpecific
+
+              dataJS.title="Reply - "+box.data("mailtitle")
+              if(insertMail(dataJS)){
+                $(".mail_specific_mail_box").removeClass("mail_specific_mail_box--active")
             
             
-          box.find('.mailTextArea').val("")
-          getMailRecordsspecific(dataJS.repID)
-          }
+        
+                  getMailRecordsspecific(dataJS.repID)
+              //    box.find('.mailTextArea').val("")
+               
+                clearMailBox_specificBox(box)
+                inputID__specificBox=0;
+              }
+     
         break;
        
-        case "mailBox":
+          case "mailBox":
 
             insertMail(dataJS)
             $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
             closeTransformBox(box)
             getMailRecordsspecific(repID)
-            break;
 
-        case "multiSubmitBox":
-           dataJSForMail.title=box.find(".mailTitleInput ").val();
-           dataJSForMail.content=box.find(".mailTextArea ").val()
-           insertMultiMail(dataJSForMail)
-           $(".multiSubmitBox").removeClass("activeMultiMailBo")
-           break;
+          break;
+
+          case "multiSubmitBox":
+
+              let tempArrMulti=[]
+
+              $(".fileInputed--multiMails").each(function(index,value){
+                  tempArrMulti.push(value.files[0] );
+              })
+              dataJSForMail.attachMail= tempArrMulti
+
+
+
+
+            dataJSForMail.title=box.find(".mailTitleInput ").val();
+            dataJSForMail.content=box.find(".mailTextArea ").val()
+            insertMultiMail(dataJSForMail)
+           
+            clearMailBox_multiMails(box)
+            $(".multiSubmitBox").removeClass("activeMultiMailBo")
+            
+
+          break;
 
 
         }
@@ -99,7 +125,7 @@ let content=
 +'  <div class="loginCtnTitle">'
 +'    <!--  <h2>IVE Airline</h2> <a class="close" data-close-button></a> -->'
 +'    <h2 class="boxTitle">Mail</h2>'
-+'    <img class="closeIcon close mailClose closeButton" src="./images/exit.png" data-close_button="multiSubmitBox" alt="">'
++'    <img class="closeIcon close mailClose closeButton" src="./images/exit.png" data-submitctn="multiSubmitBox" alt="">'
 +''
 +''
  
@@ -135,12 +161,39 @@ let content=
 +'</span>'
 
 
+
+
+
+
+//S input file
+ +' <div class="mailAttachBox mailAttachBox--multiMails">'
+ +'       <input type="file" id="file-input--multiMails" class="fileInput fileInput--multiMails inputDisplay--multiMails file-input-mail-JS 0" />'
+ +'       <div class="preview preview--multiMails"></div>'
+ 
+ +'   </div>'
+
+
++' <hr style="width:100%;text-align:left;margin-left:0">'
+//E input file
+
+
+
+
+
+
+
+
+
+
+
+
+
 +'<!--SO  button and label and image-->'
 +'<div class="mailBoxFunctionInsideRep mail_specific_submitButton">'
 +'            <button class="sendCmtBtnGeneral sendCmtBtn sendCmtBtnGP2 mailSubmitButton" data-submitctn=".multiSubmitBox">Send</button>'
 +' <div class="uploadForAttach">'
 
-  +'  <label for="file-input" >'
+  +'  <label for="file-input--multiMails" >'
     +'    <img src="./images/attachIcon.png"/>'
    +' </label>'
 
@@ -150,7 +203,7 @@ let content=
 +'<!--EO  button and label and image-->'
 
 +'</div> '
-+' <div class="thumbnail thumbnail--mutlMail">  </div> '
++'<!-- <div class="thumbnail thumbnail--mutlMail">  </div>--> '
 +'</div>'
 +'</div>'
 
@@ -172,6 +225,10 @@ let content=
 $(document).on('click','.close-transform-box',function(e){
 
 closeTransformBox($(this).closest('.mailSubmitBox--JS'))
+  clearMailBox_specificBox($(".mail_specific_mail_box"))
+  inputID__specificBox=0;
+
+     
 e.stopPropagation()
 
 })  
@@ -212,6 +269,7 @@ $(".mailSubmitBox").addClass("active")
  $(document).on("click",".mail-list-submit-box-cancel",function(){
 
   $(".mail-list-content-mailBoxFunctionBox").removeClass("demonHide")
+  inputID__mainMailBox=0;
   clearMailBox($(".mailSubmitBox"))
  })
 
@@ -325,10 +383,13 @@ $(document).on('click','.mail-specific-mail-head',function(){
 
 
 
-  
+var inputID__mainMailBox=0 
+   var inputID__specificBox=0 
+  var inputID__multiMails=0 
 $(document).ready(function() {
-     var inputID=0 
-  $(document).on('change',".inputDisplay--mainMailBox", function() {
+    
+  $(document).on('change',".inputDisplay--mainMailBox", function(e) {
+ 
    
     
  $(this).addClass("fileInputed--mainMailBox")
@@ -344,11 +405,11 @@ $(document).ready(function() {
           width: 50,
           height: 50
         });
-          var removeBtn = $('<button class="close-button--mainMailBox" data-close='+inputID+'>').text('x');
+          var removeBtn = $('<button class="close-button--mainMailBox" data-close='+inputID__mainMailBox+'>').text('x');
          newInput = $('<input>').attr({
         type: 'file',
         name: 'images[]',
-        class: "fileInput inputDisplay--mainMailBox "+ ++inputID,
+        class: "fileInput inputDisplay--mainMailBox "+ ++inputID__mainMailBox,
         id:"file-input--mainMailBox"
          
       });
@@ -374,18 +435,154 @@ $(document).ready(function() {
       $(this).removeClass("inputDisplay--mainMailBox").css("display", "none");
    
     e.stopPropagation()
+
+    
+     
   });
-   e.stopPropagation()
+  
+
+    $(document).on('change',".inputDisplay--specificBox", function(e) {
+ 
+   
+    
+ $(this).addClass("fileInputed--specificBox")
+ $(this).removeAttr('id');
+
+     var newInput
+      var reader = new FileReader();
+      reader.onload = function(e) {
+
+        
+        var img = $('<img class="mailAttach--specificBox">').attr({
+          src: e.target.result,
+          width: 50,
+          height: 50
+        });
+          var removeBtn = $('<button class="close-button--specificBox" data-close='+inputID__specificBox+'>').text('x');
+         newInput = $('<input>').attr({
+        type: 'file',
+        name: 'images[]',
+        class: "fileInput inputDisplay--specificBox "+ ++inputID__specificBox,
+        id:"file-input--specificBox"
+         
+      });
+             $('.preview--specificBox').before(newInput);
+
+      
+        removeBtn.on('click', function() {
+          $(this).parent().remove();
+
+         
+          $("."+$(this).data("close")).remove()
+
+        });
+
+        var previewDiv = $('<div>').append(img).append(removeBtn);
+        $('.preview--specificBox').append(previewDiv);
+      };
+      reader.readAsDataURL($(this).get(0).files[0]);
+
+     
+
+     
+      $(this).removeClass("inputDisplay--specificBox").css("display", "none");
+   
+    e.stopPropagation()
+
+    
+     
+  });
+
+      $(document).on('change',".inputDisplay--multiMails", function(e) {
+
+   
+    
+ $(this).addClass("fileInputed--multiMails")
+ $(this).removeAttr('id');
+
+     var newInput
+      var reader = new FileReader();
+      reader.onload = function(e) {
+
+        
+        var img = $('<img class="mailAttach--multiMails">').attr({
+          src: e.target.result,
+          width: 50,
+          height: 50
+        });
+          var removeBtn = $('<button class="close-button--multiMails" data-close='+inputID__multiMails+'>').text('x');
+         newInput = $('<input>').attr({
+        type: 'file',
+        name: 'images[]',
+        class: "fileInput inputDisplay--multiMails "+ ++inputID__multiMails,
+        id:"file-input--multiMails"
+         
+      });
+             $('.preview--multiMails').before(newInput);
+
+      
+        removeBtn.on('click', function() {
+          $(this).parent().remove();
+
+         
+          $("."+$(this).data("close")).remove()
+
+        });
+
+        var previewDiv = $('<div>').append(img).append(removeBtn);
+        $('.preview--multiMails').append(previewDiv);
+      };
+      reader.readAsDataURL($(this).get(0).files[0]);
+
+     
+
+     
+      $(this).removeClass("inputDisplay--multiMails").css("display", "none");
+   
+    e.stopPropagation()
+
+    
+     
+  });
 });
 
-        function clearMailBox(box){
+ 
 
+        function clearMailBox(box){
+   inputID__mainMailBox=0;
                     box.find('.mailTextArea').val("")
                     box.find('.preview').html("")
                      
                     box.find(".mailAttachBox").html(
                        '       <input type="file" id="file-input--mainMailBox" class="fileInput fileInput--mainMailBox inputDisplay--mainMailBox file-input-mail-JS 0" />'
                       +'       <div class="preview preview--mainMailBox"></div>'
+                    )
+                   
+              }
+
+
+                function clearMailBox_multiMails(box){
+                    inputID__multiMails=0;
+                    box.find('.mailTextArea').val("")
+                    box.find('.preview').html("")
+                     
+                    box.find(".mailAttachBox").html(
+   '       <input type="file" id="file-input--multiMails" class="fileInput fileInput--multiMails inputDisplay--multiMails file-input-mail-JS 0" />'
+ +'       <div class="preview preview--multiMails"></div>'
+                    )
+                   
+              }
+
+
+     function clearMailBox_specificBox(box){
+                    inputID__multiMails=0;
+                    box.find('.mailTextArea').val("")
+                    box.find('.preview').html("")
+                     
+                    box.find(".mailAttachBox").html(
+               '       <input type="file" id="file-input--specificBox" class="fileInput fileInput--specificBox inputDisplay--specificBox file-input-mail-JS 0" />'
+ +'       <div class="preview preview--specificBox"></div>'
+ 
                     )
                    
               }

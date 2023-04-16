@@ -415,13 +415,14 @@ display: flex;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-      .preview--mainMailBox {
+ 
+      .preview--mainMailBox ,.preview--specificBox,.preview--multiMails{
 
             display: flex;
             margin-left: 13px;
         }
 
-        .close-button--mainMailBox {
+        .close-button--mainMailBox ,.close-button--specificBox ,.close-button--multiMails{
             margin-right: 16px;
         }
 
