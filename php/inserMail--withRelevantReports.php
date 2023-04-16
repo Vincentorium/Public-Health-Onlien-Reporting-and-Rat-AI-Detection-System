@@ -3,16 +3,15 @@ include "config.php";
 extract($_POST);
   var_dump($_POST);
  
-   $isSent=1;
+   
    $id=null;
- 
- 
+
 
 // Prepare the statement
 $stmt_insertMail = $conn->prepare(
    "INSERT INTO `mail`
-   (`id`, `dateCreated`, `title`, `content`,  `FKrepID`, `FKOfficerId`,`isSent`) 
-VALUES (?,?,?,?,?,?,?)");
+   (`id`, `dateCreated`, `title`, `content`,  `FKrepID`, `FKOfficerId`) 
+VALUES (?,?,?,?,?,?)");
 
 
 $noOfImage=0;
@@ -27,8 +26,8 @@ echo ("nubmer of elemet: ".count($_POST)
    for ($index = 0; $index <(count($_POST)/4);  $index++) {
 
       // Bind the parameters to the placeholders
-      $stmt_insertMail->bind_param("isssiii", $id, $datetime,  ${'arr_'.$index.'_title'}, ${'arr_'.$index.'_content'},
-       ${'arr_'.$index.'_FKrepId'},${'arr_'.$index.'_FKOfficerId'},$isSent);
+      $stmt_insertMail->bind_param("isssii", $id, $datetime,  ${'arr_'.$index.'_title'}, ${'arr_'.$index.'_content'},
+       ${'arr_'.$index.'_FKrepId'},${'arr_'.$index.'_FKOfficerId'});
     
  
 

@@ -1,4 +1,4 @@
-function getMailContent(mailId){
+function getMailContent(mailId,isSentByOfficer){
 
   //alert("caller is " + getReports2.caller);
  
@@ -35,9 +35,9 @@ mailResult =result
  //fetch data from the result which loads at begin.
   if(data.mailId==mailId){
    
-       var identity=data.isSent==0?"Sender":"Recipient"
+       var identity=(!isSentByOfficer)?"Sender":"Recipient"
        var button=""
-       if(data.isSent==0)
+       if(!isSentByOfficer)
       {
         button=
 '<div class="maiBoxFunInsideRep"> '

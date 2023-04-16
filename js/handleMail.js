@@ -297,7 +297,7 @@ $(document).on("click",".mail-list-summary-one",function(){
 
 //get mail content 
      var mailId=$(this).data('mailid')
-      getMailContent(mailId)
+      getMailContent(mailId,$(this).data('isSentByOfficer'))
   
 });
  

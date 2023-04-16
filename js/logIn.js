@@ -32,7 +32,7 @@ $(document).ready(function(){
 
               },
           error: function (err) {
-           alert("incorrect username or password.")
+           alert("incorrect username or password was entered.")
   
           }
         });
