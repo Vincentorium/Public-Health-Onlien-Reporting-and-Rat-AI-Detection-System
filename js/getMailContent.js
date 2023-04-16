@@ -76,7 +76,7 @@ mailResult =result
  +'<hr style="width:100%;text-align:left;margin-left:0">'
  +'<div class="mailBoxRecipients">'
  +'<span >'+identity+': </span>'
- +'<input type="text" class="mailInput recipientInput" '+status+' value="'+data.userName+'(Display relevant mail)" >'
+ +'<input type="text" class="mailInput recipientInput" '+status+' value="'+data.userName+'" >'
   
  
  

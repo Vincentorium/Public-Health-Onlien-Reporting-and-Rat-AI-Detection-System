@@ -17,7 +17,7 @@ var mailLastestOne
         data: {
        
         isSent:isSent,
-        userID: $.cookie('userID')
+       
           },
          async: false,
    
@@ -27,9 +27,15 @@ mailResult =result
  
                 
      $.each(result, function(index, data){
+
+ 
+
+                let isSentByOfficer=(data.isSentByOfficer==1)
+               
+
            
             content +=
-'   <div class="mail-list-summary-one  '+ ((data.isSent==0&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
+'   <div class="mail-list-summary-one  '+ ((!isSentByOfficer&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
 +' data-mailid='+data.mailId 
 +' data-issent='+data.isSent
 +' data-isread='+data.isRead+'>'

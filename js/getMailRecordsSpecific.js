@@ -36,7 +36,7 @@ var mailLastestOne
 
 
 
-       //var identity=data.isSent==0?"Sender":"Recipient"
+       //var identity=isSentByOfficer?"Sender":"Recipient"
       
      
 $.ajax({
@@ -58,7 +58,6 @@ $.ajax({
      $.each(result, function(index, data){
            
                 let havaAttach=(data.images!=0);
-              
                 let mailAttachment=""
                 if(havaAttach){         
                         $(data.images).each(function(index,data){
@@ -70,20 +69,18 @@ $.ajax({
                      
                 }
 
-/*
-
-
-           
-*/
+                let isSentByOfficer=(data.isSentByOfficer==1)
+                let sender=(isSentByOfficer?data.mailSenderName:data.citizenName)
+                let recipient=(isSentByOfficer?data.citizenName:"Officer")
 
 
 
 
 
             content +=
-            '<div class="mail-list-summary-one mail-list-summary-specific  '+ ((data.isSent==0&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
+            '<div class="mail-list-summary-one mail-list-summary-specific  '+ ((!isSentByOfficer&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
 +' data-mailid='+data.mailId 
-+' data-issent='+data.isSent
++' isSentByOfficer='+isSentByOfficer
 +' data-isread='+data.isRead+'>'
 
 
@@ -93,7 +90,7 @@ $.ajax({
 
         +'<div class="mail-specific-head-figureImage">'
 
-        +(data.userName).charAt(0)
+        +(sender).charAt(0)
         +'</div>'
 
 
@@ -101,7 +98,7 @@ $.ajax({
 
               +'<div class="mail-specific-head-sender">'
  +'<div class="mail-specific-head-sender-name"> ' 
-       +data.userName
+       +sender
        +' </div>'
  
  +'<hr  class="mail-specific-head-betwennNameDate">'
@@ -160,7 +157,7 @@ $.ajax({
 +'            aria-haspopup="true" style="resize:none;" '+status+'>'
 
       + "Recipient:"
-         + (data.isSent==0?"Officers":(data.posterName))
+         + recipient
 
 
 
@@ -208,7 +205,7 @@ $.ajax({
 +'                  <div class="mailBoxRecipients">'
 +'                    <span class="mail-replay-title">'
 +'<img src="./images/replyIcon.png" class="replayIcon" >'
-+data.posterName+'</span>'
++recipient+'</span>'
  
 +'  <span class="mail-list-submit-box-cancel close-transform-box" >X</span>'
 +'                  </div>'

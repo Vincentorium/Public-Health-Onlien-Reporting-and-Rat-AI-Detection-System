@@ -76,22 +76,16 @@ if ($result->num_rows > 0) {
 
 
 
-
-$sql_Temp="SELECT *,m.id as mID,img.id as imgID 
-FROM mail AS m
-LEFT JOIN mailimage AS img ON m.id=img.mailId
-LEFT JOIN reports AS r ON m.FKrepId=r.repID
-LEFT JOIN users AS u ON r.repNormalUser=u.userID
-WHERE r.repID =?
-ORDER BY m.dateCreated DESC
-GROUP by mID;";
-
-$sql="SELECT *,  m.id as mID,  
-(select count(*) from mailimage where mailimage.mailId=mID) as images
+ 
+$sql="SELECT *,u1.userDept as senderDept ,u1.userName as mailSenderName, u2.userName as citizenName,   m.id as mID,  
+(select count(*) from mailimage where mailimage.mailId=mID) as images,if( u1.userDept != 'complainer',1,0)  as isSentByOfficer
 FROM mail AS m
 LEFT JOIN reports AS r ON m.FKrepId=r.repID
-LEFT JOIN users AS u ON r.repNormalUser=u.userID
-WHERE r.repID =? ORDER BY m.dateCreated DESC;";
+
+LEFT JOIN users AS u1 ON m.FKOfficerId=u1.userID
+LEFT JOIN users AS u2 ON r.repNormalUser=u2.userID
+
+WHERE r.repID =?  ";
 
  
 
@@ -136,11 +130,17 @@ if ($result->num_rows > 0) {
 	'isRead' => $row['isRead'],
   
     
-	'userName' => $row['userName'],
-	'repNormalUser' => $row['repNormalUser'],
 
+	'senderDept' => $row['senderDept'],
+	'citizenName' => $row['citizenName'],
+	'mailSenderName' => $row['mailSenderName'],
+	'repNormalUser' => $row['repNormalUser'],
+	'isSentByOfficer' => $row['isSentByOfficer'],
+	
+	
 	'repTitle' => $row['repTitle']
 
+	
 	);
 	if( $output[$index]["images"]!=0){
 			//use mail id to get images

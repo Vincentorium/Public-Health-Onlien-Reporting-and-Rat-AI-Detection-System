@@ -35,7 +35,7 @@ $record[] = array(
 	'attachName' => $row['attachName'],
 	'isSent' => $row['isSent'],
 	'isRead' => $row['isRead'],
-    'name' => $row['imgPath'],
+    'imgPanth' => $row['imgPath'],
 
 	'userName' => $row['mailSender'],
 	'posterName' => $row['posterName'],
