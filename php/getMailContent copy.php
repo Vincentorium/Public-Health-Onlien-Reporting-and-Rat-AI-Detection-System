@@ -3,14 +3,19 @@ include "config.php";
 extract($_POST);
 // Perform a query
  
-$sql="SELECT *,m.id as mID,img.id as imgID FROM mail AS m
+ 
 
+
+$sql="SELECT *,m.id as mID,img.id as imgID ,u1.userDept as senderDept ,u1.userName as mailSenderName, u2.userName as citizenName,   m.id as mID,  
+(select count(*) from mailimage where mailimage.mailId=mID) as images,if( u1.userDept != 'complainer',1,0)  as isSentByOfficer
+FROM mail AS m
 LEFT JOIN mailimage AS img ON m.id=img.mailId
 LEFT JOIN reports AS r ON m.FKrepId=r.repID
-LEFT JOIN users AS u ON r.repNormalUser=u.userID
-WHERE m.id=?
-ORDER BY m.dateCreated DESC";
 
+LEFT JOIN users AS u1 ON m.userId=u1.userID
+LEFT JOIN users AS u2 ON r.repNormalUser=u2.userID
+where  m.id=?
+ORDER BY m.dateCreated DESC";
  
 
 $stmt = $conn->prepare($sql);
@@ -43,15 +48,21 @@ if ($result->num_rows > 0) {
 	'title' => $row['title'],
 	'content' => $row['content'],
 	'FKrepId' => $row['FKrepId'],
-	'FKOfficerId' => $row['FKOfficerId'],
+	'userId' => $row['userId'],
  	'name' => $row['name'],
-	
+	'isSentByOfficer' => $row['isSentByOfficer'],
 	'isRead' => $row['isRead'],
   
-    
-	'userName' => $row['userName'],
+    	'senderDept' => $row['senderDept'],
+	'citizenName' => $row['citizenName'],
+	'mailSenderName' => $row['mailSenderName'],
 	'repNormalUser' => $row['repNormalUser'],
+	'isSentByOfficer' => $row['isSentByOfficer'],
+	
 
+
+
+ 
 	'repTitle' => $row['repTitle']
 
 	);
