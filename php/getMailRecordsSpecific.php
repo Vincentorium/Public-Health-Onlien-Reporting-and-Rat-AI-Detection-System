@@ -45,47 +45,20 @@ if ($result->num_rows > 0) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
-$sql="SELECT *,u1.userDept as senderDept ,u1.userName as mailSenderName, u2.userName as citizenName,   m.id as mID,  
-(select count(*) from mailimage where mailimage.mailId=mID) as images,if( u1.userDept != 'complainer',1,0)  as isSentByOfficer
+$sql="SELECT *,u1.type as senderDept ,
+u1.fullname as mailSenderName, 
+u2.fullname as citizenName,  
+ m.id as mID,  
+(select count(*) from mailimage where mailimage.mailId=mID)
+as images,if( u1.fullname != 'complainer',1,0)  as isSentByOfficer
 FROM mail AS m
-LEFT JOIN reports AS r ON m.FKrepId=r.repID
+LEFT JOIN report AS r ON m.reportId=r.id
 
-LEFT JOIN users AS u1 ON m.FKOfficerId=u1.userID
-LEFT JOIN users AS u2 ON r.repNormalUser=u2.userID
+LEFT JOIN users AS u1 ON m.userId=u1.id
+LEFT JOIN users AS u2 ON r.userId=u2.id
 
-WHERE r.repID =?  ";
+WHERE r.id =?";
 
  
 
@@ -96,7 +69,7 @@ if (!$stmt) {
     die("Error in statement preparation: " . $conn->error);
 }
 
-
+//echo ("$repID: ".$repID);
  $stmt->bind_param("i",$repID);
 
 if (!$stmt->execute()) {
@@ -105,28 +78,33 @@ if (!$stmt->execute()) {
 
 
 $result = $stmt->get_result();
+
 $output = array();
 // Check if any records were returned
 if ($result->num_rows > 0) {
+	
     // Output data of each row
  $index=0;
     while ($row = $result->fetch_assoc()) {
-		
+	
         $output[] =     array(
 	'mailId' => $row['mID'],
 		 
-    'dateCreated' => $row['dateCreated'],
+    'dateCreated' => $row['date'],
 	'title' => $row['title'],
 	'content' => $row['content'],
-	'FKrepId' => $row['FKrepId'],
-	'FKOfficerId' => $row['FKOfficerId'],
+	'FKrepId' => $row['reportId'],
+	'FKOfficerId' => $row['userId'],
  
 
 	'images' => $row['images'],
 	
 	
 	
-	'isSent' => $row['isSent'],
+	//'isSent' => $row['isSent'],
+
+
+	//need recon
 	'isRead' => $row['isRead'],
   
     
@@ -134,7 +112,7 @@ if ($result->num_rows > 0) {
 	'senderDept' => $row['senderDept'],
 	'citizenName' => $row['citizenName'],
 	'mailSenderName' => $row['mailSenderName'],
-	'repNormalUser' => $row['repNormalUser'],
+	'repNormalUser' => $row['userId'],
 	'isSentByOfficer' => $row['isSentByOfficer'],
 	
 	
@@ -143,6 +121,7 @@ if ($result->num_rows > 0) {
 	
 	);
 	if( $output[$index]["images"]!=0){
+		
 			//use mail id to get images
 			$output[$index]["images"]=array();
 

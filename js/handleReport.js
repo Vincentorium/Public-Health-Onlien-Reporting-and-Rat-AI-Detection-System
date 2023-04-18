@@ -28,6 +28,7 @@ $.ajax({
             url: 'php/updateStatusForOfficer.php',
             data: data,
             dataType: 'json',
+            async:false,
             success: function(response) {
 
                     console.log('Status updated!');

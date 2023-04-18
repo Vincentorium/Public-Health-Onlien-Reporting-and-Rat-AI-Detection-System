@@ -40,6 +40,7 @@ $.ajax({
       data: imageData,
       processData: false,
       contentType: false,
+      asyn:false,
             success: function(response) {
 
                     console.log('Status updated!');

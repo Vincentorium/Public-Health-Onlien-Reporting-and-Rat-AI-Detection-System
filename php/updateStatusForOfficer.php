@@ -2,7 +2,7 @@
 include "config.php";
   print_r($_POST);
 extract($_POST);
-
+var_dump($_POST);
 $datetime=date('Y-m-d H:i:s');
   // Create the SQL statement with placeholders for the values
 
@@ -31,7 +31,7 @@ $stmt_insertRepStatus->bind_param("issisiss", $repStatusID, $repStatusType, $dat
 $repStatusRemark, $repUserID,$image_data,$image_name);
 
 
-$stmt_updateCurrentStatus = $conn->prepare("UPDATE reports SET repCurrentStatus=? WHERE repID=?");
+$stmt_updateCurrentStatus = $conn->prepare("UPDATE report SET repCurrentStatus=? WHERE id=?");
 $stmt_updateCurrentStatus->bind_param("si", $repStatusType, $repID);
 
  

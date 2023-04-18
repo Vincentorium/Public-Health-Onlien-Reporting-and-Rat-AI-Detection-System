@@ -25,8 +25,8 @@ $(document).ready(function(){
           },
           success: function (result) {		
           	$.cookie('userName', userName, { expires: 7, path: '/' });
-	          $.cookie('userDept', result.userDept, { expires: 7, path: '/' });
-            $.cookie('userID', result.userID, { expires: 7, path: '/' });
+	          $.cookie('userDept', result.type, { expires: 7, path: '/' });
+            $.cookie('userID', result.id, { expires: 7, path: '/' });
              
 			        window.location.href = "mainPage.html";
 

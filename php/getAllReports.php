@@ -2,12 +2,13 @@
 include "config.php";
 
 // Perform a query
-$sql = "SELECT * FROM `reports` as rep 
+$sql = "SELECT *,rep.id as repID 
+FROM `report` as rep 
  
 LEFT JOIN repstatus as status 
-on rep.repID = status.repStatusFKreports
+on rep.id = status.repStatusFKreports
   left join users
-on rep.repNormalUser=users.userID  
+on rep.userId=users.id
 
 ;";
  
@@ -24,34 +25,39 @@ if (mysqli_num_rows($result) > 0) {
 $record[] = array(
 	'repID' => $row['repID'],
     'repTitle' => $row['repTitle'],
-	'repDateSubmit' => $row['repDateSubmit'],
-	'repType' => $row['repType'],
-	'repTypeSpecification' => $row['repTypeSpecification'],
-	'repLocationDetail' => $row['repLocationDetail'],
-	'repLocationDetail' => $row['repLocationDetail'],
-	'repLocationY' => $row['repLocationY'],
-	'repStreet' => $row['repStreet'],
+	'repDateSubmit' => $row['timestamp'],
 
-	'repDatePeriodBegin' => $row['repDatePeriodBegin'],
-	'repDatePeriodEnd' => $row['repDatePeriodEnd'],
-	'repContent' => $row['repContent'],
-	'repNormalUser' => $row['repNormalUser'],
-	'repDept' => $row['repDept'],
-	'repCurrentStatus'=> $row['repCurrentStatus'],
-	
+	'repType' => $row['type'],
+	//'repTypeSpecification' => $row['repTypeSpecification'],
+	'repLocationDetail' => $row['address'],
+	 
+	'repLocationY' => $row['latitude'],
+	'repLocationX' => $row['longitude'],
+	'repDatePeriodBegin' => $row['date'],
+	'repContent' => $row['descr'],
+	'repNormalUser' => $row['userId'],
 
 
 	'repStatusID' => $row['repStatusID'],
 	'repStatusType' => $row['repStatusType'],
 	'repStatusDateCreated' => $row['repStatusDateCreated'],
 	'repStatusFKreports' => $row['repStatusFKreports'],
-	 
 
-	'userID' => $row['userID'],
-	'userName' => $row['userName'],
-	'userDept' => $row['userDept'],
-	'userPassword' => $row['userPassword'], 
-    'imgPath' => $row['imgPath'] );
+ 
+	'userID' => $row['id'],
+	'userName' => $row['username'],
+	'userDept' => $row['type'],
+	'userPassword' => $row['password'], 
+
+
+	'imgPath' => $row['imgPath'] ,
+//need recon: rep
+	'repCurrentStatus'=> $row['repCurrentStatus'],
+	'repDept' => $row['repDept'],
+	'repStreet' => $row['repStreet'],
+	'repDatePeriodEnd' => $row['repDatePeriodEnd']
+
+);
  
 }
 			echo  json_encode($record);
