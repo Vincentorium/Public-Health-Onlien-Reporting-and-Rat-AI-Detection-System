@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 19, 2023 at 03:48 PM
+-- Generation Time: Apr 19, 2023 at 04:00 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -33,7 +33,7 @@ CREATE TABLE `mail` (
   `userId` int(11) NOT NULL,
   `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `isRead` tinyint(1) NOT NULL
+  `isRead` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
