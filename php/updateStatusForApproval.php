@@ -46,7 +46,7 @@ if ($stmt_insertRepStatus->execute()) {
                
                            move_uploaded_file($_FILES['images_'.$indexJ]['tmp_name'], 'uploads/' . $imageName);
 
-                           $stmt_insertImage = $conn->prepare('INSERT INTO reportimage (`id`, `name`,reportId) VALUES (?, ?,?)');
+                           $stmt_insertImage = $conn->prepare('INSERT INTO reportStatusimage (`id`, `name`,reportStatusId) VALUES (?, ?,?)');
                         
                            $stmt_insertImage->bind_param("isi", $id,$imageName ,$repStatusID);
                   

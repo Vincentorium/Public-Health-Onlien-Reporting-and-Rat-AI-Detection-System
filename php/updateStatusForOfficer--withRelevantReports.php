@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                
 
 
-                        $stmt_insertImage = $conn->prepare('INSERT INTO reportimage (`id`, `name`,reportId) VALUES (?, ?,?)');
+                        $stmt_insertImage = $conn->prepare('INSERT INTO reportStatusimage (`id`, `name`,reportStatusId) VALUES (?, ?,?)');
                      
                         $stmt_insertImage->bind_param("isi", $id,$imageName ,$repStatusIDForFK);
             
