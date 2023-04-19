@@ -29,9 +29,14 @@ $repStatusRemark, $repUserID);
 // Execute the statement
 $noOfImage=0;
 $id=null;
-if ($stmt_insertRepStatus->execute()) {
-                $repStatusID = $stmt_insertRepStatus->insert_id;
+
+  try {
+            $stmt_insertRepStatus->execute();
+
+           $repStatusID = $stmt_insertRepStatus->insert_id;
+            
     // SO   get image   
+    
                   for ($index = 0; $index <4;  $index++) {
                             if(array_key_exists('images_'.$index, $_FILES)) {$noOfImage++;}
                   }
@@ -59,14 +64,22 @@ if ($stmt_insertRepStatus->execute()) {
                      }
             
                   }
-
+ 
        // EO   get image
-               
-			
-   
-} else {
-   echo "Error: " . $sql_insert . "<br>" . $conn->error;
-}
+
+
+       
+                      
+                        echo json_encode(['success' => true]);
+                  } catch(Exception $e) {
+                      echo "Error: " . $e->getMessage();
+              
+                   }
+
+
+
+
+ 
 
 // Close the statement and the connection
 $stmt_insertRepStatus->close();

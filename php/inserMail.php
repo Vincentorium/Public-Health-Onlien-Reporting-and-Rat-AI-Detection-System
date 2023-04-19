@@ -24,11 +24,11 @@ $id=null;
 // Prepare the statement
 $stmt_insertMail = $conn->prepare(
    "INSERT INTO `mail`
-   (`id`, `timestamp`, `title`, `content`,  `reportId`, `userId`) 
-VALUES (?,?,?,?,?,?)");
+   (`id`, `timestamp`,   `content`,  `reportId`, `userId`) 
+VALUES (?,? ,?,?,?)");
 
 // Bind the parameters to the placeholders
-$stmt_insertMail->bind_param("isssii", $id, $datetime, $title, $content,
+$stmt_insertMail->bind_param("issii", $id, $datetime,  $content,
   $FKrepId,$FKOfficerId);
   $stmt_insertMail->execute();
 $mail_id = $stmt_insertMail->insert_id;
