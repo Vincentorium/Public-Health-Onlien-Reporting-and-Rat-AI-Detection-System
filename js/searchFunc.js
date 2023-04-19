@@ -465,7 +465,7 @@ function getFlight(){
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+            //        +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 
@@ -566,7 +566,7 @@ function getFlight(){
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+    //                +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 
@@ -668,7 +668,7 @@ function getFlight(){
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+      //              +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 
@@ -821,7 +821,7 @@ function getFlight_DeptDemo(){
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+            //        +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 

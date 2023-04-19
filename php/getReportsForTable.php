@@ -46,12 +46,12 @@ if (mysqli_num_rows($result) > 0) {
 // Create an associative array with both binary image data and other data
 $record[] = array(
 	'repID' => $row['repID'],
-    'repTitle' => $row['repTitle'],
+    'repTitle' => $row['title'],
 	'repDateSubmit' => $row['timestamp'],
 	'repType' => $row['repType'],
   
 	 
-	'repDept' => $row['repDept'],
+	'repDept' => $row['dept'],
 
 
 	'repStatusID' => $row['repStatusID'],

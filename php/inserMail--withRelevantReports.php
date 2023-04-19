@@ -10,8 +10,8 @@ extract($_POST);
 // Prepare the statement
 $stmt_insertMail = $conn->prepare(
 "INSERT INTO `mail`
-   (`id`, `timestamp`, `title`, `content`,  `reportId`, `userId`) 
-VALUES (?,?,?,?,?,?)");
+   (`id`, `timestamp`,  `content`,  `reportId`, `userId`) 
+VALUES (?,?,?,?,?)");
 
 $noOfImage=0;
  for ($index = 0; $index <5;  $index++) {
@@ -25,7 +25,7 @@ echo ("nubmer of elemet: ".count($_POST)
    for ($index = 0; $index <(count($_POST)/4);  $index++) {
 
       // Bind the parameters to the placeholders
-      $stmt_insertMail->bind_param("isssii", $id, $datetime,  ${'arr_'.$index.'_title'}, ${'arr_'.$index.'_content'},
+      $stmt_insertMail->bind_param("issii", $id, $datetime,    ${'arr_'.$index.'_content'},
       ${'arr_'.$index.'_FKrepId'},${'arr_'.$index.'_FKOfficerId'});
 
       $stmt_insertMail->execute();

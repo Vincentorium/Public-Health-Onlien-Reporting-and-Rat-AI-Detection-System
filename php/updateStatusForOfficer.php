@@ -20,8 +20,8 @@ $stmt_insertRepStatus->bind_param("issisi", $repStatusID, $repStatusType, $datet
 $repStatusRemark, $repUserID);
 
 
-$stmt_updateCurrentStatus = $conn->prepare("UPDATE report SET repCurrentStatus=? WHERE id=?");
-$stmt_updateCurrentStatus->bind_param("si", $repStatusType, $repID);
+// $stmt_updateCurrentStatus = $conn->prepare("UPDATE report SET repCurrentStatus=? WHERE id=?");
+// $stmt_updateCurrentStatus->bind_param("si", $repStatusType, $repID);
 
  
 
@@ -63,18 +63,14 @@ if ($stmt_insertRepStatus->execute()) {
        // EO   get image
                
 			
-         if ($stmt_updateCurrentStatus->execute()) {
-         echo json_encode(['success' => true]);
-      } else {
-         echo "Error: " . $sql_insert . "<br>" . $conn->error;
-      }
+   
 } else {
    echo "Error: " . $sql_insert . "<br>" . $conn->error;
 }
 
 // Close the statement and the connection
 $stmt_insertRepStatus->close();
-$stmt_updateCurrentStatus->close();
+ 
 $conn->close();
 
 

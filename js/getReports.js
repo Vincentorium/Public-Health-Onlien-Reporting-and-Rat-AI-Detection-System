@@ -22,7 +22,7 @@ $.ajax({
        
                 type=data.repType ;
                 let numOfAttach=(data.images.length)
-             let havaAttach=(numOfAttach>0);
+             let havaAttach=((data.images!=0)&&numOfAttach>0);
 
                 let mailAttachment=""
         if(havaAttach){         
@@ -146,7 +146,7 @@ $.ajax({
 +''
 +'                        <td style="width:300px;">'
 +'                          <span> · </span>'
-+'                          Post: 16 Jan 2023'
++data.repDateSubmit
 +'                        </td>'
 +'                      </tr>'
 +'                    </table>'
@@ -197,7 +197,7 @@ $.ajax({
 +'                        </td>'
 +'                      </tr>'
 +'                      <tr>'
-+'                        <td> <b>Date</b>:'+data.RepDatePeriodBegin+ ' </td>'
++'                        <td> <b>Date</b>:'+data.repDatePeriodBegin+ ' </td>'
 +'                      </tr>'
 +'                      <tr>'
 +'                        <td> <b>Location</b>:'
@@ -214,10 +214,8 @@ $.ajax({
 +'                    <div>'
 +'                      <span class="repContent">'
             +            data.repContent
-
-//      +    '  <br>  <img class="repContentPic" width="600px" src="./php/uploads/'+ data.imgPath+'">'
-
-   
++"<br>"
+ 
   
 
 

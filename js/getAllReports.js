@@ -2,7 +2,7 @@
 //data of all reports from db
 var resultOfReports
  
-getAllReort()
+//getAllReort()
 function getAllReort(){
  
       

@@ -138,13 +138,14 @@ let content=
   +'</div>'
  +'<hr style="width:100%;text-align:left;margin-left:0">'
   +'<div class="mailBoxTitle mailBoxTitle--specific">'
- +'<span>Title:</span>'
+/*
+  +'<span>Title:</span>'
   +'<input type="text" class="mailInput mailTitleInput mailTitleJS" >'
 
 
  +'</div>'
  +'<hr style="width:100%;text-align:left;margin-left:0">'
- 
+ */
 +'<div class="submitOptions">'
 +'          <textarea class="cmtBox mailTextArea" placeholder="remark..." rows="20" name="comment[text]" id="comment_text" cols="40"'
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'

@@ -96,7 +96,8 @@ $.each(result, function(index, data){
 
     //  +    '  <br>  <img class="repContentPic" width="600px" src="data:image/png;base64,'+ data.repStatusAttach+'">'
 
-
++"<br>"
+ 
 +''+(havaAttach===true?
   ("<div>Attachment:"
       +"<div class='attachPic'>"

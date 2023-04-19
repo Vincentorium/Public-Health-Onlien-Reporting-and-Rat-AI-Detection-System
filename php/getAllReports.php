@@ -58,7 +58,7 @@ rep.id as repID,
 u.id as userID,
 u.fullname as userName,
 status.repStatusID as repStatusID,
-(select count(*) from reportStatusimage where reportStatusimage.reportStatusId=repStatusID)as images
+(select count(*) from reportStatusimage where reportStatusimage.reportStatusId=repStatusID)as imgPath
 
 FROM `report` as rep
 left join `repstatus` as status 
@@ -79,7 +79,7 @@ if (mysqli_num_rows($result) > 0) {
 				// Create an associative array with both binary image data and other data
 				$output[] = array(
 					'repID' => $row['repID'],
-					'repTitle' => $row['repTitle'],
+					'repTitle' => $row['title'],
 					'repDateSubmit' => $row['timestamp'],
 
 					'repType' => $row['type'],
@@ -105,11 +105,11 @@ if (mysqli_num_rows($result) > 0) {
 					'userPassword' => $row['password'], 
 
 
-					'imgPath' => $row['imgPath'] ,
+				//	'imgPath' => $row['imgPath'] ,
 				//need recon: rep
 					'repCurrentStatus'=> $row['repCurrentStatus'],
-					'repDept' => $row['repDept'],
-					'repStreet' => $row['repStreet'],
+					'repDept' => $row['dept'],
+					'repStreet' => $row['street'],
 					'repDatePeriodEnd' => $row['repDatePeriodEnd']
 
 					);

@@ -58,7 +58,7 @@ function getReortForTable(){
                                     +"</th><th>"
                                     +"Nature"
                                     +"</th><th>"
-                                    +"Incident Date"
+                                    +"Date"
                                     +"</th><th>"
                                     +"Location"
                                     +"</th><th>"

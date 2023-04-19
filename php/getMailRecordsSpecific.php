@@ -51,8 +51,9 @@ $sql="SELECT *,u1.type as senderDept ,
 u1.fullname as mailSenderName, 
 u2.fullname as citizenName,  
  m.id as mID,  
-(select count(*) from mailimage where mailimage.mailId=mID)
-as images,if( u1.fullname != 'complainer',1,0)  as isSentByOfficer
+(select count(*) from mailimage where mailimage.mailId=mID) as images ,
+SUBSTRING_INDEX(r.title, ' ', 6)  as mailTitle,
+if( u1.fullname != 'complainer',1,0)  as isSentByOfficer
 FROM mail AS m
 LEFT JOIN report AS r ON m.reportId=r.id
 
@@ -92,7 +93,7 @@ if ($result->num_rows > 0) {
 	'mailId' => $row['mID'],
 		 
     'dateCreated' => $row['date'],
-	'title' => $row['title'],
+	'title' => $row['mailTitle'],
 	'content' => $row['content'],
 	'FKrepId' => $row['reportId'],
 	'FKOfficerId' => $row['userId'],
@@ -110,6 +111,9 @@ if ($result->num_rows > 0) {
   
     
 
+
+	
+
 	'senderDept' => $row['senderDept'],
 	'citizenName' => $row['citizenName'],
 	'mailSenderName' => $row['mailSenderName'],
@@ -117,7 +121,7 @@ if ($result->num_rows > 0) {
 	'isSentByOfficer' => $row['isSentByOfficer'],
 	
 	
-	'repTitle' => $row['repTitle']
+	'repTitle' => $row['title']
 
 	
 	);

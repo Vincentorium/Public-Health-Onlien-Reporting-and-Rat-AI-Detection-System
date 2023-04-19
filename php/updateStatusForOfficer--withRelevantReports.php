@@ -14,7 +14,7 @@ repStatusFKreports,repStatusRemark,repUserID)
  VALUES (?,?,?,?,?,?)");
 
 // Prepare the statement for updating the current status
-$stmt_updateCurrentStatus = $conn->prepare("UPDATE report SET repCurrentStatus=? WHERE id=?");
+//$stmt_updateCurrentStatus = $conn->prepare("UPDATE report SET repCurrentStatus=? WHERE id=?");
 
 // Loop through each element in the data array and execute the statements
 
@@ -33,16 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                // Bind the parameters to the placeholders
                $stmt_insertRepStatus->bind_param("issisi", $repStatusID, ${'arr_'.$index.'_repStatusType'}, $datetime,${'arr_'.$index.'_repID'},
                ${'arr_'.$index.'_repStatusRemark'}  ,${'arr_'.$index.'_repUserID'} );
-               $stmt_updateCurrentStatus->bind_param("si", ${'arr_'.$index.'_repStatusType'},${'arr_'.$index.'_repID'});
+       //        $stmt_updateCurrentStatus->bind_param("si", ${'arr_'.$index.'_repStatusType'},${'arr_'.$index.'_repID'});
 
                // Execute the statements
                $insert_success = $stmt_insertRepStatus->execute();
-               $update_success = $stmt_updateCurrentStatus->execute();
+         //      $update_success = $stmt_updateCurrentStatus->execute();
                $repStatusIDForFK = $stmt_insertRepStatus->insert_id;
 
 
         // Check for errors and output a response
-               if ($insert_success && $update_success) {
+               if ($insert_success ) {
                   echo json_encode(['success' => true]);
                } else {
                   echo "Error: " . $conn->error;
@@ -112,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $stmt_insertImage->close();
 $stmt_insertRepStatus->close();
  
-$stmt_updateCurrentStatus->close();
+//$stmt_updateCurrentStatus->close();
 $conn->close();
 
 

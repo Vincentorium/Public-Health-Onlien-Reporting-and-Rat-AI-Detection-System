@@ -22,7 +22,7 @@ $image_data = base64_encode($row['repAttach']);
 // Create an associative array with both binary image data and other data
 $record[] = array(
 	'repID' => $row['repID'],
-    'repTitle' => $row['repTitle'],
+    'repTitle' => $row['title'],
 	'repDateSubmit' => $row['repDateSubmit'],
 	'repType' => $row['repType'],
 	'repTypeSpecification' => $row['repTypeSpecification'],
@@ -34,7 +34,7 @@ $record[] = array(
 	'repDatePeriodEnd' => $row['repDatePeriodEnd'],
 	'repContent' => $row['repContent'],
 	'repNormalUser' => $row['repNormalUser'],
-	'repDept' => $row['repDept'],
+	'repDept' => $row['dept'],
 	'repCurrentStatus'=> $row['repCurrentStatus'],
 	
 

@@ -9,12 +9,14 @@ rep.id as repID,
 u.id as userID,
 u.type as userType,
 rep.type as repType,
-u.fullname as userName
+u.fullname as userName,
+(select img.name from reportimage as img where img.reportId=rep.id LIMIT   1) as imgPath,
+(select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id  Order BY status.repStatusDateCreated  DESC limit 1) as repCurrentStatus
 
 FROM `report` as rep    
 left join user as u
 on rep.userId=u.id  
-where repCurrentStatus = '$status'   ; ";
+where (SELECT status.repStatusType FROM `repstatus` as status WHERE status.repStatusFKreports=rep.id  Order BY status.repStatusDateCreated  DESC limit 1) = '$status'   ; ";
 
 
 
@@ -34,7 +36,7 @@ if (mysqli_num_rows($result) > 0) {
 $record[] = array(
 
 	//need recon
-    'repTitle' => $row['repTitle'],
+    'repTitle' => $row['title'],
 	'repCurrentStatus'=> $row['repCurrentStatus'],
 	
  
@@ -47,8 +49,7 @@ $record[] = array(
  
 	'repLocationY' => $row['latitude'],
   
-//	'repDatePeriodBegin' => $row['repDatePeriodBegin'],
-//	'repDatePeriodEnd' => $row['repDatePeriodEnd'],
+ 
 	'repContent' => $row['descr'],
 
 	'repNormalUser' => $row['userId'],
@@ -56,7 +57,7 @@ $record[] = array(
 
 
 
-	'repDept' => $row['repDept'],
+	'repDept' => $row['dept'],
 
 
 	'userID' => $row['userID'],

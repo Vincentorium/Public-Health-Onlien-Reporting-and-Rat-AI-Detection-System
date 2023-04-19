@@ -36,15 +36,16 @@ $.ajax({
         $('.forInsert').fadeOut(1);
               
         $.each(result, function(index, data){
-        
-         
+        let titleImg=""
+         //data.imgPath
      
 
         type=data.repType ;
         
 
 
-
+    titleImg= (data.imgPath==null)?'<div class="inbox-specific-head-figureImage"> '+ data.userName.charAt(0)+'</div>':'<img class="allPostPostImg" src="./php/uploads/'+ data.imgPath+'">'
+          
     content +=  
      '<div class="allPostSpecificPost complaintPost1" >' 
    
@@ -69,7 +70,7 @@ $.ajax({
 
                  //SOF 1.1.2.1  postBox_contentBox_contentBox_picBox
                 +'   <div class="allPostPicBox">'
-               +'    <img class="allPostPostImg" src="./php/uploads/'+ data.imgPath+'">'
+            +titleImg
 
                //    
               +'   </div>'
@@ -115,7 +116,7 @@ $.ajax({
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+          //          +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 

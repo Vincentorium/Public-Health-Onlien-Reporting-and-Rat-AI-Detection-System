@@ -5,12 +5,17 @@ extract($_POST);
 // Perform a query
 
 $sql = "SELECT *  ,rep.id as repID, u.id as userID ,
-rep.type as repType
+rep.type as repType,
+
+(select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id  Order BY status.repStatusDateCreated  DESC limit 1) as repCurrentStatus,
+
+(select img.name from reportimage as img where img.reportId=rep.id LIMIT   1) as imgPath
+
 FROM `report` as rep  
 left join user as u
 on rep.userId=u.id  
-where   repCurrentStatus!='approved' 
-and repCurrentStatus!='unapproved'  ";
+where   (select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id  Order BY status.repStatusDateCreated  DESC limit 1)!='approved' 
+and (select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id  Order BY status.repStatusDateCreated  DESC limit 1)!='unapproved'  ";
  
  
 $result = mysqli_query($conn, $sql);
@@ -26,12 +31,13 @@ if (mysqli_num_rows($result) > 0) {
 // Create an associative array with both binary image data and other data
 $record[] = array(
 	'repID' => $row['repID'],
-    'repTitle' => $row['repTitle'],
+    'repTitle' => $row['title'],
 	'repDateSubmit' => $row['date'],
 	'repType' => $row['repType'],
 	//'repTypeSpecification' => $row['repTypeSpecification'],
 		'repLocationDetail' => $row['address'],
-	 
+	  
+
 	'repLocationY' => $row['latitude'],
 	'repLocationX' => $row['longitude'],
 
@@ -39,7 +45,7 @@ $record[] = array(
 	'repContent' => $row['descr'],
 	'repNormalUser' => $row['userId'],
  
-	'repDept' => $row['repDept'],
+	'repDept' => $row['dept'],
 	
 	'repCurrentStatus'=> $row['repCurrentStatus'],
 	

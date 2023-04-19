@@ -45,8 +45,7 @@ $.ajax({
                     getReportsIntoInbox()
                     getReortForTable()
                     modal()
-
-                    alert("Successfully Update the status!")
+ 
                     $('.active').removeClass('active');
               
             },
@@ -141,7 +140,7 @@ $.ajax({
                    
 
                     refreshAfterUpdate() 
-                    //alert("Successfully Update the status!")
+               
             },
 
         });//EO ajax

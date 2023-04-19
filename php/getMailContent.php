@@ -4,10 +4,11 @@ extract($_POST);
 // Perform a query
  
 $sql="SELECT *,m.id as mID,img.id as imgID,
- u1.type as senderDept ,
+u1.type as senderDept ,
 u1.fullname as mailSenderName, 
 u2.fullname as citizenName,  
-  img.name as imgName
+img.name as imgName,
+SUBSTRING_INDEX(r.title, ' ', 6)  as mailTitle
 
 FROM mail AS m
 LEFT JOIN mailimage AS img ON m.id=img.mailId
@@ -51,7 +52,7 @@ if ($result->num_rows > 0) {
     'dateCreated' => $row['timestamp'],
 
 
-	'title' => $row['title'],
+	'title' => $row['mailTitle'],
 	'content' => $row['content'],
 	'FKrepId' => $row['reportId'],
 	'FKOfficerId' => $row['userId'],
@@ -65,11 +66,8 @@ if ($result->num_rows > 0) {
 	'citizenName' => $row['citizenName'],
 	'mailSenderName' => $row['mailSenderName'],
 	'repNormalUser' => $row['userId'],
- 
-	
-	
 
-	'repTitle' => $row['repTitle']
+	'repTitle' => $row['title']
 
 	);
     }

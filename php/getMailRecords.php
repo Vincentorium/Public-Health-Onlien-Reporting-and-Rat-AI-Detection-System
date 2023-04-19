@@ -3,21 +3,13 @@ include "config.php";
 extract($_POST);
 // Perform a query
  
-$sql_temp="SELECT * FROM mail AS m
-LEFT JOIN report AS r ON m.reportId=r.id
-LEFT JOIN user AS u ON r.repNormalUser=u.id
-WHERE m.isSent=? AND m.FKOfficerId=?
-ORDER BY m.dattimestampe DESC";
-
  
-
-
-
 
 $sql="SELECT *,u1.type as senderDept ,u1.fullname as mailSenderName, u2.fullname as citizenName,
 m.id as mID,  
 (select count(*) from mailimage where mailimage.mailId=mID) as images,
-if( u1.type != 'complainer',1,0)  as isSentByOfficer
+if( u1.type != 'complainer',1,0)  as isSentByOfficer  ,
+SUBSTRING_INDEX(r.title, ' ', 6)  as mailTitle
 FROM mail AS m
 LEFT JOIN report  AS r ON m.reportId=r.id
 
@@ -59,7 +51,7 @@ if ($result->num_rows > 0) {
 	'mailId' => $row['mID'],
  
     'dateCreated' => $row['date'],
-	'title' => $row['title'],
+	'title' => $row['mailTitle'],
 	'content' => $row['content'],
 	'FKrepId' => $row['reportId'],
 	//'FKOfficerId' => $row['userId'],
@@ -77,7 +69,7 @@ if ($result->num_rows > 0) {
 
 
 
-	'repTitle' => $row['repTitle']
+	'repTitle' => $row['title']
 
 	);
     }

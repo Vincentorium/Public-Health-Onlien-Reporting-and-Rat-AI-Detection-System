@@ -2,7 +2,11 @@
 include "config.php";
 extract($_POST);
 // Perform a query
-$sql = "SELECT * FROM `mail` LEFT JOIN reports  
+$sql = "SELECT * ,
+SUBSTRING_INDEX(r.title, ' ', 6)  as mailTitle
+
+FROM `mail` 
+LEFT JOIN reports  
 on mail.FKrepId = reports.repID
 LEFT JOIN user
 on reports.repNormalUser = user.userID
@@ -23,7 +27,7 @@ $image_data = base64_encode($row['attachment']);
 $record[] = array(
 	'mailId' => $row['id'],
     'dateCreated' => $row['dateCreated'],
-	'title' => $row['title'],
+	'title' => $row['mailTitle'],
 	'content' => $row['content'],
 	'FKrepId' => $row['FKrepId'],
 	'FKOfficerId' => $row['FKOfficerId'],

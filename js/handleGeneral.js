@@ -41,8 +41,9 @@ $(document).on('click','.submitButton',function(e){
 
           
             if(!submitBox.find(".submitNotifyUser").is(':checked')){
-
-              updateReportStatus(tempArrMultiForSingeReport)
+                    var status=$('.repSubmitStatus').val()=="unchange"?null:$('.repSubmitStatus').val()
+             alert("Successfully update the status to -> "+status+"!")
+                    updateReportStatus(tempArrMultiForSingeReport)
             
                 }else{
        
@@ -60,16 +61,20 @@ $(document).on('click','.submitButton',function(e){
     case "relevantReportsSubmit":
             
             if(updateMultiReportsStatus(tempArrMultiForSingeReport)) {
-               alert("Successfully update the status!")
+                  let status=$('.repSubmitStatus').val()=="unchange"?null:$('.repSubmitStatus').val()
+              alert("Successfully update the status to "+status+"!")
+               
 
             }
 
             break;
 
     case "relevantReportsSubmitWithMail":
-             if(updateMultiReportsStatus(tempArrMultiForSingeReport)){
-              
-              alert("Successfully update the status!")
+
+               if(updateMultiReportsStatus(tempArrMultiForSingeReport)){
+               let status=$('.repSubmitStatus').val()=="unchange"?null:$('.repSubmitStatus').val()
+         
+              alert("Successfully update the status to "+status+"!")
               displayMailBox(dataJSForMail)
               
             }

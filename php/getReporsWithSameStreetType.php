@@ -4,11 +4,16 @@ include "config.php";
 extract($_POST);
 // Perform a query
 
-$sql = "SELECT *, rep.id as repID, u.id as userID ,rep.type as repType,u.type as userType
-FROM `report` as rep  left join user as u
+$sql = "SELECT *, rep.id as repID, u.id as userID ,
+rep.type as repType,
+u.type as userType,
+(select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id  and status.repStatusType!='unapproved'  Order BY status.repStatusDateCreated  DESC limit 1) as repCurrentStatus
+
+FROM `report` as rep  
+left join user as u
 on rep.userId=u.id
-where    repCurrentStatus!='unapproved'  
-And   repStreet='$repStreet'";
+ 
+where   street= '$repStreet'";
  
 $result = mysqli_query($conn, $sql);
 
@@ -26,7 +31,7 @@ if (mysqli_num_rows($result) > 0) {
 			// Create an associative array with both binary image data and other data
 			$record[] = array(
 				'repID' => $row['repID'],
-				'repTitle' => $row['repTitle'],
+				'repTitle' => $row['title'],
 				'repDateSubmit' => $row['timestamp'],
 				'repType' => $row['repType'],
 //				'repTypeSpecification' => $row['repTypeSpecification'],
@@ -34,14 +39,14 @@ if (mysqli_num_rows($result) > 0) {
 						'repLocationY' => $row['latitude'],
 	'repLocationX' => $row['longitude'],
 			
-			'repDatePeriodBegin' => $row['date'],		'repDatePeriodEnd' => $row['repDatePeriodEnd'],
+			'repDatePeriodBegin' => $row['date'],		
 		 	'repContent' => $row['descr'],
 				'repContent' => $row['descr'],
 				'repNormalUser' => $row['userId'],
 		
-		'repDept' => $row['repDept'],
+		'repDept' => $row['dept'],
 				'repCurrentStatus'=> $row['repCurrentStatus'],
-					'repStreet'=> $row['repStreet'],
+					'repStreet'=> $row['street'],
 
 				'userID' => $row['id'],
 	'userName' => $row['fullname'],

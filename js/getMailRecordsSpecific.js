@@ -162,7 +162,7 @@ $.ajax({
 
 
 +'</textarea>'
-
++'<br>'
 
 +''+(havaAttach===true?
   ("<div>Attachment:"

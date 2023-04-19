@@ -12,7 +12,7 @@ $(document).ready(function(){
             
         var userName = $("#username").val().trim();
         var userPassword = $("#password").val().trim();
-       
+               // var username= $("#username").val().trim();
  
         $.ajax({
           url: "./php/login.php",
@@ -23,10 +23,10 @@ $(document).ready(function(){
 
             userPassword: userPassword
           },
-          success: function (result) {		
-          	$.cookie('userName', userName, { expires: 7, path: '/' });
-	          $.cookie('userDept', result.type, { expires: 7, path: '/' });
-            $.cookie('userID', result.id, { expires: 7, path: '/' });
+          success: function (rs) {		
+          	$.cookie('userName', rs.fullname, { expires: 7, path: '/' });
+	          $.cookie('userDept', rs.type, { expires: 7, path: '/' });
+            $.cookie('userID', rs.id, { expires: 7, path: '/' });
              
 			        window.location.href = "mainPage.html";
 

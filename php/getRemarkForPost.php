@@ -62,7 +62,9 @@ $sql = "SELECT * ,repS.repStatusID as repStatusID,
 as images
 FROM `repstatus` as repS
 left join user on user.id = repS.repUserID 
-where repS.repStatusFKreports='$repID' and user.type not in('Operator','complainer')";
+where repS.repStatusFKreports='$repID' and user.type not in('Operator','complainer')
+order by repS.repStatusDateCreated;
+";
 
 
 

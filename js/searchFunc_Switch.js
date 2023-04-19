@@ -110,7 +110,7 @@ function getGroupOfComplaint(){
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+           //       +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 
@@ -216,7 +216,7 @@ function getGroupOfComplaint(){
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+       //             +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 
@@ -325,7 +325,7 @@ function getGroupOfComplaint(){
                 +  '</td><td>  '
                 
                   +'<span> '
-                  +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
+          //          +'    <img class="allPostFavIcon" src="images/iconFav.jpg"  />' 
                    
                  + '</span>'
 

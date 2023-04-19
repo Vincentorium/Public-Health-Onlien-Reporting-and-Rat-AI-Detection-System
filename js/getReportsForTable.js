@@ -37,7 +37,7 @@ $.ajax({
                                     +"</th><th>"
                                     +"Nature"
                                     +"</th><th>"
-                                    +"Incident Date"
+                                    +"Date"
                                     +"</th><th>"
                                     +"Title"
                                     +"</th><th>"
