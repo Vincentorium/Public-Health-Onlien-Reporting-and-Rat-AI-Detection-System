@@ -2,7 +2,7 @@
 include "config.php";
 extract($_POST);
 
-$sqlImage="SELECT * FROM `reportStatusimage`";
+$sqlImage="SELECT * FROM `reportimage`";
  
 
 $stmtImage = $conn->prepare($sqlImage);
@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
 					$outputImage[] =     array(
 
 				'id' => $row['id'],
-				'reportStatusId' => $row['reportStatusId'],
+				'reportId' => $row['reportId'],
 				'name' => $row['name'],
 				);
     }
@@ -59,8 +59,7 @@ rep.id as repID,
 u.id as userID,
 u.fullname as userName,
 status.repStatusID as repStatusID,
-(select count(*) from reportStatusimage where reportStatusimage.reportStatusId=repStatusID)as images
-
+(select count(*) from reportimage where reportimage.reportId=repID)as images
 FROM `report` as rep
 left join `repstatus` as status 
 on rep.id = status.repStatusFKreports
@@ -126,7 +125,7 @@ if (mysqli_num_rows($result) > 0) {
 										$output[$index]["images"]=array();
 
 										for ($i = 0; $i < count($outputImage); $i++) {
-											if($outputImage[$i]["reportStatusId"]== $output[$index]["repStatusID"]){
+											if($outputImage[$i]["reportId"]== $output[$index]["repID"]){
 													($output[$index]["images"])[]=$outputImage[$i]["name"];
 											}
 										}

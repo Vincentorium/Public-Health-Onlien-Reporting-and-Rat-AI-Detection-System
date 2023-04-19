@@ -47,7 +47,8 @@ var data = {
 
 $.ajax({
             type: 'POST',
-            url: 'php/updateStatusForApproval.php',
+             url: 'php/updateStatusForOfficer.php',
+           
             data: data,
             dataType: 'json',
             async:false,
