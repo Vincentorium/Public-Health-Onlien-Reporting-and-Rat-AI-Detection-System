@@ -297,7 +297,7 @@ $(document).on("click",".mail-list-summary-one",function(){
 
 //get mail content 
      var mailId=$(this).data('mailid')
-      getMailContent(mailId,$(this).data('isSentByOfficer'))
+      getMailContent(mailId,$(this).data('issentbyofficer'))
   
 });
  
@@ -318,7 +318,7 @@ $(document).on("click",".mail-button ",function(){
       isInboxList=true
       
       getMailRecords(0)
-      getMailContent(mailLastestOne)
+      getMailContent(mailLastestOne,0)
       
 })
 
@@ -326,7 +326,7 @@ $(document).on("click",".mail-button ",function(){
      isInboxList=false
       
       getMailRecords(1)
-       getMailContent(mailLastestOne)
+       getMailContent(mailLastestOne,1)
        if(isReadSet.size!=0)
           updateMaiStatus([...isReadSet])
           isReadSet.clear()
@@ -386,6 +386,7 @@ $(document).on('click','.mail-specific-mail-head',function(){
 var inputID__mainMailBox=0 
    var inputID__specificBox=0 
   var inputID__multiMails=0 
+var  inputID__singleReportAttach=0
 $(document).ready(function() {
     
   $(document).on('change',".inputDisplay--mainMailBox", function(e) {
@@ -538,6 +539,59 @@ $(document).ready(function() {
 
      
       $(this).removeClass("inputDisplay--multiMails").css("display", "none");
+   
+    e.stopPropagation()
+
+    
+     
+  });
+
+
+      $(document).on('change',".inputDisplay--singleReportAttach", function(e) {
+
+   
+    
+ $(this).addClass("fileInputed--singleReportAttach")
+ $(this).removeAttr('id');
+
+     var newInput
+      var reader = new FileReader();
+      reader.onload = function(e) {
+
+        
+        var img = $('<img class="mailAttach--singleReportAttach">').attr({
+          src: e.target.result,
+          width: 50,
+          height: 50
+        });
+          var removeBtn = $('<button class="close-button--singleReportAttach" data-close='+inputID__multiMails+'>').text('x');
+         newInput = $('<input>').attr({
+        type: 'file',
+        name: 'images[]',
+        class: "fileInput inputDisplay--singleReportAttach "+ ++inputID__singleReportAttach,
+        id:"file-input--singleReportAttach"
+         
+      });
+             $('.preview--singleReportAttach').before(newInput);
+
+      
+        removeBtn.on('click', function() {
+          $(this).parent().remove();
+
+         
+          $("."+$(this).data("close")).remove()
+
+        });
+
+        var previewDiv = $('<div>').append(img).append(removeBtn);
+        $('.preview--singleReportAttach').append(previewDiv);
+      };
+      reader.readAsDataURL($(this).get(0).files[0]);
+
+     
+
+     
+      $(this).removeClass("inputDisplay--singleReportAttach").css("display", "none");
    
     e.stopPropagation()
 

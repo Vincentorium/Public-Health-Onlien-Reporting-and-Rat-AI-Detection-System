@@ -1,10 +1,71 @@
 <?php
 include "config.php";
 extract($_POST);
+
+
+
+
+
+
+$sqlImage="SELECT * FROM `reportimage`";
+ 
+
+$stmtImage = $conn->prepare($sqlImage);
+
+
+if (!$stmtImage) {
+    die("Error in statement preparation: " . $conn->error);
+}
+ 
+
+if (!$stmtImage->execute()) {
+    die("Error in statement execution: " . $stmtImage->error);
+}
+
+
+$result = $stmtImage->get_result();
+$outputImage = array();
+// Check if any records were returned
+if ($result->num_rows > 0) {
+    // Output data of each row
+ 
+    while ($row = $result->fetch_assoc()) {
+		
+					$outputImage[] =     array(
+
+				'id' => $row['id'],
+			
+				'reportId' => $row['reportId'],
+				'name' => $row['name'],
+				
+
+				);
+    }
+    
+} else {
+    echo "No records found.";
+}
+
+
+ 
+
+
+
+
+
+
 // Perform a query
-$sql = "SELECT * FROM `repstatus` 
-left join users on users.userID = repstatus.repUserID 
-where repstatus.repStatusFKreports='$repID' and users.userDept not in('Operator','complainer')";
+ 
+
+$sql = "SELECT * ,repS.repStatusID as repStatusID,
+(select count(*) from reportimage where reportimage.reportId=repStatusID)
+as images
+FROM `repstatus` as repS
+left join user on user.id = repS.repUserID 
+where repS.repStatusFKreports='$repID' and user.type not in('Operator','complainer')";
+
+
+
 
 
 $result = mysqli_query($conn, $sql);
@@ -12,34 +73,59 @@ $result = mysqli_query($conn, $sql);
 $record = array();
 // Fetch data
 $statusPre='approved';
+$output = array();
 if (mysqli_num_rows($result) > 0) {
+	$index=0;
     while ($row = mysqli_fetch_assoc($result)) {
 
-$image_data = base64_encode($row['repStatusAttach']);
+				
+				// Create an associative array with both binary image data and other data
+				$output[] = array(
 
-// Create an associative array with both binary image data and other data
-$record[] = array(
+					'userID' => $row['id'],
+					'userName' => $row['fullname'],
+					'userDept' => $row['type'],
+					'images' => $row['images'],
 
-	'userID' => $row['userID'],
-	'userName' => $row['userName'],
-    'userDept' => $row['userDept'],
+					'repStatusID' => $row['repStatusID'],
+					'repStatusType' => $row['repStatusType'],
+					'repStatusDateCreated' => $row['repStatusDateCreated'],
+					'repStatusFKreports' => $row['repStatusFKreports'],
+					'repUserID' => $row['repUserID'],
+					'repStatusRemark' => $row['repStatusRemark'],
+					 
+					'repStatusAttachName' => $row['repStatusAttachName'],
 
-	'repStatusID' => $row['repStatusID'],
-	'repStatusType' => $row['repStatusType'],
-	'repStatusDateCreated' => $row['repStatusDateCreated'],
-	'repStatusFKreports' => $row['repStatusFKreports'],
-	'repUserID' => $row['repUserID'],
-	'repStatusRemark' => $row['repStatusRemark'],
-	'repStatusAttach' => $image_data,
-	'repStatusAttachName' => $row['repStatusAttachName'],
+					
+					'statusPre' => $statusPre,
+				 );
 
-	
-	'statusPre' => $statusPre,
-    'repAttach' => $image_data);
+					$statusPre=$row['repStatusType'];
+				
 
-	$statusPre=$row['repStatusType'];
- }
-			echo  json_encode($record);
+				if( $output[$index]["images"]!=0){
+					
+						//use mail id to get images
+						$output[$index]["images"]=array();
+
+						for ($i = 0; $i < count($outputImage); $i++) {
+							if($outputImage[$i]["reportId"]== $output[$index]["repStatusID"]){
+									($output[$index]["images"])[]=$outputImage[$i]["name"];
+							}
+						}
+						
+				}
+
+				$index++;
+
+}
+
+
+
+
+
+
+			echo  json_encode($output);
 } else {
     echo "No results found.";
 }

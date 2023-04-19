@@ -70,9 +70,7 @@ $.ajax({
       
             success: function(response) {
 
-                 
-                    alert("mail read!");
-             
+                  
            
             },
     

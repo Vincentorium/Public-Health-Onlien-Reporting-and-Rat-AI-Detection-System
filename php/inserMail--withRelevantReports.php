@@ -9,10 +9,9 @@ extract($_POST);
 
 // Prepare the statement
 $stmt_insertMail = $conn->prepare(
-   "INSERT INTO `mail`
-   (`id`, `dateCreated`, `title`, `content`,  `FKrepID`, `FKOfficerId`) 
+"INSERT INTO `mail`
+   (`id`, `timestamp`, `title`, `content`,  `reportId`, `userId`) 
 VALUES (?,?,?,?,?,?)");
-
 
 $noOfImage=0;
  for ($index = 0; $index <5;  $index++) {
@@ -27,39 +26,37 @@ echo ("nubmer of elemet: ".count($_POST)
 
       // Bind the parameters to the placeholders
       $stmt_insertMail->bind_param("isssii", $id, $datetime,  ${'arr_'.$index.'_title'}, ${'arr_'.$index.'_content'},
-       ${'arr_'.$index.'_FKrepId'},${'arr_'.$index.'_FKOfficerId'});
-    
- 
-
+      ${'arr_'.$index.'_FKrepId'},${'arr_'.$index.'_FKOfficerId'});
 
       $stmt_insertMail->execute();
       $mail_id = $stmt_insertMail->insert_id;
 			
 
 
-          for ($index = 0; $index < $noOfImage;  $index++) {
-
-                if(array_key_exists('images_'.$index, $_FILES)) {
+          for ($indexJ = 0; $indexJ < $noOfImage;  $indexJ++) {
+                 if(array_key_exists('images_'.$indexJ, $_FILES)) {
             
-                      $imageName = $_FILES['images_'.$index]['name']; 
+                      $imageName = $_FILES['images_'.$indexJ]['name']; 
           
-                      move_uploaded_file($_FILES['images_'.$index]['tmp_name'], 'uploads/' . $imageName);
+                      move_uploaded_file($_FILES['images_'.$indexJ]['tmp_name'], 'uploads/' . $imageName);
             
 
 
                   $stmt_insertImage = $conn->prepare('INSERT INTO mailimage (`id`, `name`,mailId) VALUES (?, ?,?)');
-                  
+               
                   $stmt_insertImage->bind_param("isi", $id,$imageName ,$mail_id);
           
-                  try {
-                      $stmt_insertImage->execute();
-                        echo json_encode(['success' => true]);
-                  } catch(PDOException $e) {
-                      echo "Error: " . $e->getMessage();
-              
-                   }
-                }
-          }
+                        try {
+                           $stmt_insertImage->execute();
+                              echo json_encode(['success' => true]);
+                        } catch(PDOException $e)
+                         {
+                           echo "Error: " . $e->getMessage();
+                     
+                        }
+                  }
+         
+               }
 
   
    }

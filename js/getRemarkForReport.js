@@ -23,6 +23,29 @@ $.each(result, function(index, data){
   
 
 
+                let havaAttach=(data.images!=0);
+                let mailAttachment=""
+                if(havaAttach){         
+                        $(data.images).each(function(index,data){
+                                  mailAttachment+= '<a href="./php/uploads/'+data+'" download>'
+                      +'<img class="thumbnails" src="./php/uploads/'+data+'" alt="No"   style="display: '+(havaAttach===true?"inline":"none")+'"></a>' 
+
+
+                        })
+                     
+                }
+
+
+
+
+
+
+
+
+
+
+
+
       remarkContent+=
  
 '        <div class="postBox complaint2 active complaintBoxPost1">'
@@ -68,9 +91,30 @@ $.each(result, function(index, data){
 +'                  <span>'
 + data.repStatusRemark
 +'                  </span>'
-      +    '  <br>  <img class="repContentPic" width="600px" src="data:image/png;base64,'+ data.repStatusAttach+'">'
 
-+'                </div>'
+
+
+    //  +    '  <br>  <img class="repContentPic" width="600px" src="data:image/png;base64,'+ data.repStatusAttach+'">'
+
+
++''+(havaAttach===true?
+  ("<div>Attachment:"
+      +"<div class='attachPic'>"
+          + mailAttachment
+      +"</div>"
+  +"</div>"):"")
+
+
+
+
+
+
+
+
+
+
+
+      +'                </div>'
 +'              </div>'
 +'            </div>'
 +''

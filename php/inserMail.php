@@ -24,7 +24,7 @@ $id=null;
 // Prepare the statement
 $stmt_insertMail = $conn->prepare(
    "INSERT INTO `mail`
-   (`id`, `dateCreated`, `title`, `content`,  `FKrepID`, `FKOfficerId`) 
+   (`id`, `timestamp`, `title`, `content`,  `reportId`, `userId`) 
 VALUES (?,?,?,?,?,?)");
 
 // Bind the parameters to the placeholders

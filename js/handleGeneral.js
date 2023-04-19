@@ -31,12 +31,20 @@ $(document).on('click','.submitButton',function(e){
 
     let submitButtonType=$(this).data("submit_button");
     let submitBox=$($(this).data("submit_box"))
+          let tempArrMultiForSingeReport=[]
 
+                $(".fileInputed--singleReportAttach").each(function(index,value){
+                  tempArrMultiForSingeReport.push(value.files[0] );
+              })
     switch(submitButtonType) {
     case "reportSubmit":
+
+          
             if(!submitBox.find(".submitNotifyUser").is(':checked')){
-                  updateReportStatus()
-            }else{
+
+              updateReportStatus(tempArrMultiForSingeReport)
+            
+                }else{
        
                     if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
                          $('.relevantReportsBox').addClass("activeRelevantReps")
@@ -50,8 +58,8 @@ $(document).on('click','.submitButton',function(e){
 
             break;
     case "relevantReportsSubmit":
-
-            if(updateMultiReportsStatus()) {
+            
+            if(updateMultiReportsStatus(tempArrMultiForSingeReport)) {
                alert("Successfully update the status!")
 
             }
@@ -59,7 +67,7 @@ $(document).on('click','.submitButton',function(e){
             break;
 
     case "relevantReportsSubmitWithMail":
-             if(updateMultiReportsStatus()){
+             if(updateMultiReportsStatus(tempArrMultiForSingeReport)){
               
               alert("Successfully update the status!")
               displayMailBox(dataJSForMail)

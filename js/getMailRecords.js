@@ -38,7 +38,7 @@ mailResult =result
 '   <div class="mail-list-summary-one  '+ ((!isSentByOfficer&&data.isRead==0)?"mail-list-summary-one--isRead":"")+'" '  
 +' data-mailid='+data.mailId 
 +' data-issent='+data.isSent
-+' data-isSentByOfficer'+isSentByOfficer
++' data-isSentByOfficer='+isSentByOfficer
 +' data-isread='+data.isRead+'>'
 +'              <div class="mail-list-titleAndcontent">'
 +'                <div class="mail-list-title">'+ data.title+'</div>'
@@ -55,7 +55,7 @@ mailResult =result
            $.each(result, function(index, data){
            
             mailLastestOne=data.mailId
-
+            
             return false;
         })
         

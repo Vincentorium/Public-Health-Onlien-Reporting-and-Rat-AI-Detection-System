@@ -3,13 +3,21 @@ include "config.php";
 extract($_POST);
 // Perform a query
  
-$sql="SELECT *,m.id as mID,img.id as imgID FROM mail AS m
+$sql="SELECT *,m.id as mID,img.id as imgID,
+ u1.type as senderDept ,
+u1.fullname as mailSenderName, 
+u2.fullname as citizenName,  
+  img.name as imgName
 
+FROM mail AS m
 LEFT JOIN mailimage AS img ON m.id=img.mailId
-LEFT JOIN reports AS r ON m.FKrepId=r.repID
-LEFT JOIN users AS u ON r.repNormalUser=u.userID
+LEFT JOIN report AS r ON m.reportId=r.id
+
+LEFT JOIN user AS u1 ON m.userId=u1.id
+LEFT JOIN user AS u2 ON r.userId=u2.id
+
 WHERE m.id=?
-ORDER BY m.dateCreated DESC";
+ORDER BY m.timestamp DESC";
 
  
 
@@ -37,20 +45,29 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 		
         $output[] =     array(
-	'mailId' => $row['mID'],
+		'mailId' => $row['mID'],
 		'imgId' => $row['imgID'],
-    'dateCreated' => $row['dateCreated'],
+  
+    'dateCreated' => $row['timestamp'],
+
+
 	'title' => $row['title'],
 	'content' => $row['content'],
-	'FKrepId' => $row['FKrepId'],
-	'FKOfficerId' => $row['FKOfficerId'],
- 	'name' => $row['name'],
+	'FKrepId' => $row['reportId'],
+	'FKOfficerId' => $row['userId'],
+
+ 	'name' => $row['imgName'],
 	
 	'isRead' => $row['isRead'],
   
     
-	'userName' => $row['userName'],
-	'repNormalUser' => $row['repNormalUser'],
+	'senderDept' => $row['senderDept'],
+	'citizenName' => $row['citizenName'],
+	'mailSenderName' => $row['mailSenderName'],
+	'repNormalUser' => $row['userId'],
+ 
+	
+	
 
 	'repTitle' => $row['repTitle']
 

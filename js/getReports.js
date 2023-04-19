@@ -7,14 +7,37 @@ function getReports2(result,reportID){
 var content=""
 var type
 repID=reportID
-$.each(result.reverse(), function(index, data){
-  
 
-//fetch data from the result which loads at begin.
-  if(data.repID==repID){
-      type=data.repType ;
-      
-      
+
+$.ajax({
+          url: "./php/getReportsSpecific.php",
+          dataType: "json",
+          type: 'POST',
+          async: false,
+          data: {repid:repID
+          },
+          success: function (rs) {
+          
+ data=rs[0]
+       
+                type=data.repType ;
+                let numOfAttach=(data.images.length)
+             let havaAttach=(numOfAttach>0);
+
+                let mailAttachment=""
+        if(havaAttach){         
+                 
+              for(let i=0;i<numOfAttach;i++){
+              mailAttachment+= '  <a href="./php/uploads/'+ data.images[i]+'" download>'
+              +'<img class="repContentPic" width="500px" src="./php/uploads/'+ data.images[i]+'" alt="No"   style="display: '+(havaAttach===true?"inline":"none")+'"></a>' 
+
+              }
+        }
+
+
+
+
+
       content+=
  
       
@@ -192,10 +215,28 @@ $.each(result.reverse(), function(index, data){
 +'                      <span class="repContent">'
             +            data.repContent
 
-      +    '  <br>  <img class="repContentPic" width="600px" src="./php/uploads/'+ data.imgPath+'">'
+//      +    '  <br>  <img class="repContentPic" width="600px" src="./php/uploads/'+ data.imgPath+'">'
 
    
   
+
+
++''+(havaAttach===true?
+  ("<div>Attachment:"
+      +"<div class='attachPic--report'>"
+          + mailAttachment
+      +"</div>"
+  +"</div>"):"")
+ 
+ 
+
+
+
+
+
+
+
+
 
      
   
@@ -383,6 +424,11 @@ $.each(result.reverse(), function(index, data){
 
 
 +'<!--SO reportlBoxFunction-->'
+
+
+
+
+
 +'<div class="reportlBoxFunction "> '
 +'<!--  image file and close button-->'
 +'<span class="file-input-Ctn file-input-Ctn-mail demonHide">'
@@ -390,19 +436,71 @@ $.each(result.reverse(), function(index, data){
 +'<input type="file"   class="file-input file-input-report" id="file-input-report">'
 +'<span class="file-input-cancel-submit">X</span>'
 +'</span>'
+
+
+//S input file
+ +' <div class="mailAttachBox mailAttachBox--specificBox">'
+ +'       <input type="file" id="file-input--singleReportAttach" class="fileInput fileInput--singleReportAttach inputDisplay--singleReportAttach file-input-mail-JS 0" />'
+ +'       <div class="preview preview--singleReportAttach"></div>'
+ 
+ +'   </div>'
+
+
++' <hr style="width:100%;text-align:left;margin-left:0">'
+//E input file
+
+
+
+
+
 +'<!--  button and label and image-->'
+
+
+
+
+
 +'<div class="mailBoxFunctionInsideRep">'
 +'            <button class="submitButton sendCmtBtn sendCmtBtnGP2 reportSubmitButton" data-submit_button="reportSubmit" data-submit_box=".reportStautsUpdatetBox"  data-rep_street="'+data.repStreet+'">Submit</button>'
+
+
+
 +' <div class="uploadForAttach">'
 
-  +'  <label for="file-input-report">'
+  +'  <label for="file-input--singleReportAttach">'
     +'    <img src="./images/attachIcon.png"/>'
    +' </label>'
 
  +'</div>'
+
+
  +'</div>'
+
+
 +'</div> '
+
 +'<!--EO mailBoxFunctionInsideRep-->'
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -620,10 +718,33 @@ $.each(result.reverse(), function(index, data){
 
 return false
 
+ 
+ 
 
-}
 
- });//end of $.each
+
+
+
+          }
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       //  $('.modal').html("")//.append(content)
        

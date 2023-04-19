@@ -25,7 +25,7 @@ $(document).ready(function(){
   function loginCustomizeForUser(){
    
       $('.userName').html($.cookie('userName'));
-       $('.dept').html($.cookie('userDept'));
+       $('.dept').html("("+$.cookie('userDept')+")");
 
       }
    

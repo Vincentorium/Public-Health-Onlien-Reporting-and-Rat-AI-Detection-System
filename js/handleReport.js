@@ -9,6 +9,23 @@ $(document).on('click','.float',function(e){
     var repID=$(this).data("repid")
  
    
+/*
+            let tempArrMultiForSingeReportNonComment=[]
+
+                $(".fileInputed--singleReportAttach").each(function(index,value){
+                  tempArrMultiForSingeReport.push(value.files[0] );
+              })
+*/
+
+
+
+
+
+
+
+
+
+
 
 var data = {
     
@@ -23,9 +40,14 @@ var data = {
  
 
 
+
+
+
+
+
 $.ajax({
             type: 'POST',
-            url: 'php/updateStatusForOfficer.php',
+            url: 'php/updateStatusForApproval.php',
             data: data,
             dataType: 'json',
             async:false,

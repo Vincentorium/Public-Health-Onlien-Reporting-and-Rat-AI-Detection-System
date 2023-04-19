@@ -3,11 +3,19 @@ include "config.php";
 
 extract($_POST);
 // Perform a query
-
-$sql = "SELECT *,rep.id as repID, u.id as userID FROM `report` as rep    
-left join users as u
-on rep.userId=u.id  where repCurrentStatus = '$status'   ; ";
  
+$sql = "SELECT *,
+rep.id as repID, 
+u.id as userID,
+u.type as userType,
+rep.type as repType,
+u.fullname as userName
+
+FROM `report` as rep    
+left join user as u
+on rep.userId=u.id  
+where repCurrentStatus = '$status'   ; ";
+
 
 
 $result = mysqli_query($conn, $sql);
@@ -29,11 +37,11 @@ $record[] = array(
     'repTitle' => $row['repTitle'],
 	'repCurrentStatus'=> $row['repCurrentStatus'],
 	
-
+ 
 	'repID' => $row['repID'],
 
 	'repDateSubmit' => $row['timestamp'],
-	'repType' => $row['type'],
+	'repType' => $row['repType'],
 	//'repTypeSpecification' => $row['repTypeSpecification'],
 	'repLocationDetail' => $row['address'],
  
@@ -52,8 +60,8 @@ $record[] = array(
 
 
 	'userID' => $row['userID'],
-	'userName' => $row['username'],
-	'userDept' => $row['type'],
+	'userName' => $row['userName'],
+	'userDept' => $row['userType'],
 	'userPassword' => $row['password'], 
 
 

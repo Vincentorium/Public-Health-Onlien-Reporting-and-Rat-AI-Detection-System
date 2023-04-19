@@ -4,25 +4,27 @@ extract($_POST);
 // Perform a query
  
 $sql_temp="SELECT * FROM mail AS m
-LEFT JOIN reports AS r ON m.FKrepId=r.repID
-LEFT JOIN users AS u ON r.repNormalUser=u.userID
+LEFT JOIN report AS r ON m.reportId=r.id
+LEFT JOIN user AS u ON r.repNormalUser=u.id
 WHERE m.isSent=? AND m.FKOfficerId=?
-ORDER BY m.dateCreated DESC";
+ORDER BY m.dattimestampe DESC";
 
  
 
 
 
 
-$sql="SELECT *,u1.userDept as senderDept ,u1.userName as mailSenderName, u2.userName as citizenName,   m.id as mID,  
-(select count(*) from mailimage where mailimage.mailId=mID) as images,if( u1.userDept != 'complainer',1,0)  as isSentByOfficer
+$sql="SELECT *,u1.type as senderDept ,u1.fullname as mailSenderName, u2.fullname as citizenName,
+m.id as mID,  
+(select count(*) from mailimage where mailimage.mailId=mID) as images,
+if( u1.type != 'complainer',1,0)  as isSentByOfficer
 FROM mail AS m
-LEFT JOIN reports AS r ON m.FKrepId=r.repID
+LEFT JOIN report  AS r ON m.reportId=r.id
 
-LEFT JOIN users AS u1 ON m.FKOfficerId=u1.userID
-LEFT JOIN users AS u2 ON r.repNormalUser=u2.userID
-where  if( u1.userDept != 'complainer',1,0)=? 
-ORDER BY m.dateCreated DESC";
+LEFT JOIN user AS u1 ON m.userId=u1.id
+LEFT JOIN user AS u2 ON r.userId=u2.id
+where  if( u1.type != 'complainer',1,0)=? 
+ORDER BY m.timestamp	 DESC";
 
 
 
@@ -54,13 +56,13 @@ if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
 		
         $output[] =     array(
-	'mailId' => $row['id'],
+	'mailId' => $row['mID'],
  
-    'dateCreated' => $row['dateCreated'],
+    'dateCreated' => $row['date'],
 	'title' => $row['title'],
 	'content' => $row['content'],
-	'FKrepId' => $row['FKrepId'],
-	'FKOfficerId' => $row['FKOfficerId'],
+	'FKrepId' => $row['reportId'],
+	//'FKOfficerId' => $row['userId'],
  
  
 	'isRead' => $row['isRead'],
@@ -69,7 +71,7 @@ if ($result->num_rows > 0) {
 	'senderDept' => $row['senderDept'],
 	'citizenName' => $row['citizenName'],
 	'mailSenderName' => $row['mailSenderName'],
-	'repNormalUser' => $row['repNormalUser'],
+	//'repNormalUser' => $row['userId'],
 	'isSentByOfficer' => $row['isSentByOfficer'],
 	
 

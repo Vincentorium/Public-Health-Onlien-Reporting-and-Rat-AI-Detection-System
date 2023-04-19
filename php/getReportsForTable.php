@@ -2,9 +2,36 @@
 include "config.php";
 
 // Perform a query
-$sql = "SELECT * FROM `reports` as rep INNER JOIN repstatus as status 
+$sql = "SELECT *,
+rep.id as repID,
+rep.type as repType,
+FROM `reports` as rep 
+INNER JOIN repstatus as status 
 on rep.repID = status.repStatusFKreports;";
  
+
+
+$ssql = "SELECT *,
+rep.id as repID, 
+u.id as userID,
+u.type as userType,
+rep.type as repType,
+u.fullname as userName
+
+FROM `report` as rep    
+left join user as u
+on rep.userId=u.id  
+where repCurrentStatus = '$status'   ; ";
+
+
+
+
+
+
+
+
+
+
 $result = mysqli_query($conn, $sql);
 
 $record = array();
@@ -20,17 +47,10 @@ if (mysqli_num_rows($result) > 0) {
 $record[] = array(
 	'repID' => $row['repID'],
     'repTitle' => $row['repTitle'],
-	'repDateSubmit' => $row['repDateSubmit'],
+	'repDateSubmit' => $row['timestamp'],
 	'repType' => $row['repType'],
-	'repTypeSpecification' => $row['repTypeSpecification'],
-	'repLocationDetail' => $row['repLocationDetail'],
-	'repLocationDetail' => $row['repLocationDetail'],
-	'repLocationY' => $row['repLocationY'],
   
-	'repDatePeriodBegin' => $row['repDatePeriodBegin'],
-	'repDatePeriodEnd' => $row['repDatePeriodEnd'],
-	'repContent' => $row['repContent'],
-	'repNormalUser' => $row['repNormalUser'],
+	 
 	'repDept' => $row['repDept'],
 
 

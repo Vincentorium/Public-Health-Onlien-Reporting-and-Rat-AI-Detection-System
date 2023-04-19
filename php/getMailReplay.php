@@ -4,8 +4,8 @@ extract($_POST);
 // Perform a query
 $sql = "SELECT * FROM `mail` LEFT JOIN reports  
 on mail.FKrepId = reports.repID
-LEFT JOIN users
-on reports.repNormalUser = users.userID
+LEFT JOIN user
+on reports.repNormalUser = user.userID
 Where mail.title='$title'
  ORDER BY mail.dateCreated  
 ";

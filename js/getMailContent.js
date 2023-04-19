@@ -31,6 +31,16 @@ mailResult =result
 
               }
         }
+
+
+        
+                
+                let sender=(isSentByOfficer?data.mailSenderName:data.citizenName)
+                let recipient=(isSentByOfficer?data.citizenName:"Officer")
+                let recipientBox="";
+        if(isSentByOfficer){
+                   recipientBox='&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <span >Recipient: '+recipient+': </span>'
+}
   
  //fetch data from the result which loads at begin.
   if(data.mailId==mailId){
@@ -75,16 +85,11 @@ mailResult =result
  +'<div>Date:'+data.dateCreated+' </div>'
  +'<hr style="width:100%;text-align:left;margin-left:0">'
  +'<div class="mailBoxRecipients">'
- +'<span >'+identity+': </span>'
- +'<input type="text" class="mailInput recipientInput" '+status+' value="'+data.userName+'" >'
+ +'<span >Sender: '+sender+': </span>'
++recipientBox 
+// +'<input type="text" class="mailInput recipientInput" '+status+' value="'+data.userName+'" >'
   
- 
- 
- 
- 
- 
- 
- 
+  
   +'</div>'
  +'<hr style="width:100%;text-align:left;margin-left:0">'
  
@@ -93,10 +98,20 @@ mailResult =result
 +'            class="ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list"'
 +'            aria-haspopup="true" style="resize:none;" '+status+'>'+data.content+'</textarea>'
 +'          <br>'
-+''+(havaAttach===true?"<div>Attachment:</div>":"")
-+ mailAttachment
-
- +'<!--SO mailBoxFunctionInsideRep-->'
++''+(havaAttach===true?
+  ("<div>Attachment:"
+      +"<div class='attachPic'>"
+          + mailAttachment
+      +"</div>"
+  +"</div>"):"")
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+  +'<!--SO mailBoxFunctionInsideRep-->'
 +button
  
 
@@ -114,7 +129,7 @@ mailResult =result
 +'                  <div class="mailBoxRecipients">'
 +'                    <span class="mail-replay-title">'
 +'<img src="./images/replyIcon.png" class="replayIcon" >'
-+data.userName+'</span>'
++sender+'</span>'
  
 +'  <span class="mail-list-submit-box-cancel" data-close-button>X</span>'
 +'                  </div>'

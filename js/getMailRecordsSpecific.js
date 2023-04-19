@@ -164,10 +164,13 @@ $.ajax({
 +'</textarea>'
 
 
-+(havaAttach===true?"<div>Attachment:</div>":"")
-+ mailAttachment
-
-
++''+(havaAttach===true?
+  ("<div>Attachment:"
+      +"<div class='attachPic'>"
+          + mailAttachment
+      +"</div>"
+  +"</div>"):"")
+ 
 
 +'          <br>'
 

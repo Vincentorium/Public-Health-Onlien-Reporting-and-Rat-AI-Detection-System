@@ -1,6 +1,6 @@
 <?php
 include "config.php";
-
+extract($_POST);
 
 $sqlImage="SELECT * FROM `reportimage`";
  
@@ -53,7 +53,8 @@ if ($result->num_rows > 0) {
 
 
 // Perform a query
-$sql = "SELECT *,
+$sql = "
+SELECT *,
 rep.id as repID,
 u.id as userID,
 u.fullname as userName,
@@ -64,7 +65,13 @@ FROM `report` as rep
 left join `repstatus` as status 
 on rep.id = status.repStatusFKreports
 left join user as u
-on rep.userId=u.id;";
+on rep.userId=u.id
+where rep.id=$repid
+ 
+order by STATUS.repStatusDateCreated DESC 
+limit 1;
+ 
+";
  
 $result = mysqli_query($conn, $sql);
 

@@ -1,6 +1,7 @@
 <?php
 include "config.php";
 extract($_POST);
+
 // Perform a query
  
 
@@ -55,8 +56,8 @@ as images,if( u1.fullname != 'complainer',1,0)  as isSentByOfficer
 FROM mail AS m
 LEFT JOIN report AS r ON m.reportId=r.id
 
-LEFT JOIN users AS u1 ON m.userId=u1.id
-LEFT JOIN users AS u2 ON r.userId=u2.id
+LEFT JOIN user AS u1 ON m.userId=u1.id
+LEFT JOIN user AS u2 ON r.userId=u2.id
 
 WHERE r.id =?";
 

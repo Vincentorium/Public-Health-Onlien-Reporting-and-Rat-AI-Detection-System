@@ -89,7 +89,8 @@ overlay.classList.add('active')
  $('.mailModal').addClass('active');
   $('.mail-record-box').addClass('active');
   getMailRecords(0)
-getMailContent(mailLastestOne)
+
+getMailContent(mailLastestOne,0)
  
 $('.mail-record-box table tbody tr').attr('display','table-row')
  

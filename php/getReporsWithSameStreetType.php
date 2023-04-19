@@ -4,8 +4,9 @@ include "config.php";
 extract($_POST);
 // Perform a query
 
-$sql = "SELECT * FROM `reports` as rep  left join users
-on rep.repNormalUser=users.userID  
+$sql = "SELECT *, rep.id as repID, u.id as userID ,rep.type as repType,u.type as userType
+FROM `report` as rep  left join user as u
+on rep.userId=u.id
 where    repCurrentStatus!='unapproved'  
 And   repStreet='$repStreet'";
  
@@ -26,25 +27,27 @@ if (mysqli_num_rows($result) > 0) {
 			$record[] = array(
 				'repID' => $row['repID'],
 				'repTitle' => $row['repTitle'],
-				'repDateSubmit' => $row['repDateSubmit'],
+				'repDateSubmit' => $row['timestamp'],
 				'repType' => $row['repType'],
-				'repTypeSpecification' => $row['repTypeSpecification'],
-				'repLocationDetail' => $row['repLocationDetail'],
-				'repLocationDetail' => $row['repLocationDetail'],
-				'repLocationY' => $row['repLocationY'],
+//				'repTypeSpecification' => $row['repTypeSpecification'],
+				'repLocationDetail' => $row['address'],
+						'repLocationY' => $row['latitude'],
+	'repLocationX' => $row['longitude'],
 			
-				'repDatePeriodBegin' => $row['repDatePeriodBegin'],
-				'repDatePeriodEnd' => $row['repDatePeriodEnd'],
-				'repContent' => $row['repContent'],
-				'repNormalUser' => $row['repNormalUser'],
-				'repDept' => $row['repDept'],
+			'repDatePeriodBegin' => $row['date'],		'repDatePeriodEnd' => $row['repDatePeriodEnd'],
+		 	'repContent' => $row['descr'],
+				'repContent' => $row['descr'],
+				'repNormalUser' => $row['userId'],
+		
+		'repDept' => $row['repDept'],
 				'repCurrentStatus'=> $row['repCurrentStatus'],
 					'repStreet'=> $row['repStreet'],
 
-				'userID' => $row['userID'],
-				'userName' => $row['userName'],
-				'userDept' => $row['userDept'],
-				'userPassword' => $row['userPassword'], 
+				'userID' => $row['id'],
+	'userName' => $row['fullname'],
+	'userDept' => $row['userType'],
+	'userPassword' => $row['password'], 
+
 				
 			 );
 			}

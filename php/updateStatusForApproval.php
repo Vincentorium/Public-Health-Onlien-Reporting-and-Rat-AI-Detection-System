@@ -7,7 +7,7 @@ $datetime=date('Y-m-d H:i:s');
   // Create the SQL statement with placeholders for the values
 
   
-
+$repStatusRemark="by Operatoer";
 // Prepare the statement
 $stmt_insertRepStatus = $conn->prepare("INSERT INTO 
 repstatus (repStatusID,repStatusType,repStatusDateCreated,
@@ -33,7 +33,8 @@ if ($stmt_insertRepStatus->execute()) {
                 $repStatusID = $stmt_insertRepStatus->insert_id;
     // SO   get image   
                   for ($index = 0; $index <4;  $index++) {
-                            if(array_key_exists('images_'.$index, $_FILES)) {$noOfImage++;}
+                            if(array_key_exists('images_'.$index, $_FILES)) 
+                            {$noOfImage++;}
                   }
 
                   

@@ -36,13 +36,13 @@
     transform: translate(-50%,-50%) scale(0);
     transition: 200ms ease-in-out;
     border-radius: 10px;
-    z-index: 10;
   
     width: auto;
     height: auto;
 
  
 }
+
  
 
 .mailModal.active {
@@ -416,13 +416,13 @@ display: flex;
   transform: translate(-50%, -50%);
 }
  
-      .preview--mainMailBox ,.preview--specificBox,.preview--multiMails{
+     .preview--singleReportAttach , .preview--mainMailBox ,.preview--specificBox,.preview--multiMails{
 
             display: flex;
             margin-left: 13px;
         }
 
-        .close-button--mainMailBox ,.close-button--specificBox ,.close-button--multiMails{
+        .close-button--singleReportAttach ,.close-button--mainMailBox ,.close-button--specificBox ,.close-button--multiMails{
             margin-right: 16px;
         }
 
@@ -430,3 +430,17 @@ display: flex;
 
              display: none;
         }
+
+
+        .attachPic{
+            display: flex;
+            
+        }
+        .attachPic--report{
+            
+        }
+       .attachPic>a{
+               margin: 0 3px 0 3px;
+        }
+
+ 

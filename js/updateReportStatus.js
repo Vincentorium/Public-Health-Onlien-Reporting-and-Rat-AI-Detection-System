@@ -3,34 +3,30 @@
 
 
 
-function updateReportStatus(){
+function updateReportStatus(dataJS){
 
 
 
     var repStatusRemark=$('.reportTextArea').val()
     var status=$('.repSubmitStatus').val()=="unchange"?null:$('.repSubmitStatus').val()
     var imageData = new FormData();
-    imageData.append('image', $('#file-input-report')[0].files[0]);
-
+ 
     imageData.append('repStatusID',null);
     imageData.append('repStatusType',status);
     imageData.append('repID',repID);
     imageData.append('repStatusRemark',repStatusRemark);
     imageData.append('repUserID',$.cookie('userID'));
+  // imageData.append('image', $('#file-input-report')[0].files[0]);
 
 
-var data = {
+     $(dataJS).each(function(index,value){
 
-    repStatusID:null,
-    repStatusType:status,
-    repStatusDateCreated: 0,
-    repID:repID,
-    repStatusRemark:repStatusRemark,
-    repUserID:$.cookie('userID')
-    };
+                        imageData.append('images_'+(index),value );
+
+                })
 
 
-
+ 
 
 
 $.ajax({
@@ -52,8 +48,7 @@ $.ajax({
 
                     alert("Successfully Update the status!")
                     $('.active').removeClass('active');
-                    //$('.stateMsg').remove();
-                 //   $('#float').html($('#float').html()=="Approve"?"Unapprove":"Approve")
+              
             },
 
         });//EO ajax
@@ -62,7 +57,7 @@ $.ajax({
 }
 var repIDArray
 var dataJSForMail;
-function updateMultiReportsStatus(){
+function updateMultiReportsStatus(dataJSAttach){
 
 
          if(checkIsSelected()!=true){
@@ -85,7 +80,7 @@ function updateMultiReportsStatus(){
                 
 
                 formDatas.append('arr_'+index+'_repID',$(this).data("repid"))
-                formDatas.append('arr_'+index+'_image', $('#file-input-report')[0].files[0]);
+               // formDatas.append('arr_'+index+'_image', $('#file-input-report')[0].files[0]);
               
                 formDatas.append('arr_'+index+'_repStatusType',status);
                 formDatas.append('arr_'+index+'_repStatusRemark',repStatusRemark);
@@ -97,6 +92,8 @@ function updateMultiReportsStatus(){
             }
         });
 
+
+
         dataJSForMail={
                 "repID":repIDArray,
                 "usersName":repNameArray,
@@ -104,6 +101,22 @@ function updateMultiReportsStatus(){
                 "title":null,
                 "content":null
         }
+
+
+                 $(dataJSAttach).each(function(index,value){
+
+                        formDatas.append('images_'+(index),value );
+
+                })
+
+
+
+
+
+
+
+
+
 
 
 

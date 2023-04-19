@@ -90,6 +90,7 @@
    }
 
    .windowModal,.windowModal--mailbox{
-   
+   position: fixed;
+    z-index: 20;
 
    }
