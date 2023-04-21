@@ -41,3 +41,16 @@
 .close:after {
   transform: rotate(-45deg);
 }
+
+.attachTitle{
+
+  font-weight: 900;
+}
+.attachTitleBox{
+    margin-top: 24px;
+  
+}
+.repContent{
+    display: block;
+    width: 654px;
+}

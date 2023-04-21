@@ -41,10 +41,9 @@ $.ajax({
 
                     console.log('Status updated!');
 
-                    getAllReort()
-                    getReportsIntoInbox()
-                    getReortForTable()
-                    modal()
+                    refreshAfterUpdate()
+
+                  
  
                     $('.active').removeClass('active');
               

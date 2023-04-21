@@ -4,7 +4,7 @@ include "config.php";
 extract($_POST);
  
  
-$update_query = "UPDATE reports SET $attribute='$value' WHERE repID='$repID'";
+$update_query = "UPDATE report SET $attribute='$value' WHERE id='$repID'";
 
 
 if (mysqli_query($conn, $update_query)) {

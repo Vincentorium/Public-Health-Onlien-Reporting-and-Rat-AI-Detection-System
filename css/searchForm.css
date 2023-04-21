@@ -660,7 +660,7 @@ display:flex;
 
 .mailIconInsideRep{
       position: fixed;
-    width: 137px;
+  width: 144px;
     height: 100px;
     top: 546px;
     right: -61px;
@@ -701,7 +701,56 @@ display:flex;
     top: 40px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+        .thumbnail {
+
+            width: 150px;
+                    height: 50px;
+            margin-left:15px;
+        }
+
+
+
+
+
+
+ 
+
+        .thumbnails:hover{
+
+ 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-51%,-50%) scale(1);
+    transition: 0s;
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    z-index: 100;
+    width: 500px;
+
+        }
+ 
+.thumbnails{
+    transition: none;
+  
 }
+
+
 
         .thumbnail {
 
@@ -711,7 +760,32 @@ display:flex;
         }
 
 
- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         .thumbnails--solvedMail {
             width: 50px;
             height: 50px;
@@ -770,11 +844,7 @@ display:flex;
             height: 50px;
         }
 
-        .thumbnails2:hover {
-             
-            height: 400px;
-            width: auto;
-        }
+     
      
         .inbox-specific-head-figureImage{
 width: 110px;

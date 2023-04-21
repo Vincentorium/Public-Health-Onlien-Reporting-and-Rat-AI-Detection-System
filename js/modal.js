@@ -124,7 +124,7 @@ $('.mail-record-box table tbody tr').attr('display','table-row')
     modal.classList.remove('active');
     }else if(modaType==="relevantReportsBox"){
        modal.classList.remove('activeRelevantReps');
-     
+          $(".submitNotifyUser").prop("checked", false);
     }
  
 }

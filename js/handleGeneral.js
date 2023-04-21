@@ -46,15 +46,16 @@ $(document).on('click','.submitButton',function(e){
                     updateReportStatus(tempArrMultiForSingeReport)
             
                 }else{
-       
-                    if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
+                    //if multi button is clicked
+                  /*  if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
                          $('.relevantReportsBox').addClass("activeRelevantReps")
                              e.preventDefault();}
                     else{ 
                       e.preventDefault();
                       return
             
-                    }       
+                    }
+                    */       
             }
 
             break;
@@ -131,5 +132,9 @@ e.stopPropagation()
                     getReportsIntoInbox()
                     getReortForTable()
                     modal()
+                    getMostUrgentStreet()
+ 
                   
                   }
+
+ 

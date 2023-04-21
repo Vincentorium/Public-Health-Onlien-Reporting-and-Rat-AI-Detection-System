@@ -96,7 +96,7 @@ if (mysqli_num_rows($result) > 0) {
 					'repUserID' => $row['repUserID'],
 					'repStatusRemark' => $row['repStatusRemark'],
 					 
-					'repStatusAttachName' => $row['repStatusAttachName'],
+				
 
 					
 					'statusPre' => $statusPre,

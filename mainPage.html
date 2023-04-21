@@ -25,13 +25,14 @@
   <link href="css\mail.css" rel="stylesheet">
   <link href="css\relevantReportsForUpdate.css" rel="stylesheet">
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
+  <script src="js\jquery-3.6.4.min.js"></script>
   <script src="https://cdn.staticfile.org/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 
 
   <script src="js\logIn.js"></script>
   <script src="js\signUp.js"></script>
+
 
 
   <script defer src="js\resetPW.js"></script>
@@ -69,7 +70,7 @@
   <script defer src="js\handleGeneral.js"></script>
   <script defer src="js\getReportStatus.js"></script>
 
-
+  <script defer src="js\getMostUrgentStreet.js"></script>
 </head>
 
 <body>
@@ -221,6 +222,9 @@
             class="header__createAccount adminFunLin">Create Account</a>
         </div>
         <div class="headerLoginOut">
+
+          <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__signIn  ">Statistic</a>
+
           <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__signIn  ">Mail</a>
 
 
@@ -248,6 +252,10 @@
         <div class="favBox">
           <label class="collectionLabel" for="">Collection - Top 3 urgent: </label>
           <div class="favEleBox">
+
+
+
+
             <div class="favElements favElement1" data-modal-target="#modal" data-default="orderList">
 
               <div class="urgentBox">
@@ -269,6 +277,15 @@
               </div>
 
             </div>
+
+
+
+
+
+
+
+
+
 
             <div class="favElements favElement2">
               <div class="urgentBox">
