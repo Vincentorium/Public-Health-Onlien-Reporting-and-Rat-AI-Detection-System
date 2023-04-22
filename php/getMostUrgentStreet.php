@@ -4,24 +4,16 @@ include "config.php";
 extract($_POST);
  
  
-$sql2="select  rep.street as repStreet  , rep.date as repDate, count(rep.id) as no, rep.type as repType
-from report  as rep
-where rep.date  BETWEEN DATE_SUB(CURDATE(),INTERVAL 10 DAY) and   CURDATE() 
-and (select st.repStatusType from repstatus as st where st.repStatusFKreports=rep.id  order by st.repStatusDateCreated limit 1) not in ('unapproved','Solved')
-group by rep.street
-limit 3;";
 
 
-$sql="select rep.id,COUNT(rep.id) as no , 
+$sql="select rep.id, 
 rep.street as repStreet,(select st.repStatusType from repstatus as st where st.repStatusFKreports=rep.id 
-order by st.repStatusDateCreated limit 1)   as type,
+order by st.repStatusDateCreated desc limit 1)   as type,
 rep.date as repDate
 from report as rep
 where
-rep.date   BETWEEN DATE_SUB(CURDATE(),INTERVAL 10 DAY) and   CURDATE()
-and (select st.repStatusType from repstatus as st where st.repStatusFKreports=rep.id 
-order by st.repStatusDateCreated desc limit 1) not in ('unapproved','solved') 
- group by rep.street;";
+  (select st.repStatusType from repstatus as st where st.repStatusFKreports=rep.id 
+order by st.repStatusDateCreated desc limit 1) not in ('unapproved','solved');";
 
 $stmt = $conn->prepare($sql);
 
