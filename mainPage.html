@@ -21,9 +21,12 @@
   <link href="css\tableSheet.css" rel="stylesheet">
   <link href="css\complaintTable.css" rel="stylesheet">
   <link href="css\favBox.css" rel="stylesheet">
-  <link href="css\demo.css" rel="stylesheet">
+
   <link href="css\mail.css" rel="stylesheet">
   <link href="css\relevantReportsForUpdate.css" rel="stylesheet">
+  <link href="css\mail.css" rel="stylesheet">
+  <link href="css\stastic.css" rel="stylesheet">
+  <link href="css\demo.css" rel="stylesheet">
 
 
   <script src="js\jquery-3.6.4.min.js"></script>
@@ -75,6 +78,9 @@
   <script defer src="js\chartLib.js"></script>
   <script defer src="js\getChart.js"></script>
   <script defer src="js\getChartCompare.js"></script>
+
+  <script defer src="js\checkNewMail.js"></script>
+  <script defer src="js\handleStatistic.js"></script>
 
 </head>
 
@@ -228,9 +234,10 @@
         </div>
         <div class="headerLoginOut">
 
-          <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__signIn  ">Statistic</a>
+          <a data-modal-target="#statistic" data-default="mailRecord"
+            class="hearder__a header__statistic  ">Statistic</a>
 
-          <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__signIn  ">Mail</a>
+          <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__mailRecord  ">Mail</a>
 
 
 
@@ -320,130 +327,146 @@
 
           <!-- SOF complaintFuncBox-->
           <div class="complaintFuncBox">
+            <form id="mainPageForm" method="post" action="submit.php" action="">
+              <!-- SOF filter Form -->
+              <div class="filterForm filterForm--maiPage">
 
-            <!-- SOF filter Form -->
-            <div class="filterForm filterForm--maiPage">
-
-              <div class="filterFormFirstFlood">
-                <div class="filter_loc">
+                <div class="filterFormFirstFlood">
+                  <div class="filter_loc">
 
 
-                  <div class="filterBox">
-                    <select class="filter__formInput filter__formInputFix inputHongKong" type="text" required="required"
-                      value="Hong Kong">
-                      <option value="YMT">Yau Ma Tei</option>
-                      <option value="TST">Tsim Sha Tsui</option>
-                      <option value="MK">Mong Kok</option>
+                    <div class="filterBox">
+                      <select name="region" class="filter__formInput filter__formInputFix inputHongKong" type="text"
+                        required="required" value="Hong Kong">
+                        <option value="YMT">Yau Ma Tei</option>
+                        <option value="TST">Tsim Sha Tsui</option>
+                        <option value="MK">Mong Kok</option>
 
-                    </select>
-                    <span class="  fliter_placehoderFix">Areas</span>
+                      </select>
+                      <span class="fliter_placehoder">Areas</span>
+
+                    </div>
+
+                    <div class="filterBox">
+
+
+
+
+
+                      <span class="filterBox__airlineIcon"></span>
+
+
+
+
+                      <select name="street" class="filter__formInput filter__formInput--locFrm" type="text"
+                        required="required" value="Hong Kong">
+                        <option value="">Streets</option>
+                        <option value="Ashley Road"> Ashley Road</option>
+                        <option value="MK"> Temple Street</option>
+                        <option value="YMT"> Public Square Street</option>
+                        <option value="TST"> Jade Street</option>
+
+
+                      </select>
+                      <span class="fliter_placehoder"> </span>
+
+
+                      <!hover change to click and float -->
+
+
+                    </div>
+                  </div>
+                  <div class="filter_date">
+
+
+                    <div class="filterBox">
+
+                      <input id="filter__formInput"
+                        class="filter__formInput filter__formInput--date filter__formInput--date_s" required="required"
+                        name="date_s_0" type="text" onfocus="(this.type='date')"
+                        onblur="if(!this.value)this.type='text'">
+                      <span class="fliter_placehoder">Start Date</span>
+                    </div>
+
+                    <div class="filterBox">
+                      <input id="filter__formInput" class="filter__formInput filter__formInput--date_e"
+                        required="required" name="date_e_0" type="text" onfocus="(this.type='date')"
+                        onblur="if(!this.value)this.type='text'">
+
+                      <span class="fliter_placehoder">End Date</span>
+                    </div>
+
+
+                    <input class="shouldBeHide" type="text">
 
                   </div>
 
-                  <div class="filterBox">
 
-
-
-
-
-                    <span class="filterBox__airlineIcon"></span>
-
-
-
-
-                    <select class="filter__formInput filter__formInput--locFrm" type="text" required="required"
-                      value="Hong Kong">
-                      <option value="">Streets</option>
-                      <option value="Ashley Road"> Ashley Road</option>
-                      <option value="MK"> Temple Street</option>
-                      <option value="YMT"> Public Square Street</option>
-                      <option value="TST"> Jade Street</option>
-
-
-                    </select>
-                    <span class="fliter_placehoder"> </span>
-
-
-                    <!hover change to click and float -->
-
-
-                  </div>
-                </div>
-                <div class="filter_date">
-
-
-                  <div class="filterBox">
-
-                    <input id="filter__formInput"
-                      class="filter__formInput filter__formInput--date filter__formInput--date_s" required="required"
-                      name="date" type="text" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
-                    <span class="fliter_placehoder">Start Date</span>
-                  </div>
-
-                  <div class="filterBox">
-                    <input id="filter__formInput" class="filter__formInput filter__formInput--date_e"
-                      required="required" name="date" type="text" onfocus="(this.type='date')"
-                      onblur="if(!this.value)this.type='text'">
-
-                    <span class="fliter_placehoder">End Date</span>
-                  </div>
-
-
-                  <input class="shouldBeHide" type="text">
-
-                </div>
-
-
-
-              </div>
-
-
-              <div class="filterFormFirstFlood">
-                <div class="filter_date">
-
-
-
-
-                  <div class="filterBox">
-
-                    <input list="Dated" class="filter__formInput filter__formInput--time inputSecFloor" type="text"
-                      required="required">
-
-                    <span class="fliter_placehoder fliter_placehoder_secFloor">keyword</span>
-                  </div>
-
-
-                  <input class="shouldBeHide" type="text">
 
                 </div>
-                <!-- 
+
+
+                <div class="filterFormFirstFlood">
+                  <div class="filter_date">
+
+
+
+
+                    <div class="filterBox">
+
+                      <input list="Dated" class="filter__formInput filter__formInput--time inputSecFloor" type="text"
+                        required="required">
+
+                      <span class="fliter_placehoder fliter_placehoder_secFloor">keyword</span>
+                    </div>
+
+
+                    <input class="shouldBeHide" type="text">
+
+                  </div>
+                  <!-- 
           <button type="button" class="filterForm__searchBtn"><img src="/images/search.jpg" alt=""> Search</button>
 --> <img class="searchIcon filterForm__searchBtn" src="./images/search.svg" alt="" data-search="stastic">
+                  <input class="searchIcon filterForm__searchBtn" type="submit" src="./images/search.svg" alt=""
+                    data-search="stastic">
+
+                </div>
+
+
+                <div class="stat_filter_box">
+
+                  <div class="comparedIconBox">
+                    <input type="button" class="searchIcon " value="Compared with the period:"
+                      data-search="filter_date_compare_box">
+                    <img class="comparedIcon" src="./images/compareAdd.png" alt="">
+                  </div>
+
+
+
+
+
+                </div>
+
               </div>
+              <!-- EOF filter Form -->
 
 
+              <!-- SOF 5 switch box -->
+              <div class="switchBox">
+                <!-- SOF 5 top box -->
 
+                <!-- EOF 5 top box -->
 
-            </div>
-            <!-- EOF filter Form -->
+                <!-- partial:index.partial.html -->
+                <div class="switch-button "><span class="activeSwitch"></span>
 
+                  <button class="switch-button-case left active-case"> Inbox</button>
+                  <button class="switch-button-case right demonSwitchRight">Case</button>
+                </div>
 
-            <!-- SOF 5 switch box -->
-            <div class="switchBox">
-              <!-- SOF 5 top box -->
+              </div> <!-- EOF 5 switch box -->
 
-              <!-- EOF 5 top box -->
-
-              <!-- partial:index.partial.html -->
-              <div class="switch-button "><span class="activeSwitch"></span>
-
-                <button class="switch-button-case left active-case"> Inbox</button>
-                <button class="switch-button-case right demonSwitchRight">Case</button>
-              </div>
-
-            </div> <!-- EOF 5 switch box -->
-
-
+            </form>
           </div>
           <!-- EOF complaintFuncBox-->
 
@@ -533,39 +556,6 @@
             <div class="container--statistic">
 
 
-
-
-
-              <div>
-                <input type="button" class="searchIcon " value="Compared with the period:"
-                  data-search="filter_date_compare_box">
-
-                <div class="filter_date filter_date_compare_box">
-
-
-                  <div class="filterBox ">
-
-                    <input id="filter__formInput"
-                      class="filter__formInput filter__formInput--date filter__formInput_compare_--date_s"
-                      required="required" name="date" type="text" onfocus="(this.type='date')"
-                      onblur="if(!this.value)this.type='text'">
-                    <span class="fliter_placehoder">Start Date</span>
-                  </div>
-
-                  <div class="filterBox">
-                    <input id="filter__formInput" class="filter__formInput filter__formInput_compare_--date_e
-                      required=" required" name="date" type="text" onfocus="(this.type='date')"
-                      onblur="if(!this.value)this.type='text'">
-
-                    <span class="fliter_placehoder">End Date</span>
-                  </div>
-
-
-                  <input class="shouldBeHide" type="text">
-
-                </div>
-
-              </div>
 
               <div id="chartContainer" style="height: 300px; width: 100%;">
 

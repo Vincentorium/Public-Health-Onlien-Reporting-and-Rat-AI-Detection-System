@@ -84,6 +84,13 @@ overlay.classList.add('active')
 
   }  else if (defaulModal=='mailRecord'){
 
+    if($('.header__mailRecord').css("color") =="rgb(255, 0, 0)" ){
+  $('.header__mailRecord').css("color", "rgba(0, 35, 96, 0.79)"  );
+
+   }
+
+
+
     $('.mail-button-inbox').addClass('mailbuttonHover')
     $('.mail-button-sent').removeClass('mailbuttonHover')
  $('.mailModal').addClass('active');

@@ -219,14 +219,14 @@ display: none;
         }
 
         .filterBox .fliter_placehoder {
-            position: absolute;
-            left: 0px;
-            padding: 10px;
-            pointer-events: none;
-            font-size: 1em;
-            color: rgba(0, 0, 0, 0.892);
-            text-transform: uppercase;
-            transition: 0.5s;
+             position: absolute;
+    left: 0px;
+    padding: 6px;
+    pointer-events: none;
+    font-size: -1em;
+    /* color: rgba(0, 0, 0, 0.892); */
+    text-transform: uppercase;
+    transition: 0.5s;
            
         }
         .fliter_placehoder_secFloor{
@@ -239,16 +239,16 @@ display: none;
             padding: 10px;
             pointer-events: none;
             font-size: 1em;
-            color: rgba(0, 0, 0, 0.892);
+            
             
           
             
-              color: #ffffff;
+        color: rgb(0 0 0 / 89%);
             /* transform: translateX(10px) translateX(-7px);*/
 
             transform: translate(10px, -7px);
             font-size: 0.75em;
-            background-color: #01254c;
+           
 
             padding: 0 2px;
           
@@ -260,11 +260,29 @@ display: none;
 
         }
 
+
+.fliter_placehoder{
+     position: absolute;
+    left: 0px;
+    padding: 8px;
+    pointer-events: none;
+    
+     color: rgba(0, 0, 0, 0.892);
+    text-transform: uppercase;
+    transition: 0.5s;
+    transform: translate(5px, -20px);
+    height: 27px;
+    font-size: 0.75em;
+  
+    
+    letter-spacing: 0.2em;
+}
+/* 
         .filterBox input:valid~.fliter_placehoder,
         .filterBox input:focus~.fliter_placehoder {
 
             color: #ffffff;
-            /* transform: translateX(10px) translateX(-7px);*/
+          
 
             transform: translate(10px, -7px);
             font-size: 0.75em;
@@ -276,7 +294,7 @@ display: none;
 
 
         }
-
+*/
 
 
         .filterBox__airlineIcon {

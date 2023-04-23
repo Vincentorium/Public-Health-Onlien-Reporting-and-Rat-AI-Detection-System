@@ -6,49 +6,53 @@ $json_data = file_get_contents('php://input');
 $data = json_decode($json_data, true);
 
 extract($data);
- 
+//var_dump($data);
 //$sql_Allarea="";//"and rep.street='$street'";
+$noOfDateCom=0;
+$noOfDateComTrace=0;
+ $sql="";
+ for ($index = 0; $index <4;  $index++) {
+        if(array_key_exists('date_s_'.$index, $data))
+                 $noOfDateCom++;
+    }
+for ($index = 0; $index <4;  $index++) {
+
+     if(array_key_exists('date_s_'.$index, $data))
+      { $noOfDateComTrace++;
+     
+$sql.="
+(SELECT
+    rep.id,
+    rep.type AS repPollutionType,
+    COUNT(rep.type) AS no ,
+    rep.street AS repStreet,
+    (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports=rep.id
+      ORDER BY st.repStatusDateCreated DESC LIMIT 1) AS type,
+    rep.date AS repDate , ".$index." as compareIndex
+    
+ 
+FROM report AS rep
+WHERE rep.date  between '".${'date_s_'.$index}."' and '".${'date_e_'.$index}."'
+    AND (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports=rep.id 
+          
+         ORDER BY st.repStatusDateCreated DESC LIMIT 1) NOT IN ('unapproved','solved')
+GROUP BY rep.type 
+ORDER BY no DESC)";
+ 
+
+          $sql.= ( $noOfDateComTrace<$noOfDateCom ) ? " UNION ALL " : "";
+
+
+      }
+ }
+
+
+
 $sql_Allarea=  ($street!="") ?" and rep.street='$street' ":"";
  
  
 
-$sql="
-(SELECT
-    rep.id,
-    rep.type AS repPollutionType,
-    COUNT(rep.type) AS no ,
-    rep.street AS repStreet,
-    (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports=rep.id
-      ORDER BY st.repStatusDateCreated DESC LIMIT 1) AS type,
-    rep.date AS repDate , '1st' as compareIndex
-    
- 
-FROM report AS rep
-WHERE rep.date  between '$dateS' and '$dateE'
-    AND (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports=rep.id 
-          
-         ORDER BY st.repStatusDateCreated DESC LIMIT 1) NOT IN ('unapproved','solved')
-GROUP BY rep.type 
-ORDER BY no DESC)
-UNION ALL
-(SELECT
-    rep.id,
-    rep.type AS repPollutionType,
-    COUNT(rep.type) AS no ,
-    rep.street AS repStreet,
-    (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports=rep.id
-      ORDER BY st.repStatusDateCreated DESC LIMIT 1) AS type,
-    rep.date AS repDate,
- '2nd' as compareIndex
-  
-FROM report AS rep
-WHERE rep.date  between '$dateS_c_s' and '$dateS_c_e'
-    AND (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports=rep.id 
-          
-         ORDER BY st.repStatusDateCreated DESC LIMIT 1) NOT IN ('unapproved','solved')
-GROUP BY rep.type 
-ORDER BY no DESC LIMIT 0, 25);
-";
+
 $stmt = $conn->prepare($sql);
 
 $stmt ->execute();

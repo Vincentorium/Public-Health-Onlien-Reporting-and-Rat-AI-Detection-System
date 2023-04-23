@@ -18,7 +18,7 @@
 
 
  
-
+console.log(dataJS)
 
 let content=""
  
@@ -26,7 +26,7 @@ let content=""
 $.ajax({
         type:'POST',
         dataType: "json",
-        data: JSON.stringify(dataJS),
+        data: dataJS,
          async: false,
         url: './php/getChartCompared.php',
         success: function (result){
@@ -52,16 +52,27 @@ $.ajax({
 
  
         objJS.data.push({type:"bar",dataPoints:[] })   
+ 
+ 
+ $.each(result, function(index, data){
+
+
+})
+ 
+
+
 
         $.each(result, function(index, data){
-              if(data.compareIndex=="1st"){
+              if(data.compareIndex=="0"){
               objJS.data[0].dataPoints.push({y: data.repNum,label:data.repPollutionType})
-                objJS.data[1].dataPoints.push({y: "",label:""})
+               // objJS.data[1].dataPoints.push({y: "",label:""})
+                 
          }
-              else{
+              else  if(data.compareIndex=="3"){
                
-                 objJS.data[0].dataPoints.push({y: "",label:""})
-        objJS.data[1].dataPoints.push({y: data.repNum,label:data.repPollutionType})
+              //  objJS.data[0].dataPoints.push({y: "",label:""})
+          objJS.data[1].dataPoints.push({y: data.repNum,label:data.repPollutionType})
+              
               }
               });
    
@@ -71,7 +82,7 @@ $.ajax({
  
 
      
-      chart.render();x
+      chart.render(); 
  
     
         },//EDF AJAX sucess FUNCTION

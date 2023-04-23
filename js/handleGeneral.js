@@ -138,7 +138,7 @@ e.stopPropagation()
                   }
 
  
-$(document).on('click','.searchIcon ',function(e){
+$(document).on('click','.searchIcon2 ',function(e){
 
 
   let locFilterSelectOption=""

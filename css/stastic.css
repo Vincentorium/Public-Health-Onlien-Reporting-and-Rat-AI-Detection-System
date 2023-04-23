@@ -1,0 +1,32 @@
+ 
+
+.comparedIconBox{
+width: 38px;
+    margin-top: 15px;
+    display: flex;
+}
+   
+.filter_date_compare_box{
+
+width: 500px;
+  
+}
+
+  .comparedIcon,.comparedIconClose{
+
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+  }
+.comparedIconClose{
+
+    margin-left: 26px;
+    margin-top: 12px;
+  }
+
+
+   
+.filter_date_compare_box--dateBox{
+
+  display: flex;
+}
