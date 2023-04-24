@@ -78,10 +78,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                      
                         $stmt_insertImage->bind_param("isi", $id,$imageName ,$repStatusIDForFK);
             
-                  
+                        
                      try {
                         
                            $stmt_insertImage->execute();
+                           $stmt_insertImage->close();
                            echo json_encode(['success image' => true]);
                      } catch(PDOException $e) {
                         echo "Error: " . $e->getMessage();
@@ -106,14 +107,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       }
        echo("current index: ".$index."<br>");
 
-}
- 
 // Close the statements and the connection
-$stmt_insertImage->close();
+
 $stmt_insertRepStatus->close();
  
 //$stmt_updateCurrentStatus->close();
 $conn->close();
+}
+ 
+
 
 
 ?>
