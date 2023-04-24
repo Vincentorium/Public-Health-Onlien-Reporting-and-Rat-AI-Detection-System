@@ -13,9 +13,9 @@ function insertMultiMail(dataJS){
             formDatas.append('arr_'+index+'_FKrepId',value);
             formDatas.append('arr_'+index+'_FKOfficerId',$.cookie('userID'));
             formDatas.append('arr_'+index+'_title',dataJS.title)
-            
+ 
             formDatas.append('arr_'+index+'_content',dataJS.content);
-             
+ 
         });
 
                 $(dataJS.attachMail).each(function(index,value){

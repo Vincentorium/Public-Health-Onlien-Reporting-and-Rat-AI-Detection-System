@@ -14,19 +14,17 @@
  
 
  }) 
- function getChartCompare(dataJS){
+ function getChartCompare(formData){
 
 
  
-console.log(dataJS)
-
-let content=""
+ 
  
  
 $.ajax({
         type:'POST',
-        dataType: "json",
-        data: dataJS,
+       dataType: "json", 
+        data: formData,
          async: false,
         url: './php/getChartCompared.php',
         success: function (result){
@@ -53,27 +51,39 @@ $.ajax({
  
         objJS.data.push({type:"bar",dataPoints:[] })   
  
- 
- $.each(result, function(index, data){
+   objJS.data.push({type:"bar",dataPoints:[] })   
+  
 
-
-})
- 
-
-
-
+//預設index，type
+let mySetType=new Set();
+$.each(result, function(index, data){
+      mySetType.add(data.repPollutionType)
+   })
+   let mySetGroup=new Set();
+   $.each(result, function(index, data){
+      mySetGroup.add(data.compareIndex)
+   })
         $.each(result, function(index, data){
-              if(data.compareIndex=="0"){
-              objJS.data[0].dataPoints.push({y: data.repNum,label:data.repPollutionType})
-               // objJS.data[1].dataPoints.push({y: "",label:""})
-                 
-         }
-              else  if(data.compareIndex=="3"){
-               
-              //  objJS.data[0].dataPoints.push({y: "",label:""})
-          objJS.data[1].dataPoints.push({y: data.repNum,label:data.repPollutionType})
-              
-              }
+
+        for (let item of mySetType) {
+             for (let item of mySetType) {
+            $.each(result, function(index, data){
+
+                if(data.repPollutionType==item)
+                objJS.data[i].dataPoints.push({y: data.repNum,label:data.repPollutionType})
+                else
+                 objJS.data[i].dataPoints.push({})
+       
+  });
+            });
+
+        }
+
+
+
+
+
+ 
               });
    
 

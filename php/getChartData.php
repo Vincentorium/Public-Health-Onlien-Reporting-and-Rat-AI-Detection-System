@@ -9,6 +9,17 @@ $sql_Allarea=  ($street!="") ?" and rep.street='$street' ":"";
 $firstDayOfThisMonth=$dateS; 
 $lastDayOfThisMonth=$dateE; 
  
+
+
+
+
+
+
+
+
+
+
+
 $sq2l="select rep.id,rep.type as repPollutionType,count(rep.type) as no ,
 rep.street as repStreet,(select st.repStatusType from repstatus as st where st.repStatusFKreports=rep.id 
 order by st.repStatusDateCreated desc limit 1)   as type,

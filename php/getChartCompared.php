@@ -2,22 +2,22 @@
 include "config.php";
   
 
-$json_data = file_get_contents('php://input');
-$data = json_decode($json_data, true);
+//$json_data = file_get_contents('php://input');
+//$data = json_decode($json_data, true);
 
-extract($data);
-//var_dump($data);
+extract($_POST);
+ 
 //$sql_Allarea="";//"and rep.street='$street'";
 $noOfDateCom=0;
 $noOfDateComTrace=0;
  $sql="";
  for ($index = 0; $index <4;  $index++) {
-        if(array_key_exists('date_s_'.$index, $data))
+        if(array_key_exists('date_s_'.$index,$_POST))
                  $noOfDateCom++;
     }
 for ($index = 0; $index <4;  $index++) {
 
-     if(array_key_exists('date_s_'.$index, $data))
+     if(array_key_exists('date_s_'.$index, $_POST))
       { $noOfDateComTrace++;
      
 $sql.="

@@ -42,9 +42,9 @@ console.log(count)
 
     $(document).ready(function(){
             $("#mainPageForm").on("submit", function(event){
-                event.preventDefault();  
-
-          getChartCompare(formDataToJSON(this))
+          event.preventDefault();  
+          let formData = $(this).serializeArray();
+          getChartCompare(formData)
 
         });
 })
