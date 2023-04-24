@@ -10,19 +10,7 @@ INNER JOIN repstatus as status
 on rep.repID = status.repStatusFKreports;";
  
 
-
-$ssql = "SELECT *,
-rep.id as repID, 
-u.id as userID,
-u.type as userType,
-rep.type as repType,
-u.fullname as userName
-
-FROM `report` as rep    
-left join user as u
-on rep.userId=u.id  
-where repCurrentStatus = '$status'   ; ";
-
+ 
 
 
 

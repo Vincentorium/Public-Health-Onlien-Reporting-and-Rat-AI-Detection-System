@@ -46,15 +46,16 @@ $(document).on('click','.submitButton',function(e){
                     updateReportStatus(tempArrMultiForSingeReport)
             
                 }else{
-       
-                    if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
+                    //if multi button is clicked
+                  /*  if(!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
                          $('.relevantReportsBox').addClass("activeRelevantReps")
                              e.preventDefault();}
                     else{ 
                       e.preventDefault();
                       return
             
-                    }       
+                    }
+                    */       
             }
 
             break;
@@ -131,5 +132,65 @@ e.stopPropagation()
                     getReportsIntoInbox()
                     getReortForTable()
                     modal()
+                    getMostUrgentStreet()
+ 
                   
                   }
+
+ 
+$(document).on('click','.searchIcon2 ',function(e){
+
+
+  let locFilterSelectOption=""
+  let  dateS
+  let  dateE
+   let  dateS_c_s
+  let  dateS_c_e
+  let dataJS
+  let box
+             switch($(this).data("search")) {
+    case "stastic__cancel":
+               box = $('.searchIcon').closest(".filterForm")
+            
+            
+                            locFilterSelectOption=box.find('.filter__formInput--locFrm').val()
+            
+              dateS=box.find(".filter__formInput--date_s").val()
+                dateE=box.find(".filter__formInput--date_e").val()
+             dataJS={street:locFilterSelectOption,dateS:dateS,dateE:dateE}
+              getChart(dataJS)
+            break;
+
+    //case "filter_date_compare_box":
+    case "stastic":
+                 box = $('.searchIcon').closest(".filterForm")
+                locFilterSelectOption=box.find('.filter__formInput--locFrm').val()
+                dateS=box.find(".filter__formInput--date_s").val()
+              
+                dateE=box.find(".filter__formInput--date_e").val()
+                dateS_c_s=$(".filter_date_compare_box").find(".filter__formInput_compare_--date_s").val()
+                dateS_c_e=$(".filter_date_compare_box").find(".filter__formInput_compare_--date_e").val()
+                
+                dataJS={
+                  street:locFilterSelectOption,
+                  dateS:dateS,
+                  dateE:dateE,
+                  dateS_c_e:dateS_c_e,
+                  dateS_c_s:dateS_c_s
+                }
+                getChartCompare(dataJS)
+
+            break;
+
+    case "relevantReportsSubmitWithMail":
+        
+            break;
+        
+            
+    default:
+        console.log("No a valid type ")
+    }
+
+                
+                
+                });

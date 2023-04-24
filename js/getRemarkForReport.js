@@ -99,7 +99,7 @@ $.each(result, function(index, data){
 +"<br>"
  
 +''+(havaAttach===true?
-  ("<div>Attachment:"
+  ("<div  class='attachTitleBox'><span class='attachTitle'>Attachment:</span>"
       +"<div class='attachPic'>"
           + mailAttachment
       +"</div>"

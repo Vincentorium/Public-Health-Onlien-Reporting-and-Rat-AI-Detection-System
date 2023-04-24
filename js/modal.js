@@ -84,6 +84,13 @@ overlay.classList.add('active')
 
   }  else if (defaulModal=='mailRecord'){
 
+    if($('.header__mailRecord').css("color") =="rgb(255, 0, 0)" ){
+  $('.header__mailRecord').css("color", "rgba(0, 35, 96, 0.79)"  );
+
+   }
+
+
+
     $('.mail-button-inbox').addClass('mailbuttonHover')
     $('.mail-button-sent').removeClass('mailbuttonHover')
  $('.mailModal').addClass('active');
@@ -124,7 +131,7 @@ $('.mail-record-box table tbody tr').attr('display','table-row')
     modal.classList.remove('active');
     }else if(modaType==="relevantReportsBox"){
        modal.classList.remove('activeRelevantReps');
-     
+          $(".submitNotifyUser").prop("checked", false);
     }
  
 }

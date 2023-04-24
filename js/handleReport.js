@@ -89,8 +89,8 @@ $(document).on("click",".complaintNature_edit",(function(){
          
         var data={
             repID:repID,
-            attribute:$('.complaintOption').data('attribute'),
-            value:$('.complaintOption').val()}
+            attribute:select.data('attribute'),
+            value:select.val()}
         $.ajax({
             type: 'POST',
             url: 'php/updateReportAttribute.php',
@@ -121,4 +121,22 @@ $(document).on("click",".complaintNature_edit",(function(){
 
 }
 	
+}))
+
+
+$(document).on("change",".submitNotifyUser",(function(){
+
+
+  if($(this).is(':checked')&&!getRevelantReportsForUpdate($(this).data("rep_street"))===false){
+                         $('.relevantReportsBox').addClass("activeRelevantReps")
+                              e.stopPropagation();}
+                    else{ 
+                      $(".submitNotifyUser").prop("checked", false);
+                 e.stopPropagation();
+    return false;
+            
+                    }       
+
+
+
 }))

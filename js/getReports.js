@@ -159,7 +159,7 @@ $.ajax({
 +'                      <tr>'
 +'                        <td>'
 +'                          <b>Nature</b>:'
-+'                          <select class="complaintNature complaintOption" disabled data-attribute="repType">'
++'                          <select class="complaintNature complaintOption" disabled data-attribute="type">'
 +'                            <option class="OptionDemo1" value="Pest Control"'
 +((type==="Pest Control")==false?"":"selected")+ '>Pest Control</option>'
 +'                            <option value="Air Pollution" '
@@ -179,12 +179,12 @@ $.ajax({
 +'<tr>'
 +'                        <td>'
 +'                          <b>Department</b>:'
-+'                          <select class="complaintDept complaintOption" disabled data-attribute="repDept">'
++'                          <select class="complaintDept complaintOption" disabled data-attribute="dept">'
 +'                            <option class="OptionDemo1" value="Housing Authority"'
 +"selected"+ '>Housing Authority</option>'
 +'                            <option value="Environment Protection Department" '
 +((type==="Environment Protection Department")==false?"":"selected")+'>Environment Protection Department </option>'
-+'                            <option value="Noise Pollution"'
++'                            <option value="Police Force"'
 +((type==="Police Force")==false?"":"selected")+'>Police Force</option>'
 +'                            <option value="Food and Environmental Hygiene Department"'
 +((type==="Food and Environmental Hygiene Department")==false?"":"selected")+'>Food and Environmental Hygiene Department</option>'
@@ -220,7 +220,7 @@ $.ajax({
 
 
 +''+(havaAttach===true?
-  ("<div>Attachment:"
+  ("<div  class='attachTitleBox'><span class='attachTitle'>Attachment:</span>"
       +"<div class='attachPic--report'>"
           + mailAttachment
       +"</div>"
@@ -254,115 +254,7 @@ $.ajax({
 +'          <hr class="postLine">'
 +'        </div>'
 +'        <!--EOF comlaint 1 -->'
-+''
-+''
-+'        <!--SOF comlaint 1 -->'
-+'        <div class="postBox complaint2 active complaintBoxPost1 demonHide">'
-+''
-+''
-+'          <div>'
-+''
-+''
-+'            <div class="commendBox complaint1 post1 active">'
-+''
-+'              <div class="cmtInfor">'
-+''
-+'                <div class="cmtPersonInof">'
-+'                  <br>'
-+'                  <br>'
-+''
-+'                  <table>'
-+''
-+'                    <tr>'
-+'                      <td style="width:100px">'
-+'                        <img src="images/Staff3.png" width="80" height="80" />'
-+'                      </td>'
-+'                      <td style="font-size:28px">Chan Tai Man</td>'
-+'                      <td>(Environmental Protection Dept)</td>'
-+'                      <td style="width:300px;">'
-+'                        <span> · </span>'
-+'                        Post: 29-Jan-2023'
-+'                      </td>'
-+'                    </tr>'
-+'                  </table>'
-+'                </div>'
-+'                <br>'
-+'                <div class="postContent">'
-+''
-+'                  <span>'
-+'                    上址山坡確有建築廢料被棄置， 根據《廢物處置條例》採取執'
-+'                    <br>已採取特別安排清理棄置廢料，'
-+'                    <br>且要求屋邨管理處加強巡邏，並會繼續進行突擊巡查。'
-+'                  </span>'
-+'                </div>'
-+'              </div>'
-+'            </div>'
-+''
-+'            <br>'
-+'            <div class="postButton">'
-+''
-+''
-+'            </div>'
-+'          </div>'
-+'          <hr class="postLine">'
-+'        </div>'
-+'        <!--EOF comlaint 1 -->'
-+''
-+'        <!--SOF comlaint 1 -->'
-+'        <div class="postBox complaint3 active complaintBoxPost2 demonHide">'
-+''
-+''
-+'          <div>'
-+''
-+''
-+'            <div class="commendBox complaint1 post1 active">'
-+''
-+'              <div class="cmtInfor">'
-+''
-+'                <div class="cmtPersonInof">'
-+'                  <br>'
-+'                  <br>'
-+''
-+'                  <table>'
-+''
-+'                    <tr>'
-+'                      <td style="width:100px">'
-+'                        <img src="images/Staff3.png" width="80" height="80" />'
-+'                      </td>'
-+'                      <td style="font-size:28px">Chan Sai Man</td>'
-+'                      <td>(Housing Authority)</td>'
-+'                      <td style="width:300px;">'
-+'                        <span> · </span>'
-+'                        Post: Jan 25 2023'
-+'                      </td>'
-+'                    </tr>'
-+'                  </table>'
-+'                </div>'
-+'                <br>'
-+'                <div class="postContent">'
-+''
-+'                  <span>'
-+''
-+'                    山坡並非轄下管理範圍，山坡上之建築廢料亦非房署承辦商棄置，'
-+'                    <br>'
-+'                    但為免對邨內環境衞生造成影響，已採取特別安排清理棄置廢料。'
-+''
-+''
-+'                  </span>'
-+'                </div>'
-+'              </div>'
-+'            </div>'
-+''
-+'            <br>'
-+'            <div class="postButton">'
-+''
-+'              <button class="postReplyBut">Reply</button>'
-+'            </div>'
-+'          </div>'
-+'          <hr class="postLine">'
-+'        </div>'
-+'        <!--EOF comlaint 1 --->'
-+''
+
 +'  <!--       <div class="managementFunc demonHide">'
 +'          <span> Management function</span>'
 +'          <div></div>'
@@ -398,7 +290,7 @@ $.ajax({
  
 
 +'<div class="submitNotifyUserBox">'
-+'<input type="checkbox" class="submitNotifyUser" name="options[]" value="option3">Update relevant reports '
++'<input type="checkbox" class="submitNotifyUser" name="options[]" value="option3"      data-rep_street="'+data.repStreet+'"         >Update relevant reports  ' 
 +'</div>'
 +'            </div>'
 +'          </div>'
@@ -438,7 +330,7 @@ $.ajax({
 
 //S input file
  +' <div class="mailAttachBox mailAttachBox--specificBox">'
- +'       <input type="file" id="file-input--singleReportAttach" class="fileInput fileInput--singleReportAttach inputDisplay--singleReportAttach file-input-mail-JS 0" />'
+ +'       <input type="file" id="file-input--singleReportAttach" class="fileInput fileInput--singleReportAttach inputDisplay--singleReportAttach file-input-mail-JS 0"   />'
  +'       <div class="preview preview--singleReportAttach"></div>'
  
  +'   </div>'
@@ -458,7 +350,7 @@ $.ajax({
 
 
 +'<div class="mailBoxFunctionInsideRep">'
-+'            <button class="submitButton sendCmtBtn sendCmtBtnGP2 reportSubmitButton" data-submit_button="reportSubmit" data-submit_box=".reportStautsUpdatetBox"  data-rep_street="'+data.repStreet+'">Submit</button>'
++'            <button class="submitButton sendCmtBtn sendCmtBtnGP2 reportSubmitButton" data-submit_button="reportSubmit" data-submit_box=".reportStautsUpdatetBox" >Submit</button>'
 
 
 
@@ -767,10 +659,16 @@ return false
 
 function customizeReport(){
       
-      if(    $.cookie('userDept')!="Operator"){
-                  $('.cmtSumbitBox').removeClass("demonHide")
-$('.float').addClass("demonHide");
-      }
+      if($.cookie('userDept')!="Operator"){
+    
+          $('.cmtSumbitBox').removeClass("demonHide")
+          $('.float').addClass("demonHide");
+    
+        }else{
+    $('.complaintNature_edit').removeClass("demonHide")
+      
+
+        }
 }
 
 function addStatusToReports(){
