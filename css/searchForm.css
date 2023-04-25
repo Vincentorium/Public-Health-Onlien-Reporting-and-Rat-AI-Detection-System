@@ -25,9 +25,11 @@
     font-size: 14px;
 }
 .filterFormFirstFlood{
-    width: 1200px;
+      width: 1200px;
     display: flex;
-        height: 75px;
+    height: 75px;
+    margin-left: -43px;
+    margin-top: 6px;
 }
 .managementFunc{
        height: 80px;
@@ -88,6 +90,8 @@ font-size: 12px;
     width: 50px;
     height: 50px;
     cursor: pointer;
+    background-color: transparent;
+    border: 0;
 }
 .postBox_contentBox_contentBox_title{
    cursor: grab;
@@ -217,10 +221,15 @@ display: none;
         .filter__formInput--date {
             width: 181px;
         }
+        .filter_date_compare_box{
+
+            position: static;
+        }
 
         .filterBox .fliter_placehoder {
+            
              position: absolute;
-    left: 0px;
+    left:   -75px;
     padding: 6px;
     pointer-events: none;
     font-size: -1em;
@@ -315,17 +324,7 @@ display: none;
         .fliter_placehoder{
             top:7px;
         }
-/*.filterForm__searchBtn {
-            width: 200px;
-            height: 54px;
-            background-color: #0a0057;
-            color: white;
-            margin: 15px 30px 10px 30px;
-            font-size: 30px;
-            cursor: pointer;
-
-        }*/
-        
+ 
         .shouldBeHide{
 background-color: transparent;
 border:none;
@@ -335,8 +334,8 @@ height: 0px;
         }
         .filterForm__searchBtn:hover {
            
-            width: 90px;
-            height: 90px;
+            width: 60px;
+            height: 60px;
             
         }
        .tableDIv{

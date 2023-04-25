@@ -81,6 +81,7 @@
 
   <script defer src="js\checkNewMail.js"></script>
   <script defer src="js\handleStatistic.js"></script>
+  <script defer src="js\handleLoad.js"></script>
 
 </head>
 
@@ -233,9 +234,9 @@
             class="header__createAccount adminFunLin">Create Account</a>
         </div>
         <div class="headerLoginOut">
+          <a class="hearder__a header__report">Report</a>
 
-          <a data-modal-target="#statistic" data-default="mailRecord"
-            class="hearder__a header__statistic  ">Statistic</a>
+          <a class="hearder__a header__statistic  ">Statistic</a>
 
           <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__mailRecord  ">Mail</a>
 
@@ -343,35 +344,24 @@
                         <option value="MK">Mong Kok</option>
 
                       </select>
-                      <span class="fliter_placehoder">Areas</span>
+                      <span class="fliter_placehoder fliter_placehoder--area">Areas</span>
 
                     </div>
 
-                    <div class="filterBox">
+                    <div class="filterBox filterBox--street">
 
 
 
 
-
-                      <span class="filterBox__airlineIcon"></span>
-
-
-
-
-                      <select name="street" class="filter__formInput filter__formInput--locFrm" type="text"
-                        required="required" value="Hong Kong">
-                        <option value="">Streets</option>
-                        <option value="Ashley Road"> Ashley Road</option>
-                        <option value="MK"> Temple Street</option>
-                        <option value="YMT"> Public Square Street</option>
-                        <option value="TST"> Jade Street</option>
+                      <select name="street"
+                        class="filter__formInput filter__formInput--locFrm filter__formInput--locFrm-0" type="text"
+                        required="required">
 
 
                       </select>
                       <span class="fliter_placehoder"> </span>
 
 
-                      <!hover change to click and float -->
 
 
                     </div>
@@ -389,8 +379,9 @@
                     </div>
 
                     <div class="filterBox">
-                      <input id="filter__formInput" class="filter__formInput filter__formInput--date_e"
-                        required="required" name="date_e_0" type="text" onfocus="(this.type='date')"
+                      <input id="filter__formInput"
+                        class="filter__formInput filter__formInput--date filter__formInput--date_e" required="required"
+                        name="date_e_0" type="text" onfocus="(this.type='date')"
                         onblur="if(!this.value)this.type='text'">
 
                       <span class="fliter_placehoder">End Date</span>
@@ -401,18 +392,40 @@
 
                   </div>
 
+                  <div class="filterBox filterBox--type">
+                    <select name="type_0" class="filter__formInput filter__formInput--type filter__formInput--type_0"
+                      type="text" required="required">
+
+                    </select>
+                    <span class="fliter_placehoder"> </span>
+                  </div>
 
 
                 </div>
 
 
-                <div class="filterFormFirstFlood">
+                <div class="filterFormFirstSecond">
                   <div class="filter_date">
 
 
 
+                    <div class="stat_filter_box">
 
-                    <div class="filterBox">
+
+                      <div class="comparedIconBox containerHide">
+                        <span class="">Compared with other periods:</span>
+                        <img class="comparedIcon" src="./images/compareAdd.png" alt="">
+                        <span class="fliter_placehoder">Start Date</span>
+                        <span class="fliter_placehoder">End Date</span>
+                      </div>
+
+
+
+
+
+                    </div>
+
+                    <div class="filterBox filterBox--keyword">
 
                       <input list="Dated" class="filter__formInput filter__formInput--time inputSecFloor" type="text">
 
@@ -423,53 +436,58 @@
                     <input class="shouldBeHide" type="text">
 
                   </div>
-                  <!-- 
-          <button type="button" class="filterForm__searchBtn"><img src="/images/search.jpg" alt=""> Search</button>
-<img class="searchIcon filterForm__searchBtn demonHide" src="./images/search.svg" alt="" data-search="stastic">
-                  <input class="searchIcon filterForm__searchBtn" type="submit" src="./images/search.svg" alt=""
-                    data-search="stastic">
+                  <!-- -->
+
+
+                  <button class="searchIcon filterForm__searchBtn" data-search="stastic">
+                    <img src="./images/search.svg" width="50px" alt="button icon">
+
+                  </button>
+
+
+
 
                 </div>
---> 
 
 
-                <div class="stat_filter_box">
+                <!-- SOF statistic -->
+                <div class="container--statistic  containerHide">
 
-                  <div class="comparedIconBox">
-                    <input type="button" class="searchIcon demonHide " value="Compared with the period:"
-                      data-search="filter_date_compare_box">
-                    <img class="comparedIcon" src="./images/compareAdd.png" alt="">
+
+
+                  <div id="chartContainer" style="height: 300px; width: 100%;">
+
+                    asdasd
                   </div>
 
 
-
-
-
                 </div>
+                <!-- EOF statistic -->
 
               </div>
               <!-- EOF filter Form -->
 
 
-              <!-- SOF 5 switch box -->
-              <div class="switchBox">
-                <!-- SOF 5 top box -->
-
-                <!-- EOF 5 top box -->
-
-                <!-- partial:index.partial.html -->
-                <div class="switch-button "><span class="activeSwitch"></span>
-
-                  <button class="switch-button-case left active-case"> Inbox</button>
-                  <button class="switch-button-case right demonSwitchRight">Case</button>
-                </div>
-
-              </div> <!-- EOF 5 switch box -->
 
             </form>
+
+            <!-- SOF 5 switch box -->
+            <div class="switchBox">
+              <!-- SOF 5 top box -->
+
+              <!-- EOF 5 top box -->
+
+              <!-- partial:index.partial.html -->
+              <div class="switch-button "><span class="activeSwitch"></span>
+
+                <button class="switch-button-case left active-case"> Inbox</button>
+                <button class="switch-button-case right demonSwitchRight">Case</button>
+              </div>
+
+            </div> <!-- EOF 5 switch box -->
+
           </div>
           <!-- EOF complaintFuncBox-->
-
 
 
 
@@ -550,18 +568,6 @@
 
                 </div>
               </div> <!-- EOF complaintTable-->
-
-            </div>
-            <!-- SOF statistic -->
-            <div class="container--statistic demonHide">
-
-
-
-              <div id="chartContainer" style="height: 300px; width: 100%;">
-
-                asdasd
-              </div>
-
 
             </div>
 

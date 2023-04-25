@@ -1,19 +1,26 @@
  
 
 .comparedIconBox{
-width: 38px;
+    width: 359px;
     margin-top: 15px;
     display: flex;
 }
-   
-.filter_date_compare_box{
+#chartContainer{
 
-width: 500px;
-  
+      height: auto;
+    width: 1000px;
+    
+    text-align: center;
+    margin-top: 65px;
+    font-size: 40px;
 }
+ 
+ 
+ 
 
   .comparedIcon,.comparedIconClose{
 
+    margin-left: 5px;
     cursor: pointer;
     width: 25px;
     height: 25px;
@@ -29,4 +36,33 @@ width: 500px;
 .filter_date_compare_box--dateBox{
 
   display: flex;
+}
+
+.filter__formInput--date{
+
+  width: 150px;
+}
+.filter__formInput--date_e,.filter__formInput--date_s{
+
+margin-left: -48px;
+}
+.filter__formInput--date_e{
+
+margin-left: -73px;
+}
+ 
+.filter__formInput--type_0{
+  margin-left: -73px;
+}
+.filterFormFirstSecond{
+width: 1200px;
+    display: flex;
+    height: auto;
+    
+    margin-top: 6px;
+
+}
+.fliter_placehoder--area{
+  margin-left: 10px;
+  margin-left: 81px;
 }

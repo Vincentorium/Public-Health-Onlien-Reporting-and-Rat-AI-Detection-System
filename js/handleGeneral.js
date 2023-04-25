@@ -137,7 +137,7 @@ e.stopPropagation()
                   
                   }
 
- 
+/* 
 $(document).on('click','.searchIcon2 ',function(e){
 
 
@@ -193,4 +193,4 @@ $(document).on('click','.searchIcon2 ',function(e){
 
                 
                 
-                });
+                });*/

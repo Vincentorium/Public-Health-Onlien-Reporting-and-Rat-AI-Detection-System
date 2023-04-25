@@ -4,3 +4,6 @@
 .postImage{
   width: 400px;
 }
+.containerHide{
+  display: none;
+}
