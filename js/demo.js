@@ -2,8 +2,7 @@
 $(document).ready(function () {
  
 
-
-var userName= $.cookie('name')
+ 
 
 console.log("demo")
  
@@ -22,9 +21,13 @@ $('.complaintButton1').click(function(){
 
 $('.demoLogOut').click(function(){
 
+ $.removeCookie('userID' , {path: '/'  });
+ $.removeCookie('userDept' , {path: '/'  });
+ $.removeCookie('userName' , {path: '/'  });
  
-window.location.href = "index.html";
-	
+
+ window.location.href = "index.html";
+	  
 })
 
 

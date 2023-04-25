@@ -110,7 +110,7 @@ $(document).on("click",".complaintNature_edit",(function(){
                 button.html("(Edit)")
  
 	alert('Saved Successfully');
-    
+    refreshAfterUpdate();
             },
     
         });//EO ajax

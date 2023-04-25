@@ -7,13 +7,18 @@ extract($_POST);
 $sql = "SELECT *, rep.id as repID, u.id as userID ,
 rep.type as repType,
 u.type as userType,
-(select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id  and status.repStatusType!='unapproved'  Order BY status.repStatusDateCreated  DESC limit 1) as repCurrentStatus
+(select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id     Order BY status.repStatusDateCreated  DESC limit 1) as repCurrentStatus
 
 FROM `report` as rep  
 left join user as u
 on rep.userId=u.id
  
-where   street= '$repStreet'";
+where   street= '$repStreet'
+
+and (select status.repStatusType from `repstatus` as status WHERE status.repStatusFKreports=rep.id     Order BY status.repStatusDateCreated  DESC limit 1)
+NOT IN ('unapproved')
+
+";
  
 $result = mysqli_query($conn, $sql);
 

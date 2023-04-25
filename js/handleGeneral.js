@@ -126,9 +126,9 @@ e.stopPropagation()
 });//EO click Func
 
  
-
+//reload
       function refreshAfterUpdate(){
-                    getAllReort()
+                 
                     getReportsIntoInbox()
                     getReortForTable()
                     modal()

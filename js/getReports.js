@@ -18,14 +18,40 @@ $.ajax({
           },
           success: function (rs) {
           
- data=rs[0]
+                data=rs[0]
        
                 type=data.repType ;
-                let numOfAttach=(data.images.length)
-             let havaAttach=((data.images!=0)&&numOfAttach>0);
 
-                let mailAttachment=""
-        if(havaAttach){         
+              
+              let repDept= data.repDept
+              let otherDescription=" ";
+/*              
+              if(type==="Others"){
+
+              otherDescription=
+ '                      <tr class="othersSpe">'
++'                        <td>'
+  +'                   <b>Specification: </b>:'
++'             Others Specification           '    
++'                        </td>'
++'                      </tr>'
+
+              }
+
+
+*/
+
+
+
+
+
+              //let repDept=(data.repDept==""?"unassigned":data.repDept);
+                
+              let numOfAttach=(data.images.length)
+              let havaAttach=((data.images!=0)&&numOfAttach>0);
+
+              let mailAttachment=""
+              if(havaAttach){         
                  
               for(let i=0;i<numOfAttach;i++){
               mailAttachment+= '  <a href="./php/uploads/'+ data.images[i]+'" download>'
@@ -160,35 +186,46 @@ $.ajax({
 +'                        <td>'
 +'                          <b>Nature</b>:'
 +'                          <select class="complaintNature complaintOption" disabled data-attribute="type">'
-+'                            <option class="OptionDemo1" value="Pest Control"'
-+((type==="Pest Control")==false?"":"selected")+ '>Pest Control</option>'
++'                            <option   value="Pest Control"'
++((type==="Pest Control")==false?"":" selected ")+ '>Pest Control</option>'
 +'                            <option value="Air Pollution" '
-+((type==="Air Pollution")==false?"":"selected")+'>Air Pollution </option>'
++((type==="Air Pollution")==false?"":" selected ")+'>Air Pollution </option>'
 +'                            <option value="Noise Pollution"'
-+((type==="Noise Pollution")==false?"":"selected")+'>Noise Pollution </option>'
++((type==="Noise Pollution")==false?"":" selected ")+'>Noise Pollution </option>'
 +'                            <option value="Water Pollution"'
-+((type==="Water Pollution")==false?"":"selected")+'>Water Pollution </option>'
-+'                            <option class="OptionDemo2" value="Waste Pollution"'
-+((type==="Waste Pollution")==false?"":"selected")+'>Waste Pollution'
++((type==="Water Pollution")==false?"":" selected ")+'>Water Pollution </option>'
++'                            <option  value="Waste Pollution"'
++((type==="Waste Pollution")==false?"":" selected ")+'>Waste Pollution'
 +'                            </option>'
+
++'                            <option  value="Others" '
++((type==="Others")==false?"":" selected ")+'>Others'
++'                            </option>'
+
 +'                          </select>'
  
 +'                          <span class="complaintNature_edit demonHide" contenteditable="true">(Edit)</span>'
 +'                        </td>'
 +'                      </tr>'
+//+otherDescription
 +'<tr>'
 +'                        <td>'
 +'                          <b>Department</b>:'
 +'                          <select class="complaintDept complaintOption" disabled data-attribute="dept">'
-+'                            <option class="OptionDemo1" value="Housing Authority"'
-+"selected"+ '>Housing Authority</option>'
-+'                            <option value="Environment Protection Department" '
-+((type==="Environment Protection Department")==false?"":"selected")+'>Environment Protection Department </option>'
-+'                            <option value="Police Force"'
-+((type==="Police Force")==false?"":"selected")+'>Police Force</option>'
-+'                            <option value="Food and Environmental Hygiene Department"'
-+((type==="Food and Environmental Hygiene Department")==false?"":"selected")+'>Food and Environmental Hygiene Department</option>'
  
++'                            <option value="Evir. Prot. Dept." '
++((repDept==="Evir. Prot. Dept.")==false?"":" selected ")+'>Environment Protection Department </option>'
++'                            <option value="Police Force"'
++((repDept==="Police Force")==false?"":" selected ")+'>Police Force</option>'
++'                            <option value="Food and Environmental Hygiene Department"'
++((repDept==="Food and Environmental Hygiene Department")==false?"":" selected ")+'>Food and Environmental Hygiene Department</option>'
++'                            <option value="Housing Authority" '
++((repDept==="Housing Authority")==false?" ":" selected ")+'>Housing Authority </option>'
+ 
++'                            <option value="" '
++((repDept==="")==false?" ":" selected ")+'>Unassigned</option>'
+
+
 +'                          </select>'
 +'                          <!-- '
 +'                                  <span class="complaintNature" contenteditable="false">Pest Control'
@@ -276,13 +313,13 @@ $.ajax({
 +'            <label for="">Status: </label>'
 +'            &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp;'
 +'            <select name="Status" class="repSubmitStatus" >'
-+'              <option value="Unchange">Unchange</option>'
+
 +'              <option value="Fack Checking">Fack Checking</option>'
 +'              <option value="Wait in line">Wait in line</option>'
  
 +'              <option value="Solved">Solved</option>'
 +'              <option value="unapproved">reclassfiy</option>'
-+'              <option value="approved" class="temp_test">for Test</option>'
+
 +'            </select>'
 +'            <div class="psotUpdateChkbox">'
 +''

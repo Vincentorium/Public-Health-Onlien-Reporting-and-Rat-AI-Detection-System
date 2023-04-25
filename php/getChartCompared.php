@@ -47,7 +47,7 @@ for ($index = 0; $index <4;  $index++) {
                  ".$typeCondition."
                   AND (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports=rep.id 
                         
-                      ORDER BY st.repStatusDateCreated DESC LIMIT 1) NOT IN ('unapproved','solved')
+                      ORDER BY st.repStatusDateCreated DESC LIMIT 1) NOT IN ('unapproved')
               GROUP BY rep.type 
               ORDER BY no DESC)
 

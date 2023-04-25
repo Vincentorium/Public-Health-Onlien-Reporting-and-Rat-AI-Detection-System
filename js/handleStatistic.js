@@ -190,8 +190,8 @@ month = month.toString().padStart(2, '0');
 day = day.toString().padStart(2, '0');
 
  
-let todayStr = `${year}-${month}-${day}`;
-
+let todayStr = `${day}/${month}/${year}`;
+let todayStrSQL = `${year}-${month}-${day}`;
  
 let lastWeek = new Date(today.getTime() - 30 * 24 * 60 * 60 * 1000); // 使用时间戳计算出7天前的日期
 year = lastWeek.getFullYear();
@@ -203,8 +203,8 @@ month = month.toString().padStart(2, '0');
 day = day.toString().padStart(2, '0');
 
  
-let lastWeekStr = `${year}-${month}-${day}`;
-
+let lastWeekStr = `${day}/${month}/${year}`;
+let lastWeekStrSQL = `${year}-${month}-${day}`;
 $(".filter__formInput--date_s").val(lastWeekStr)
 $(".filter__formInput--date_e").val(todayStr)
  getChartCompare([
@@ -213,9 +213,9 @@ $(".filter__formInput--date_e").val(todayStr)
 , 
 {name: 'street', value: 'All Streets'}
 , 
-{name: 'date_s_0', value: lastWeekStr}
+{name: 'date_s_0', value: lastWeekStrSQL}
 , 
-{name: 'date_e_0', value: todayStr}
+{name: 'date_e_0', value: todayStrSQL}
 
   ])
   }

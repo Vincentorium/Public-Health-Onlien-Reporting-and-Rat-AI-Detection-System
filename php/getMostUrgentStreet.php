@@ -6,15 +6,23 @@ extract($_POST);
  
 
 
-$sql="select rep.id, 
+$sql2="select rep.id, COUNT(rep.id) as no
 rep.street as repStreet,(select st.repStatusType from repstatus as st where st.repStatusFKreports=rep.id 
 order by st.repStatusDateCreated desc limit 1)   as type,
 rep.date as repDate
 from report as rep
 where
   (select st.repStatusType from repstatus as st where st.repStatusFKreports=rep.id 
-order by st.repStatusDateCreated desc limit 1) not in ('unapproved','solved');";
-
+order by st.repStatusDateCreated desc limit 1) not in ('unapproved','solved');
+group by rep.street;
+";
+$sql="SELECT rep.id, COUNT(rep.id) as no, rep.street as repStreet, rep.timestamp as repDate
+FROM report AS rep 
+WHERE (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports = rep.id 
+       ORDER BY st.repStatusDateCreated DESC LIMIT 1) NOT IN ('unapproved', 'solved')
+      AND rep.timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 10 DAY) AND NOW()
+GROUP BY rep.street
+LIMIT 0, 25;";
 $stmt = $conn->prepare($sql);
 
 $stmt ->execute();

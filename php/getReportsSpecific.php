@@ -56,6 +56,9 @@ if ($result->num_rows > 0) {
 $sql = "
 SELECT *,
 rep.id as repID,
+rep.type as repType,
+rep.dept as repDept,
+u.type as userDept,
 u.id as userID,
 u.fullname as userName,
 status.repStatusID as repStatusID,
@@ -90,7 +93,7 @@ if (mysqli_num_rows($result) > 0) {
 					'repTitle' => $row['title'],
 					'repDateSubmit' => $row['timestamp'],
 
-					'repType' => $row['type'],
+					'repType' => $row['repType'],
 					//'repTypeSpecification' => $row['repTypeSpecification'],
 					'repLocationDetail' => $row['address'],
 					
@@ -116,7 +119,7 @@ if (mysqli_num_rows($result) > 0) {
 					//'imgPath' => $row['imgPath'] ,
 				//need recon: rep
 					'repCurrentStatus'=> $row['repCurrentStatus'],
-					'repDept' => $row['dept'],
+					'repDept' => $row['repDept'],
 					'repStreet' => $row['street'],
 			 
 

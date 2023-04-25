@@ -18,7 +18,7 @@ color: white;
 }
 .headerLoginOut{
  display:flex;
- gap:10px;
+ gap:46px; 
  margin-bottom: 10px;
 }
 
@@ -66,6 +66,7 @@ justify-content: space-between;
     margin-left:0 10px 0 102px;
     color: rgba(0, 35, 96, 0.787);
 }
+.header__dept .no-hover{  pointer-events: none;}
  
 .header__singUp,.header__LogOut{
   /*left:1000px;*/
