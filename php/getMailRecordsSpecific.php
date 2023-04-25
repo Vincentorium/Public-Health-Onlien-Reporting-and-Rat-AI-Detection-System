@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
     }
     
 } else {
-    echo "No records found.";
+    //echo "No records found.";
 }
 
 
