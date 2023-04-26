@@ -7,8 +7,7 @@
 
 $(".header__report").click(function (e){
 $(".containerHide").removeClass("containerHide");
-$(".container--statistic,.comparedIconBox").addClass("containerHide");
-
+$(".container--statistic,.comparedIconBox,.filterFormFirstFlood,.filterFormFirstSecond").addClass("containerHide");
 $(".filter_date_compare_box").remove()
 
   

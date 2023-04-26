@@ -26,13 +26,7 @@ let content=""
 $.ajax({
         type:'POST',
         dataType: "json",
-        data: {
-            
-            street:dateJS.street,
-             dateS:dateJS.dateS,
-            dateE:dateJS.dateE
-       
-          },
+      
          async: false,
         url: './php/getChartData.php',
         success: function (result){
