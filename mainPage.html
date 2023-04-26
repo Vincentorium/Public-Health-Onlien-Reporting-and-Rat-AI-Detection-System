@@ -84,6 +84,19 @@
   <script defer src="js\handleStatistic.js"></script>
   <script defer src="js\handleLoad.js"></script>
 
+
+
+
+
+
+  <link rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css'>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+  <link rel="stylesheet" href="./fyp/style.css">
+
+  <script src='./fyp/cloudflare.js'></script>
+  <script src="./fyp/getCameraData.js"></script>
+  <script src="./js/gerCamera.js"></script>
+
 </head>
 
 <body>
@@ -239,6 +252,8 @@
 
           <a class="hearder__a header__statistic  ">Statistic</a>
 
+          <a class="hearder__a header__Monitor  ">Monitor</a>
+
           <a data-modal-target="#mailRecord" data-default="mailRecord" class="hearder__a header__mailRecord  ">Mail</a>
 
 
@@ -264,7 +279,7 @@
       <div class="postContentBox">
 
         <div class="favBox">
-          <label class="collectionLabel" for="">Collection - Top 3 urgent: </label>
+          <label class="collectionLabel" for="">Most urgent cases last 10 days: </label>
           <div class="favEleBox">
 
 
@@ -451,17 +466,15 @@
 
 
 
+
                   <div id="chartContainer" style="height: 300px; width: 100%;">
 
-                    asdasd
+
                   </div>
 
 
                 </div>
                 <!-- EOF statistic -->
-
-              </div>
-              <!-- EOF filter Form -->
 
 
 
@@ -581,6 +594,50 @@
 
 
 
+        <!-- SOF map -->
+        <div class="container--map ">
+
+
+          <div class="mainCtn">
+
+
+
+            <div class="mapCtn">
+
+              <div id="map">
+
+              </div>
+              <input type="text" class="namePoint" placeholder="please enter a name for new spot">
+              <button class="mapNewPoint" id="mapNewPoint">Add a observation spot</button>
+
+              <div class="chartContainerLineTable--1">
+                Date:<input type="date" class="mapDate" value="2023-04-25">
+
+                <div id="chartContainerLineTable" class="chartContainerLineTable" style="height: 300px; width: 100%;">
+                </div>
+                <div class="wrap">
+
+
+                  <div id="map"></div>
+
+                </div>
+                <!-- partial -->
+
+              </div>
+
+              <div>
+
+
+              </div>
+
+
+            </div>
+
+          </div>
+          <!-- EOF map -->
+
+
+        </div>
 
 
 
@@ -588,6 +645,9 @@
 
 
       </div>
+
+
+      <!-- EOF filter Form -->
     </div>
     <!-- SearchBox -->
     <!-- SOF modal-->
@@ -648,7 +708,6 @@
   </div>
   <!-- EOF Main page -->
   </div>
-
 
 
 

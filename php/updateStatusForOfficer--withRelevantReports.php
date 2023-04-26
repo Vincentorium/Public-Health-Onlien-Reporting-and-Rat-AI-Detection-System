@@ -84,8 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                            $stmt_insertImage->execute();
                            $stmt_insertImage->close();
                            echo json_encode(['success image' => true]);
-                     } catch(PDOException $e) {
-                        echo "Error: " . $e->getMessage();
+                     } catch(Exception $e) {
+                        ///echo "Error: " . $e->getMessage();
                   
                      } 
                   }

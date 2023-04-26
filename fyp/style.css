@@ -1,0 +1,51 @@
+ 
+.leaflet-popup-content {
+    margin: 5px;
+    width: auto!important;
+} 
+
+
+
+html{
+    background: #ffffff;
+}
+.mapCtn{
+ 
+   width: 500px;
+    height: 500px;
+    margin: 50px;
+}
+.mainCtn{
+    margin:50px;
+}
+
+.streetDetail{
+    width: 600px;
+    height:900px;
+   
+   background-color: aliceblue;
+}
+ 
+#map{
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+}
+
+.mapCtn{
+
+ 
+}
+.container--map{
+visibility: hidden 
+
+}
+.chartContainerLineTable{
+
+margin-top: 10px;
+
+}
+.chartContainerLineTable--1{
+
+    margin-top: 10px;
+}

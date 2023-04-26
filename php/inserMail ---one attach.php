@@ -42,8 +42,8 @@ $stmt_insertImage->bind_param("isi", $id,$imageName ,$mail_id);
 try {
     $stmt_insertImage->execute();
        echo json_encode(['success' => true]);
-} catch(PDOException $e) {
-    echo "Error: " . $e->getMessage();
+} catch(Exception $e) {
+  // echo "Error: " . $e->getMessage();
     
 }
 

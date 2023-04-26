@@ -6,20 +6,28 @@
 
 
 $(".header__report").click(function (e){
-$(".containerHide").removeClass("containerHide");
-$(".container--statistic,.comparedIconBox,.filterFormFirstFlood,.filterFormFirstSecond").addClass("containerHide");
-$(".filter_date_compare_box").remove()
-
+      $(".container,.switchBox,.filterBox--keyword").removeClass("containerHide");
+      $(" .container--statistic,.comparedIconBox,.filterFormFirstFlood,.filterFormFirstSecond").addClass("containerHide");
+      $(".filter_date_compare_box").remove()
+  $(".container--map").css('visibility', 'hidden');
   
 })
 
 $(".header__statistic").click(function (e){
-  $(".containerHide").removeClass("containerHide");
+  $(".container--statistic,.comparedIconBox,.filterFormFirstFlood,.filterFormFirstSecond").removeClass("containerHide");
 $(".container,.switchBox,.filterBox--keyword").addClass("containerHide");
-
+  $(".container--map").css('visibility', 'hidden');
 loadChart();
  
 
+})
+
+
+$(".header__Monitor").click(function (e){
+  
+$(".container--statistic,.comparedIconBox,.filterFormFirstFlood,.filterFormFirstSecond,.container,.switchBox,.filterBox--keyword").addClass("containerHide");
+
+    $(".container--map").css('visibility', 'visible');
 })
 $(document).on("click",".comparedIcon",function(){
  if(jQuery.isEmptyObject(indexCollection)) {
@@ -114,7 +122,6 @@ let jsonString = JSON.stringify(jsonObject);
 
   
 }
-
 
  
 $(document).on('change', '.filter__formInput--date_s', function() {
@@ -218,3 +225,33 @@ $(".filter__formInput--date_e").val(todayStr)
 
   ])
   }
+
+
+
+
+
+  
+$(document).on('change', '.mapDate', function() {
+
+  
+  var $startDateInput = $(this);
+ 
+  var startDate = $startDateInput.val();
+  
+  var today = new Date();
+  today.setDate(today.getDate());
+  
+  var yesterday = new Date();
+  yesterday.setDate(today.getDate() - 1);
+
+  var currentDate = yesterday.toISOString().slice(0, 10);
+  console.log(currentDate);  
+
+ 
+  if (startDate >= currentDate) {
+    $startDateInput.val(currentDate);
+   
+    alert("Please select a date that is before today.");
+    return false;
+  }
+});

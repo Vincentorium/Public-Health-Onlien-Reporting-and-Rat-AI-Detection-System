@@ -179,7 +179,7 @@ $(document).ready(function () {
 
       error: function (xhr, status, error) {
         content = "Not new task yet!"
-        console.error('An error occurred while updating status');
+     
       }
 
 

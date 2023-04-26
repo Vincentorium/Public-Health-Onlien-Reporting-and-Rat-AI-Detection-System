@@ -49,9 +49,9 @@ echo ("nubmer of elemet: ".count($_POST)
                         try {
                            $stmt_insertImage->execute();
                               echo json_encode(['success' => true]);
-                        } catch(PDOException $e)
+                        } catch(Exception $e)
                          {
-                           echo "Error: " . $e->getMessage();
+                           //echo "Error: " . $e->getMessage();
                      
                         }
                   }

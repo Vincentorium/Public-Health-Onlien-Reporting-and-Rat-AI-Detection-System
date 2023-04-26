@@ -53,8 +53,8 @@ if ($stmt_insertRepStatus->execute()) {
                            try {
                               $stmt_insertImage->execute();
                                  echo json_encode(['Image up datesuccess' => true]);
-                           } catch(PDOException $e) {
-                              echo "Error: " . $e->getMessage();
+                           } catch(Exception $e) {
+                              //echo "Error: " . $e->getMessage();
                         
                            }
                      }
@@ -67,10 +67,10 @@ if ($stmt_insertRepStatus->execute()) {
          if ($stmt_updateCurrentStatus->execute()) {
          echo json_encode(['success' => true]);
       } else {
-         echo "Error: " . $sql_insert . "<br>" . $conn->error;
+        // echo "Error: " . $sql_insert . "<br>" . $conn->error;
       }
 } else {
-   echo "Error: " . $sql_insert . "<br>" . $conn->error;
+  // echo "Error: " . $sql_insert . "<br>" . $conn->error;
 }
 
 // Close the statement and the connection
