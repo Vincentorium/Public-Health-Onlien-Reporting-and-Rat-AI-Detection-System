@@ -41,14 +41,12 @@ content=' <div class="filter_date  filterBox filter_date_compare_box" >'
                     +' <div class="filterBox filter_date_compare_box ">'
                       +' <input id="filter__formInput"'
             +' class="filter__formInput filter__formInput--date filter__formInput--date_s  filter__formInput_compare_--date_s  "'
-            +' required="required" name="date_s_'+index+'"  type="text" onfocus="(this.type=\'date\')"'
-            +' onblur="if(!this.value)this.type=\'text\'    ">'
+            +' required="required" name="date_s_'+index+'"  type="date"  >'
                 
                       +' </div>'
                     +' <div class="filterBox">'
                       +' <input id="filter__formInput" class="filter__formInput filter__formInput--date_e filter__formInput_compare_--date_e"'
-            +'         required=" required" name="date_e_'+index+'" data-index='+index+' type="text" onfocus="(this.type=\'date\')"'
-            +' onblur="if(!this.value)this.type=\'text\' ">'
+            +'         required=" required" name="date_e_'+index+'" data-index='+index+' type="date"  >'
                    
                       +' </div>'
 
@@ -211,8 +209,8 @@ day = day.toString().padStart(2, '0');
  
 let lastWeekStr = `${day}/${month}/${year}`;
 let lastWeekStrSQL = `${year}-${month}-${day}`;
-$(".filter__formInput--date_s").val(lastWeekStr)
-$(".filter__formInput--date_e").val(todayStr)
+$(".filter__formInput--date_s").val(lastWeekStrSQL)
+$(".filter__formInput--date_e").val(todayStrSQL)
  getChartCompare([
 {name: 'region', value: 'YMT'}
 

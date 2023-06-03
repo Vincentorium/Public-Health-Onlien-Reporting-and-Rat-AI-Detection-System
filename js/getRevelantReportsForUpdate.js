@@ -72,7 +72,7 @@ $.ajax({
               "<tr class='reportTableRow' data-repID="+rc.repID+" >'"
             + "<td> <input class='relevantRepCheckbox' type='checkbox' data-repid="+rc.repID +">"
             + "</td><td>" + rc.repLocationDetail
-            + "</td><td>" + rc.repDateSubmit
+            + "</td><td>" + rc.repDateSubmit.substr(0,10)
             + "</td><td>" + rc.repType
             + "</td><td>" + rc.repDatePeriodBegin
             + "</td><td>" + rc.repTitle

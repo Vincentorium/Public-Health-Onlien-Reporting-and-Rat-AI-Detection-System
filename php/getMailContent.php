@@ -4,7 +4,7 @@ extract($_POST);
 // Perform a query
  
 $sql="SELECT *,m.id as mID,img.id as imgID,
-u1.type as senderDept ,
+u1.type as senderDept ,m.timestamp as mDate,
 u1.fullname as mailSenderName, 
 u2.fullname as citizenName,  
 img.name as imgName,
@@ -49,7 +49,7 @@ if ($result->num_rows > 0) {
 		'mailId' => $row['mID'],
 		'imgId' => $row['imgID'],
   
-    'dateCreated' => $row['timestamp'],
+    'dateCreated' => $row['mDate'],
 
 
 	'title' => $row['mailTitle'],
