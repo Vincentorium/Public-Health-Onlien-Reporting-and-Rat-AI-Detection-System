@@ -316,7 +316,7 @@ function getReports2(result, reportID) {
         + '              <option value="Wait in line">Wait in line</option>'
 
         + '              <option value="Solved">Solved</option>'
-        + '              <option value="unapproved">reclassfiy</option>'
+        + '              <option value="unapproved">Reclassfiy</option>'
 
         + '            </select>'
         + '            <div class="psotUpdateChkbox">'

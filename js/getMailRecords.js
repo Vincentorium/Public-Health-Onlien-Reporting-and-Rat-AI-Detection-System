@@ -44,7 +44,7 @@ mailResult =result
 +'                <div class="mail-list-title">'+ data.title+'</div>'
 +'                <div class="mail-list-content">'+data.content+'</div>'
 +'              </div>'
-+'              <div class="mail-list-date">'+ data.dateCreated
++'              <div class="mail-list-date">'+ (data.dateCreated).substr(0,10)
             + '</div>'
 +'            </div>'
 

@@ -98,7 +98,7 @@ $(document).ready(function () {
             //+'<td class="allPostPostDetail">'+data.normalUser+'</td>'
             + '<td class="allPostPostDetail" style="width:85px;">'
             + '<span class="allPostPostDetail"> · </span>'
-            + ' 18 Jan 2023'
+            +  (data.repDateSubmit).substr(0,10)
 
 
             + '</td></tr>'

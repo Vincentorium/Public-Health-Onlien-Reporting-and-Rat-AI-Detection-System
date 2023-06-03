@@ -6,7 +6,7 @@ extract($_POST);
  
 
 $sql="SELECT *,u1.type as senderDept ,u1.fullname as mailSenderName, u2.fullname as citizenName,
-m.id as mID,  
+m.id as mID, m.timestamp as mDate,
 (select count(*) from mailimage where mailimage.mailId=mID) as images,
 if( u1.type != 'complainer',1,0)  as isSentByOfficer  ,
 SUBSTRING_INDEX(r.title, ' ', 6)  as mailTitle
@@ -50,7 +50,8 @@ if ($result->num_rows > 0) {
         $output[] =     array(
 	'mailId' => $row['mID'],
  
-    'dateCreated' => $row['date'],
+//	   'dateCreated' => $row['date'],
+    'dateCreated' => $row['mDate'],
 	'title' => $row['mailTitle'],
 	'content' => $row['content'],
 	'FKrepId' => $row['reportId'],
