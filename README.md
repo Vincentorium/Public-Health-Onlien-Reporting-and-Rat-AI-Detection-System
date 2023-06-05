@@ -7,7 +7,7 @@ This page is about the web part of the system
 
 ## Android System
 
-The android part of the System [Link to Android System GitHub]https://github.com/210098976/fyp_api
+The android part of the System [Link to Android System GitHub](https://github.com/210098976/fyp_api)
 
 
 ## Rat AI Detection System
