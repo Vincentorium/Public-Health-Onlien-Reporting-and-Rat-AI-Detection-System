@@ -14,7 +14,6 @@ let content=""
  
  
  
-
  
 $.ajax({
         type:'POST',
@@ -27,9 +26,7 @@ $.ajax({
         url: './php/getMostUrgentStreet.php',
         success: function (result){
  
-        $('.favEleBox').html("");
-          
-        $('.favEleBox').fadeOut(1);
+      
               
         $.each(result, function(index, data){
      
@@ -58,20 +55,23 @@ $.ajax({
     
           });//end of $.each
 
- 
-  $('.favEleBox').html(content==""?"No case for reivew":content)
-  $('.favEleBox').fadeIn(500)
-    
+
         },//EDF AJAX sucess FUNCTION
        
        error: function(xhr, status, error) {
-        content="Not new task yet!"
-                console.error('An error occurred while updating status');
+        content="Not new report yet!"
+//                console.error('An error occurred while updating status');
       }
 
  
       
   });//EOF AJAX*/
-
+      $('.favEleBox').html("");
+          
+        $('.favEleBox').fadeOut(1);
+ 
+  $('.favEleBox').html( content)
+  $('.favEleBox').fadeIn(500)
+    
 }//EOF GETREPORTS FUNCTION
  

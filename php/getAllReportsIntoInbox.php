@@ -46,7 +46,7 @@ $record[] = array(
 	'repType' => $row['repType'],
 	//'repTypeSpecification' => $row['repTypeSpecification'],
 	'repLocationDetail' => $row['address'],
- 
+ 'repStreet' => $row['street'],
 	'repLocationY' => $row['latitude'],
   
  

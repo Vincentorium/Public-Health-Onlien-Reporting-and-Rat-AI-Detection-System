@@ -1,13 +1,15 @@
 # Public-Health-Onlien-Reporting-and-Rat-AI-Detection-System
 
-The reporting system is my IVE Final Year Project completed by 4 students.
+The reporting system is my IVE Final Year Project, completed by four students. 
 
-This page is about the web part of the system
+I am responsible for both the web system and AI system. 
+
+The source code on this page pertains to the web component of the reporting system."
 
 
 ## Android System
 
-The android part of the System [Link to Android System GitHub](https://github.com/210098976/fyp_api)
+The android part  of the System [Link to Android System GitHub](https://github.com/210098976/fyp_api)
 
 
 ## Rat AI Detection System

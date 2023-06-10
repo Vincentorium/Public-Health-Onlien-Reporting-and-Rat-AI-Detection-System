@@ -11,6 +11,7 @@ WHERE (SELECT st.repStatusType FROM repstatus AS st WHERE st.repStatusFKreports 
        ORDER BY st.repStatusDateCreated DESC LIMIT 1) NOT IN ('unapproved', 'solved')
       AND rep.timestamp BETWEEN DATE_SUB(NOW(), INTERVAL 10 DAY) AND NOW()
 GROUP BY rep.street
+ORDER BY no DESC
 LIMIT 0, 25;";
 $stmt = $conn->prepare($sql);
 
